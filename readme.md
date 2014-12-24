@@ -1,6 +1,14 @@
 # KnowRe web development curriculum
 ---
 
+## Introduction
+---
+- 이 커리큘럼은 KnowRe와 함께하게 된 개발자를 위해 만들어진 커리큘럼입니다.
+- 이 커리큘럼의 퀘스트들을 수행하는 데 있어서 다음 링크들의 필요한 부분을 참조하시면 좋습니다.
+ - http://xguru.net/1897
+ - http://nigayo.github.io/page/lecture.html
+
+
 ## git
 ---
 ### Hello, git
@@ -27,12 +35,14 @@
 - CSS 문법을 익혀 보세요.
 - CSS를 HTML에 적용하려면 어떻게 해야 할까요?
 - CSS Box Model이 무엇인지 알아 보세요.
+ - 가장 중요한 것: position, left/top, display, width/height
 - **Quest: Layout**
  - CSS 박스를 다음과 같이 배치하려면 어떻게 해야 할까요? (그림 필요)
  - 브라우저의 창 크기가 변하더라도 레이아웃이 깨지지 않도록 하려면 어떻게 해야 할까요?
 - **Quest: Static HTML**
  - HTML과 CSS를 이용하여, 그림과 같은 HTML 페이지를 만들어 보세요. (그림 필요)
  - 아이콘 그림은 아무렇게나 그려넣으셔도 상관 없습니다!
+
 
 ## JavaScript
 ---
@@ -47,51 +57,64 @@
 ### JavaScript OOP
 - 객체지향적 개발은 무엇인가요?
 
+### DOM API
+
+### event
+
+### closure
+
+### asynchronousity
+
+### Project: client-side application
+
+
 ## node.js
+---
+### npm and require
+
+### HTTP/TCP/IP
+
+### basic server
+
+
 ## AWS
+---
+### EC2 instance 생성
+
+### CentOS6 깔아보기
+
+### 접속하기
+
+
+### DNS의 이해
+
+### Route53
+
+
+### S3 bucket 생성
+
+### 사용해보기
+
+### DNS 달기
+
+### Project: server/client application
+
+
 ## MySQL
+---
+### CRUD
+
+### CRUD with node.js
+
+### ORM
+
+
 ## Modern web
+---
+### Canvas & SVG
 
+### Websocket
 
-JavaScript language
-	basic things
-	OOP
-	DOM API
-	event
-	closure
-	asynchronousity
-	Project: client-side application
+### OAuth
 
-node.js
-	npm and require
-	HTTP/TCP/IP
-	basic server
-
-AWS
-	EC2 instance 생성
-	CentOS6 깔아보기
-	접속하기
-
-	DNS의 이해
-	Route53
-
-	S3 bucket 생성
-	사용해보기
-	DNS 달기
-	Project: server/client application
-
-MySQL
-	CRUD
-	CRUD with node.js
-
-Modern web
-	Canvas & SVG
-	Websocket
-	OAuth
-	Swint
-
-
-The curriculum for noobs
-
-http://xguru.net/1897
-http://nigayo.github.io/page/lecture/basic/1.html
+### Swint
