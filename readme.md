@@ -27,8 +27,9 @@
  - MS와 IE는 왜 역사의 죄인이 되었을까요?
 - HTML 문서의 형식을 익혀 보세요.
 - HTML 엘리먼트에는 무엇이 있는지 알아 보세요.
+- [MDN](https://developer.mozilla.org/ko/docs/Web/HTML) 사이트를 활용하면 도움이 될 것입니다!
 - **Quest: HTML Document**
- - 그림과 같은 페이지를 HTML문서로 표현한다면 어떻게 될까요? (그림 필요)
+ - gmail 목록 페이지를 HTML문서로 표현한다면 어떻게 될까요?
  - 소스를 보지 말고 한 번 자신만의 HTML 코드를 만들어 보세요.
 
 ### Hello, CSS
@@ -38,10 +39,13 @@
  - 가장 중요한 것: position, left/top, display, width/height
 - 크롬 개발자 도구의 elements 탭을 사용하는 방법을 알아 보세요.
 - **Quest: Layout**
- - CSS 박스를 다음과 같이 배치하려면 어떻게 해야 할까요? (그림 필요)
+ - CSS 박스를 다음과 같이 배치하려면 어떻게 해야 할까요?
+  - ![](cssLayout.001.png)
+  - ![](cssLayout.002.png)
+  - ![](cssLayout.003.png)
  - 브라우저의 창 크기가 변하더라도 레이아웃이 깨지지 않도록 하려면 어떻게 해야 할까요?
 - **Quest: Static HTML**
- - HTML과 CSS를 이용하여, 그림과 같은 HTML 페이지를 만들어 보세요. (그림 필요)
+ - HTML과 CSS를 이용하여, gmail 목록 페이지를 흉내내 보세요.
  - 아이콘 그림은 아무렇게나 그려넣으셔도 상관 없습니다!
 
 
