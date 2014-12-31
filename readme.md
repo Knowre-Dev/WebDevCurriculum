@@ -96,11 +96,42 @@
 
 ## node.js
 ---
-### npm and require
+### Hello, node
+- node.js를 PC에 설치해 보세요.
+- npm이 무엇인지 알아 보세요.
+- node.js의 require() 함수는 어떻게 쓰는 것인가요?
+- module.exports와 exports의 차이는 무엇일까요?
+- **Quest: Configuration**
+ - 먼저 다음 파일을 다운로드 받습니다.
+  - [config1.js]
+  - [config2.js]
+ - 커맨드 라인에서 다음과 같은 명령을 쳤을 때 위 파일들의 내용이 나타나도록 해 보세요.
+  - $ node app.js 1
+    {
+		name: 'Config1',
+		var1: 'aaa',
+		var2: [1, 2, 3, 4]
+	}
+  - $ node app.js 2
+    {
+		name: 'Config2',
+		var1: 'bbb',
+		var2: [2, 3, 4, 5]
+	}
+ - app.js를 적당히 만들고 config*.js 파일들을 적당히 고치면 됩니다..!
 
 ### HTTP/TCP/IP
+- OSI 7 Layer가 무엇인지 알아 보세요.
+- 인터넷이 무엇일까요?
+- **Quest: Understanding network**
+ - 우리가 구글 검색창에 어떠한 쿼리를 날렸을 때, 인터넷 상에서 어떤 일이 일어날까요?
+ - 충분히 조사해 보고, 아는대로 최대한 자세히 설명해 보세요.
 
-### basic server
+### Basic server
+- npm의 http 모듈에 대해 알아 보세요.
+- **Quest: My first HTTP server**
+ - 브라우저의 주소창에 http://localhost:8080을 치면 'Hello World!'를 출력하는 서버를 만들어 보세요.
+ - HTTP GET/POST 요청을 모두 받아 해당 변수를 그대로 돌려주는 서버를 만들어 보세요.
 
 ### Asynchronism & Ajax
 
