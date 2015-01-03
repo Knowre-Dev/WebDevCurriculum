@@ -14,6 +14,7 @@
 ### Hello, git
 - Github에 가입해 보세요.
 - git 명령어들을 익혀 보세요.
+- 적당한 github repo를 만들어, 앞으로의 모든 퀘스트들은 그 곳에 제출해 주시면 되겠습니다.
 - **Quest: Tutorial for git**
  - https://try.github.io
  - http://pcottle.github.io/learnGitBranching/
@@ -179,6 +180,7 @@
 - **Quest: Library System**
  - 앞에서 설계한 Library DB를 이용하여 도서관 시스템 웹 어플리케이션을 만들어 보세요!
  - 이 어플리케이션은 책을 여러 가지 조건으로 검색할 수 있어야 하며, 대출/반납 정보를 기록할 수 있어야 합니다.
+ - **중요: MySQL 패스워드는 github과 같은 공개 저장소에 들어가면 안됩니다. 패스워드 정보를 담는 secret.json같은 파일을 만들고 그 파일을 .gitignore에 집어넣어 불러써야 합니다.**
 
 
 ## Modern web
