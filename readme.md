@@ -107,21 +107,21 @@
    - [config2.js](config2.js)
  - 커맨드 라인에서 다음과 같은 명령을 쳤을 때 위 파일들의 내용이 나타나도록 해 보세요.
    - $ node app.js 1
-```
-{
-	name: 'Config1',
-	var1: 'aaa',
-	var2: [1, 2, 3, 4]
-}
-```
+   ```
+   {
+        name: 'Config1',
+    	var1: 'aaa',
+		var2: [1, 2, 3, 4]
+   }
+   ```
    - $ node app.js 2
-```
-{
-	name: 'Config2',
-	var1: 'bbb',
-	var2: [2, 3, 4, 5]
-}
-```
+   ```
+   {
+	   name: 'Config2',
+	   var1: 'bbb',
+	   var2: [2, 3, 4, 5]
+   }
+   ```
  - app.js를 적당히 만들고 config*.js 파일들을 적당히 고치면 됩니다..!
 
 ### HTTP/TCP/IP
