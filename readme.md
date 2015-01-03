@@ -103,10 +103,10 @@
 - module.exports와 exports의 차이는 무엇일까요?
 - **Quest: Configuration**
  - 먼저 다음 파일을 다운로드 받습니다.
-  - [config1.js](config1.js)
-  - [config2.js](config2.js)
+   - [config1.js](config1.js)
+   - [config2.js](config2.js)
  - 커맨드 라인에서 다음과 같은 명령을 쳤을 때 위 파일들의 내용이 나타나도록 해 보세요.
-  - $ node app.js 1
+   - $ node app.js 1
 ```
 {
 	name: 'Config1',
@@ -114,7 +114,7 @@
 	var2: [1, 2, 3, 4]
 }
 ```
-  - $ node app.js 2
+   - $ node app.js 2
 ```
 {
 	name: 'Config2',
