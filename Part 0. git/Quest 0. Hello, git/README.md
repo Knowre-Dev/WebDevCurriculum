@@ -22,6 +22,8 @@
 * http://pcottle.github.io/learnGitBranching
 
 ## Checklist
+* 버전 관리 시스템은 왜 필요한가요?
+* git 외의 버전관리 시스템에는 무엇이 있나요? git은 그 시스템과 어떤 점이 다르며, 어떤 장점을 가지고 있나요?
 * git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?
 
 ## Quest
