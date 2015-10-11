@@ -1,0 +1,24 @@
+body {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.main {
+	background-color: skyblue;
+	/* TODO: 이 곳을 채우세요! */
+}
+
+.left {
+	background-color: pink;
+	/* TODO: 이 곳을 채우세요! */
+}
+
+.right {
+	background-color: greenyellow;
+	/* TODO: 이 곳을 채우세요! */
+}

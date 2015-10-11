@@ -23,9 +23,10 @@
   * Block-level elements vs Inline elements
 
 ## Resources
-* [MDN](https://developer.mozilla.org/ko/docs/Web/HTML)
+* [MDN - HTML](https://developer.mozilla.org/ko/docs/Web/HTML)
 * [모던 웹 디자인을 위한 HTML5+CSS3 입문](http://www.yes24.com/24/Goods/15683538?Acode=101), 한빛미디어
 * [웹 디자인 2.0 고급 CSS](http://www.yes24.com/24/Goods/2808075?Acode=101), 에이콘출판사
+* [StatCounter Global Stats](http://gs.statcounter.com/)
 
 ## Checklist
 * HTML 4.x 이후의 HTML 표준의 변천사는 어떻게 되나요?
