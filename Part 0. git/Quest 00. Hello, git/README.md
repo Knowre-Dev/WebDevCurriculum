@@ -1,4 +1,4 @@
-# Quest 0. Hello, git
+# Quest 00. Hello, git
 
 
 ## Introduction
