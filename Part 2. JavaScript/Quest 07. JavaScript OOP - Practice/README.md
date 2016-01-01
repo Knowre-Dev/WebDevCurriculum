@@ -1,4 +1,4 @@
-# Quest 07. JavaScript OOP - 실전
+# Quest 07. JavaScript OOP - Practice
 
 
 ## Introduction

@@ -1,4 +1,4 @@
-# Quest 06. JavaScript OOP - 설계
+# Quest 06. JavaScript OOP - Design
 
 
 ## Introduction
