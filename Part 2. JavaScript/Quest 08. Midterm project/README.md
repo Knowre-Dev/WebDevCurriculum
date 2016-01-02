@@ -1,4 +1,4 @@
-# Quest 08. Web client project
+# Quest 08. Midterm project
 
 
 ## Introduction
