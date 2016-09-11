@@ -2,6 +2,7 @@
 
 ## Introduction
 * git은 2016년 현재 개발 생태계에서 가장 각광받고 있는 버전 관리 시스템입니다. 이번 퀘스트를 통해 git의 기초적인 사용법을 알아볼 예정입니다.
+* Source from : [KnowRe/WebDevCurriculum](https://github.com/KnowRe/WebDevCurriculum)의 [Quest 00. Hello, git](https://github.com/KnowRe/WebDevCurriculum/tree/master/Part%200.%20git/Quest%2000.%20Hello%2C%20git)
 
 ## Topics
 * git
