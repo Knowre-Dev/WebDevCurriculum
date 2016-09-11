@@ -1,5 +1,14 @@
-# KnowRe web development curriculum 2016
+# Gachon CS50: Web Programming Labs 
+Source from : [KnowRe web development curriculum 2016](https://github.com/KnowRe/WebDevCurriculum)
+Modified by Teamlab.Gachon(teamlab.gachon@gmail.com) 
 
+## 본 문서의 위상
+본 문서는 Gachon CS50: We Programming 의 Lab에 대해 정의한 문서입니다. 본 문서는 교육 스타트업 [KnowRe](http://knowre.com/)의 [웹 개발 커리큘럼](https://github.com/KnowRe/WebDevCurriculum)를 참고하여 본 과정에 맞게 수정하였습니다.
+
+## Lab의 구성
+1) [Git - Handle local & github repository](./1_git/README.md)
+
+# 원문: KnowRe web development curriculum 2016
 
 ## 소개
 * KnowRe의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2016년 버전입니다.
