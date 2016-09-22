@@ -39,7 +39,7 @@
 * **주의사항**
   * HTML 파일은 수정하면 안됩니다.
   * `float` 속성과 `calc()`함수를 사용하지 않고 해 보세요!
-* [이 그림](layout1.png)을 flexbox를 쓰지 않고 구현해 보세요. `skeletons/layout1.html` 파일에 링크된 `skeletons/layout1.css` 파일을 수정하면 됩니다.
+* [이 그림](layout1.png)을 flexbox를 쓰지 않고 구현해 보세요. [`skeletons/layout1.html`](skeletons/layout1.html) 파일에 링크된 `skeletons/layout1.css` 파일을 수정하면 됩니다.
 * [이 그림](layout2.png)을 flexbox를 쓰지 않고 구현해 보세요. `skeletons/layout2.html` 파일에 링크된 `skeletons/layout2.css` 파일을 수정하면 됩니다.
 * [이 그림](layout3.png)을 flexbox를 쓰지 않고 구현해 보세요. `skeletons/layout3.html` 파일에 링크된 `skeletons/layout3.css` 파일을 수정하면 됩니다.
 * 위와 같은 그림을 flexbox를 써서 구현해 보세요. `skeletons/layout4.html` 파일에 링크된 `skeletons/layout4.css` 파일을 수정하면 됩니다.
