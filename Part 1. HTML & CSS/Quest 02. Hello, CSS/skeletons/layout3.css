@@ -10,29 +10,46 @@ body {
 
 .contents {
 	/* TODO: 이 곳을 채우세요! */
+	position: static;
+	left: 0;
+	up: 0;
 }
 
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
+	position: absolute;
+	left: 200px;
+	right: 300px;
+
 }
 
 .main header {
 	background-color: lightgray;
 	/* TODO: 이 곳을 채우세요! */
+	position: relative;
+	height: 30px;
 }
 
 .left {
 	background-color: pink;
 	/* TODO: 이 곳을 채우세요! */
+	position: relative;
+	float: left;
+	width:200px;
+
 }
 
 .right {
 	background-color: greenyellow;
 	/* TODO: 이 곳을 채우세요! */
+	float: right;
+	width: 300px;
 }
 
 footer {
 	background-color: yellow;
 	/* TODO: 이 곳을 채우세요! */
+	height: 50px;
+	clear: both;
 }
