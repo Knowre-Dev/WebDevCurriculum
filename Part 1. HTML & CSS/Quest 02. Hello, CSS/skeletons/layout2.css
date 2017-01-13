@@ -11,14 +11,22 @@ body {
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
+	position: absolute;
+	margin-left: 200px;
+	margin-right: 300px;
+	width: auto;
 }
 
 .left {
 	background-color: pink;
 	/* TODO: 이 곳을 채우세요! */
+	width: 200px;
+	float: left;
 }
 
 .right {
 	background-color: greenyellow;
 	/* TODO: 이 곳을 채우세요! */
+	float: right;
+	width: 300px;
 }

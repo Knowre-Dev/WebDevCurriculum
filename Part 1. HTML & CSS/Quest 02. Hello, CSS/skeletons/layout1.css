@@ -11,9 +11,16 @@ body {
 aside {
 	background-color: pink;
 	/* TODO: 이 곳을 채우세요! */
+	width: 200px;
+	float: left;
 }
 
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
+	position: relative;
+	margin-left: 200px;
+	width: auto;
+	height: auto;
+
 }
