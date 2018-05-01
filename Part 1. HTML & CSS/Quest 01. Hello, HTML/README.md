@@ -12,11 +12,13 @@
   * Firefox
   * Chrome
   * Safari (for iOS)
+  * Edge
 * HTML 표준의 역사
   * HTML 4.01
   * XHTML 1.0, XHTML 1.1
   * XHTML 2.0
   * HTML5
+    * HTML 5.3
 * HTML 문서의 구조
 * HTML 문서의 엘리먼트
   * Semantic elements
@@ -30,7 +32,7 @@
 
 ## Checklist
 * HTML 4.x 이후의 HTML 표준의 변천사는 어떻게 되나요?
-* MS와 IE는 왜 역사의 죄인이 되었을까요?
+* MS와 IE는 왜 역사에 오점을 남기게 되었을까요?
 * `<section>`과 `<div>`, `<header>`, `<footer>`, `<article>` 엘리먼트의 차이점은 무엇인가요?
 * 블럭 레벨 엘리먼트와 인라인 엘리먼트의 차이는 무엇일까요?
 
