@@ -1,8 +1,8 @@
-# KnowRe web development curriculum 2018
+# Knowre web development curriculum 2018
 
 
 ## 소개
-* KnowRe의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2018년 버전입니다.
+* Knowre의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2018년 버전입니다.
 * 이 커리큘럼을 통해 신입 개발자들은 git, HTML, CSS, front-end JavaScript, node.js, MySQL, 그리고 더 나아가 선택된 몇 가지의 최신 웹 기술과 그 작동 원리에 대해 익히게 됩니다.
 
 ## 설명
