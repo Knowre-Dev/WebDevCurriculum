@@ -15,9 +15,43 @@
     - 상단의 IP주소 중 마지막 줄은 www.google.com의 IP주소이고, 나머지는 www.google.com를 찾아가는 경로에 위치한 라우터 주소이다. DNS 서버로부터 IP주소를 확인하게 되면, 라우터는 해당 IP주소가 가리키는 장치로 찾아갈 수 있도록 경로를 설정하게 되는데 그 과정에서 라우팅 테이블을 참조하게 된다. 라우팅 테이블에는 목적지까지 도달하기 위한 다음 라우터의 IP주소 정보를 가지고 있으며, 다수의 라우터를 거쳐 목적지에 도달하게 된다.
 
 * Wireshark를 통해 www.google.com 으로 요청을 날렸을 떄 어떤 TCP 패킷이 오가는지 확인해 보세요
+  
   * TCP 패킷을 주고받는 과정은 어떻게 되나요?
+    
+    1. 세션 성립: 3way-handshacking 
 
-  * 각각의 패킷에 어떤 정보들이 담겨 있나요?
+        1. client는 [SYN] 패킷에 Seq값으로 자신의 ISN넘버 설정한 후 server에 전송한다.
+        2. server는 client의 [SYN] 패킷에 대한 응답으로 Seq값에 자신의 ISN넘버를 설정하고, Ack값에 client의 Seq값에 +1한 값을 설정 한 [SYN, ACK] 패킷을 전송한다.
+        3. client는 server에서 전송된 [SYN, ACK] 패킷 대한 응답으로 Seq값에 [SYN, ACK] 패킷의 Ack값을, Ack값에 [SYN, ACK] 패킷의 Seq값을 설정 한 [ACK] 패킷을 전송한다.
+
+    2. 데이터 전송: Seq값, Ack값을 +1씩 증가시키며 실질적인 데이터 전송을 수행한다.
+
+    3. 세션 종료: 4way-handshaking  
+
+        1. client는 마지막 [FIN, ACK] 패킷의 Ack값으로 마지막 Seq값을 전송한다.   
+        2. server는 [ACK] 패킷을 통해 마지막 데이터를 요청하고, [FIN, ACK] 패킷을 전송하여 세션 종료를 수행한다.
+        3. client는 [FIN, ACK] 패킷의 Ack값을 Seq값으로 설정하여 마지막 [ACK] 패킷을 보내고 세션은 종료된다.
+
+  * 각각의 패킷에 어떤 정보들이 담겨 있나요?  
+        
+      1. Source Port: 패킷을 송신하는 시스템의 포트번호를 나타낸다.
+      2. Destination Port: 패킷을 수신하는 시스템의 포트번호를 나타낸다.
+      3. Sequence Number: 전송되는 데이터의 순서를 나타낸다.
+      4. Acknowledge Number: 상대방으로부터 수신한 데이터의 바로 다음 데이터 번호를 나타낸다.
+      5. Header Length: TCP 헤터의 전체 길이를 byte단위로 나타낸다.
+      6. Reserved: 미래를 위해 예약된 필드로 항상 0이다.
+      7. CWR: 송신자가 자신의 윈도우 사이즈를 줄인다.
+      8. ECE: 혼잡 감지 시 수신자가 ECE를 설정하여 송신자에게 알린다.
+      9. URG: TCP는 해당 패킷을 전송 큐의 제일 앞으로 보낸다.
+      10. ACK: SYN에 대한 확인의 의미이다.
+      11. PSH: 수신측에게 데이터를 전송하라는 의미이다.
+      12. RST: 통신의 연결 및 종료를 정상적으로 할 수 없을 때 사용된다.
+      13. SYN: 통신 시작 시 연결을 요청하고 ISN을 교환한다.
+      14. FIN: 데이터 전송을 종료한다. 
+      15. Window Size: 송신 시스템에서 자신이 수용가능한 버퍼의 크기를 byte단위로 나타낸다.
+      16. Checksum: 데이터가 전송 중에 손실되지 않고 원본과 동일한지 검사한다.
+      17. Urgent Point: URG 설정 시, urgent 데이터의 마지막 byte의 일련번호를 Urgent Point에 저장한다.
+      18. Data: 실제 전송 데이터를 나타낸다.
 
 * telnet 명령을 통해 http://www.google.com/ URL에 HTTP 요청을 날려 보세요.
   * 어떤 헤더들이 있나요?  
@@ -66,9 +100,9 @@
 
       10. Set-Cookie => 해당 정보는 클라이언트의 브라우저에 의해 저장되며, 다음 요청의 헤더값에 `Cookie`항목으로 재전송 한다.  
 
-      12. Accept-Ranges => 부분 요청의 지원을 나타낸다. 값이 `bytes`일 경우 도중에 다운로드가 중단되는 브라우저는 중단된 다운로드를 재개한다.  
+      12. Accept-Ranges => 부분 요청의 지원을 나타낸다. 값이 `bytes`일 경우 도중에 다운로드가 중단된 브라우저는 중단된 다운로드를 재개한다.  
 
-      13. Vary: Accept-Encoding => 
+      13. Vary => 동일한 URL에 의한 요청이라 하더라도, 이 항목 값에 따라 서로 다른 응답을 해주는 역할을 한다.(User Agent, Accept Encoding 등)
 
 
 

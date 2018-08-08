@@ -1,7 +1,10 @@
 ## 1. node.js는 어떤 식으로 동작하나요?
+
+  NodeJs는 구글의 V8엔진을 기반으로 Single Thread로 처리 하며, I/O는 Non-Blocking방식을 사용한다. 
   
   * `require()` 함수는 어떻게 쓰는 것인가요? 
     - `require()`함수는 파라메타로서 파일 경로를 받는다. 
+
   * `module.exports`와 `exports` 변수는 어떻게 다른가요?
 
 * npm이 무엇인가요?
