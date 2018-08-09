@@ -10,12 +10,12 @@
     
   * `require()` 함수는 어떻게 쓰는 것인가요? 
     
-    * `require()`함수는 외부 모듈을 현재 모듈에 `import`할  때 사용하는 함수로 파일 경로를 인수로 받아 해당 파일에서 `module.exports`에 할당 된 객체를 반환한다. 한 번 생성된 객체는 내부적으로 캐싱되기 때문에 같은 외부 모듈에 대해 `require()` 함수를 여러번 사용해도 같은 객채가 반환된다.   
+    * `require()`함수는 외부 모듈을 현재 모듈에 `import`할  때 사용하는 함수로 파일 경로를 인수로 받아 해당 파일의 `module.exports` 객체를 반환한다. 한 번 생성된 객체는 내부적으로 캐싱되기 때문에 같은 외부 모듈에 대해 `require()` 함수를 여러번 사용해도 같은 객채가 반환된다.   
     http://fredkschott.com/post/2014/06/require-and-the-module-system/
 
   * `module.exports`와 `exports` 변수는 어떻게 다른가요?  
 
-    * `module.exports`는 하나의 파일에서 한 번만 유효하다. 따라서 `require()`함수를 통해 반환되는 객체는 가장 마지막에 `module.exports`에 할당된 객체이다. 반면, `exports`는 하나의 파일에서 여러번 유효하기 때문에, `require()`함수를 통해 반환되는 객체에는 해당 파일에서 `exports`에 할당된 객체 모두를 반환한다.
+    * `module.exports`는 하나의 파일에서 한 번만 유효하다. 따라서 `require()`함수를 통해 반환되는 객체는 가장 마지막의 `module.exports`이다. 반면, `exports`는 하나의 파일에서 여러번 유효하기 때문에, `require()`함수를 통해 반환되는 객체에는 해당 파일에서 `exports`를 통해 할당된 객체 모두를 반환한다. 내부적으로 `exports`는 중개자이다. `module.exports`객체에 동적으로 모듈을 할당하는 역할을 한다. 따라서 순환의존성 문제를 `exports`로 해결이 가능하다.
 
 * npm이 무엇인가요?
   
