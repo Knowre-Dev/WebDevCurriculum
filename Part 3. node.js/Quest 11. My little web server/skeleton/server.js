@@ -11,28 +11,45 @@ http.createServer((req, res) => {
 function main(req, res){
 	try {
 		req['url'] = url_parser.parse(req.url, true);
-		router[req.url.pathname](req, res);
+		let _urlpath = urlpath(req.method, req.url.pathname);
+		switch(req.method){
+			case 'GET':
+				router[_urlpath](req, res);
+				break;
+			case 'POST':
+				bodyparser(req, res, router[_urlpath]);
+				break;
+		};
 	} catch (error) {
 		console.log(error);
 		res.end(http.STATUS_CODES[404]);
 	}
 };
 
-router['/'] = (req, res) => {
+function urlpath(method, pathname){
+	console.log(method + ':' + pathname);
+	return method + ':' + pathname;
+};
+
+function bodyparser(req, res, callback){
+	let body = '';
+	req.on('data', chunk => {
+		body += chunk;
+	})
+	req.on('end', () => {
+		req['body'] = query_parser.parse(body);
+		callback(req, res);
+	});
+};
+
+router['GET:/'] = (req, res) => {
 	res.end('Hello World!');
 };
 
-router['/foo'] = (req, res) => {
-	if(req.method == 'GET'){
-		res.end('Hello, ' + req.url.query.bar);
-	}else if(req.method == 'POST'){
-		let raw_data = '';
-		req.on('data', chunk => {
-			raw_data += chunk.toString();
-		});
-		req.on('end', () => {
-			let parsed_data = query_parser.parse(raw_data);
-			res.end('Hello, ' + parsed_data['bar']);
-		});
-	};
+router['GET:/foo'] = (req, res) => {
+	res.end('Hello, ' + req.url.query.bar);
+};
+
+router['POST:/foo'] = (req, res) => {
+	res.end('Hello, ' + req.body.bar)
 };
