@@ -23,8 +23,8 @@
   * Postman에서 POST 요청을 보내는 여러 가지 방법(`form-data`, `x-www-form-urlencoded`, `raw`, `binary`) 각각은 어떤 용도를 가지고 있나요?  
     1. x-www-form-urlencoded: 전송하는 데이터가 text/ASCII 타입임을 알려준다.
 
-    2. form-data: 전송하는 데이터가 text가 아니고 많은 양의 binary 데이터라는 것을 알려준다.
+    2. form-data: 전송하려는 데이터게 binary, text 데이터가 혼재해 있을 때 사용한다.
 
     3. raw: 전송하는 데이터가 plain text, json 타입임을 알려준다.
 
-    4. binary: 전송하는 데이터가 텍스트 데이터가 아님을 알려준다.
+    4. binary: 전송하는 데이터가 텍스트 데이터가 아닌 binary데이터임을 알려준다.
