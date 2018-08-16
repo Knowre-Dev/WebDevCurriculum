@@ -3,28 +3,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/style.css">
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="/notepad.js"></script>
 	</head>
 	<body>
 		<!-- TODO: 이 곳을 채워 클라이언트를 만들어 보세요 -->
+		<section id="notepad">
+			<section id="btns">
+				<input type="button" id="new_btn" value="새 파일" />
+				<input type="button" id="save_btn" value="저장" />
+			</section>
+
+			<section id="navi">
+				<div id="files"></div>
+			</section>
+
+			<section id="main">
+				<div id="content">	
+					<textarea id="content_text" disabled="disabled"></textarea>				
+				</div>
+			</section>
+		</section>
+
+		<section id="popup">
+			<input type="text" id="title">
+			
+		</section>
+
 		<script>
 			let notepad = new Notepad();
 		</script>
 	</body>
-	<header>
-		<input type="button" id="new" value="새 파일"/>
-		<input type="button" id="new" value="저장"/>
-		<input type="button" id="new" value="삭제"/>
-	</header>
-	<div id="div-new" hidden="hidden">
-		asdf
-	</div>
-	<table>
-		<thead>
-			<tr>
-				<td>seq</td>
-				<td>filename</td>
-			</tr>
-		</thead>
-	</table>
 </html>

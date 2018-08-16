@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#notepad {
+    width: 100%;
+    height: 100%;
+}
+
+#navi {
+    float: left;
+    width: 30%;
+    height: 90%;
+    border: 1px solid black;
+}
+
+#files {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    float: left;
+    width: 60%;
+    height: 90%;
+    border: 1px solid black;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+#main textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#btns {
+    position: relative;
+    margin: 10px;
+}
