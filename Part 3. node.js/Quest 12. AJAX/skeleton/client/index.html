@@ -9,9 +9,10 @@
 	<body>
 		<!-- TODO: 이 곳을 채워 클라이언트를 만들어 보세요 -->
 		<section id="notepad">
-			<section id="btns">
-				<input type="button" id="new_btn" value="새 파일" />
-				<input type="button" id="save_btn" value="저장" />
+			<section id="header">
+				<input type="button" id="popup_open" value="새 파일" />
+				<input type="button" id="save" value="저장" disabled="disabled" />
+				<span id="title"></span>
 			</section>
 
 			<section id="navi">
@@ -25,11 +26,14 @@
 			</section>
 		</section>
 
-		<section id="popup">
-			<input type="text" id="title">
-			
-		</section>
-
+		<div id="popup" class="popup">
+			<div>
+				<input type="text" id="popup_text" />
+				<input type="button" id="create" value="만들기" />
+				<input type="button" id="popup_close" value="닫기" />
+			</div>
+		</div>
+		
 		<script>
 			let notepad = new Notepad();
 		</script>
