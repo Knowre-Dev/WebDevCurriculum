@@ -3,10 +3,37 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/style.css">
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="/notepad.js"></script>
 	</head>
 	<body>
 		<!-- TODO: 이 곳을 채워 클라이언트를 만들어 보세요 -->
+		<section id="notepad">
+			<section id="header">
+				<input type="button" id="popup_open" value="새 파일" />
+				<input type="button" id="save" value="저장" disabled="disabled" />
+				<span id="title"></span>
+			</section>
+
+			<section id="navi">
+				<div id="files"></div>
+			</section>
+
+			<section id="main">
+				<div id="content">	
+					<textarea id="content_text" disabled="disabled"></textarea>				
+				</div>
+			</section>
+		</section>
+
+		<div id="popup" class="popup">
+			<div>
+				<input type="text" id="popup_text" />
+				<input type="button" id="create" value="만들기" />
+				<input type="button" id="popup_close" value="닫기" />
+			</div>
+		</div>
+		
 		<script>
 			let notepad = new Notepad();
 		</script>
