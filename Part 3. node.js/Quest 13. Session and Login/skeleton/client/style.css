@@ -45,7 +45,7 @@ html, body {
     margin: 10px;
 }
 
-.popup {
+.popup, .login {
     position: fixed;
     background: rgba(0,0,0,0.5);    
     top: 0;
@@ -57,12 +57,12 @@ html, body {
     pointer-events: none;
 }
 
-.popup_open {
+.popup_open, .login_open {
     opacity: 1;
     pointer-events: auto;
 }
 
-.popup > div {
+.popup > div, .login > div {
     text-align: center;
     position: relative;
     margin: 10% auto;

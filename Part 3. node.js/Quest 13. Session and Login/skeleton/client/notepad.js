@@ -5,8 +5,23 @@ class Notepad {
 	}
 
 	_init(){
-		this._fetch_files();
-		this._event();
+		this._user_init();
+		this._bind_event();
+	}
+
+	_user_init(){
+		const req = new Request('/user', {
+			method: 'GET',
+			credentials: 'same-origin'
+		});
+
+		fetch(req).then(res => {
+			if(res.status == 200){
+				this._fetch_files();
+			}else{
+				document.getElementById('login').classList.add('login_open');
+			}
+		});
 	}
 
 	_fetch_files(){
@@ -48,30 +63,55 @@ class Notepad {
 		};
 	}
 
-	_event(){
+	_bind_event(){
+		this._signin();
+		this._logout();
 		this._popup_open();
 		this._popup_close();
 		this._create();
-		this._save();
+		this._textarea_auto_save();
 	}
 
-	_save(){
-		document.getElementById('save').onclick = () => {
-			let textarea = document.getElementById('content_text');
-			const req = new Request('/files/' + textarea.name, {
-				method: 'POST',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				}),
-				body: JSON.stringify({input: textarea.value})
+	_logout(){
+		document.getElementById('logout').onclick = () => {
+			const req = new Request('/logout', {
+				method: 'POST'
 			});
-
 			fetch(req).then(res => {
-				if(!res.ok){
-					console.log(res.status);
+				if(res.status == 200){
+					window.location.reload();
 				}
 			});
 		}
+	}
+
+	_signin(){
+		document.getElementById('signin').onclick = () => {
+			const req = new Request('/login', {
+				method: 'POST',
+				credentials: 'same-origin',
+				headers: new Headers({
+					'Content-Type': 'application/json'
+				}),
+				body: JSON.stringify({input: {
+					id: document.getElementById('login-id').value,
+					pw: document.getElementById('login-pw').value
+				}})
+			});
+			fetch(req).then(res => {
+				switch(res.status){
+					case 200:
+						document.getElementById('login').classList.remove('login_open')
+						this._fetch_files();
+						break;
+					case 401:
+						res.json().then(result => {
+							alert(result.output);
+						});
+						break;
+				}
+			});
+		};
 	}
 
 	_popup_open(){
@@ -111,6 +151,26 @@ class Notepad {
 					}
 				}
 			})
+		}
+	}
+
+	_textarea_auto_save(){
+		document.getElementById('content_text').onchange = () => {
+			const userid = document.getElementById('userid');
+			const textarea = document.getElementById('content_text');
+			const req = new Request('/files/' + textarea.name, {
+				method: 'POST',
+				headers: new Headers({
+					'Content-Type': 'application/json'
+				}),
+				body: JSON.stringify({input: textarea.value})
+			});
+
+			fetch(req).then(res => {
+				if(!res.ok){
+					console.log(res.status);
+				}
+			});
 		}
 	}
 };

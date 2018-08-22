@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "express": "*"
+    "express": "*",
+    "express-session": "^1.15.6"
   }
 }
