@@ -11,54 +11,73 @@ class Notepad {
 
 	_user_init(){
 		const req = new Request('/user', {
-			method: 'GET',
-			credentials: 'same-origin'
+			method: 'GET'
 		});
 
 		fetch(req).then(res => {
-			if(res.status == 200){
-				this._fetch_files();
-			}else{
-				document.getElementById('login').classList.add('login_open');
-			}
+			if(res.ok) return res.json();
+			else throw new Error();
+		}).then(result => {
+			document.getElementById('userid').innerHTML = result.output;
+			this._file_init();
+		}).catch(err => {
+			document.getElementById('login').classList.add('login_open');
 		});
 	}
 
-	_fetch_files(){
+	_file_init(){
 		const req = new Request('/files', {
 			method: 'GET'
 		});
 
-		fetch(req).then(res => res.json())
-		.then(result => {
+		fetch(req).then(res => {
+			if(res.ok) return res.json();
+			else throw new Error(res.status);
+		}).then(result => {
 			result.output.map(element => {
 				let div = document.createElement('div');
 				div.className = 'file';
 				let span = document.createElement('span');
 				span.innerHTML = element;
 				div.appendChild(span);
-				this._get_event(div);
+				this._attach_event(div);
 
 				document.getElementById('files').appendChild(div);
 			});	
+		}).then(() => {
+			let userid = document.getElementById('userid').innerHTML;
+			let files = document.getElementById('files').children;
+			let test = document.cookie.split(';').filter(x => x.trim().startsWith(userid));
+			
+			for(let file of files){
+				
+				console.log(file);
+			}
+		}).catch(err => {
+			alert(err);
 		});
 	}
 
-	_get_event(div){
+	_attach_event(div){
 		div.onclick = () => {
-			let filename = div.children[0].innerHTML;
-			const req = new Request('/files/' + filename, {
+			const filename = div.children[0].innerHTML;
+			const req = new Request(`/${filename}`, {
 				method: 'GET'
 			});
 
-			fetch(req).then(res => res.json())
-			.then(result => {
+			fetch(req).then(res => {
+				if(res.ok) return res.json();
+				else throw new Error(res.status);
+			}).then(result => {
 				let textarea = document.getElementById('content_text');
 				textarea.value = result.output;
 				textarea.name = filename;
 				textarea.disabled = false;
-				document.getElementById('save').disabled = false;
+				textarea.focus();
+				
 				document.getElementById('title').innerText = filename;
+			}).catch(err => {
+				alert(err);
 			});
 		};
 	}
@@ -72,46 +91,45 @@ class Notepad {
 		this._textarea_auto_save();
 	}
 
+	_signin(){
+		document.getElementById('signin').onclick = () => {
+			const id = document.getElementById('login-id').value;
+			const pw = document.getElementById('login-pw').value;
+			const req = new Request('/login', {
+				method: 'POST',
+				headers: new Headers({
+					'Content-Type': 'application/json'
+				}),
+				body: JSON.stringify({input: {
+					id: id,
+					pw: pw
+				}})
+			});
+
+			fetch(req).then(res => {
+				if(res.ok) return res.json();
+				else throw res.json();
+			}).then(result => {
+				document.getElementById('login').classList.remove('login_open')
+				document.getElementById('userid').innerHTML = result.output;
+				this._file_init();
+			}).catch(err => {
+				err.then(result => {
+					alert(result.output);
+				})
+			});
+		};
+	}
+
 	_logout(){
 		document.getElementById('logout').onclick = () => {
 			const req = new Request('/logout', {
 				method: 'POST'
 			});
-			fetch(req).then(res => {
-				if(res.status == 200){
-					window.location.reload();
-				}
-			});
-		}
-	}
 
-	_signin(){
-		document.getElementById('signin').onclick = () => {
-			const req = new Request('/login', {
-				method: 'POST',
-				credentials: 'same-origin',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				}),
-				body: JSON.stringify({input: {
-					id: document.getElementById('login-id').value,
-					pw: document.getElementById('login-pw').value
-				}})
-			});
-			fetch(req).then(res => {
-				switch(res.status){
-					case 200:
-						document.getElementById('login').classList.remove('login_open')
-						this._fetch_files();
-						break;
-					case 401:
-						res.json().then(result => {
-							alert(result.output);
-						});
-						break;
-				}
-			});
-		};
+			fetch(req).then(() => window.location.reload())
+			.catch(err => alert(err));
+		}
 	}
 
 	_popup_open(){
@@ -132,7 +150,7 @@ class Notepad {
 		let create = document.getElementById('create');
 		create.onclick = () => {
 			let popup_text = document.getElementById('popup_text');
-			const req = new Request('/files/create', {
+			const req = new Request('/create', {
 				method: 'POST',
 				headers: new Headers({
 					'Content-Type': 'application/json'
@@ -155,19 +173,22 @@ class Notepad {
 	}
 
 	_textarea_auto_save(){
-		document.getElementById('content_text').onchange = () => {
+		document.getElementById('content_text').onkeypress = () => {
 			const userid = document.getElementById('userid');
 			const textarea = document.getElementById('content_text');
-			const req = new Request('/files/' + textarea.name, {
+			const req = new Request(`/${textarea.name}`, {
 				method: 'POST',
 				headers: new Headers({
 					'Content-Type': 'application/json'
 				}),
-				body: JSON.stringify({input: textarea.value})
+				body: JSON.stringify({input: {
+					content: textarea.value,
+					position: textarea.selectionStart
+				}})
 			});
 
 			fetch(req).then(res => {
-				if(!res.ok){
+				if(res.status != 200){
 					console.log(res.status);
 				}
 			});

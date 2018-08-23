@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "*",
     "express-session": "^1.15.6"
   }

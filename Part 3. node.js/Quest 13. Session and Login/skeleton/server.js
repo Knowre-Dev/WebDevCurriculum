@@ -2,6 +2,7 @@ const express = require('express'),
 	path = require('path'),
 	fs = require('fs'),
 	session = require('express-session'),
+	cookie_parser = require('cookie-parser'),
 	app = express();
 
 const users = {
@@ -19,8 +20,6 @@ const users = {
 	}
 };
 
-const base_dir = path.join(__dirname, 'memo');
-
 app.use(express.static('client'));
 
 app.use(express.json());
@@ -28,11 +27,10 @@ app.use(express.json());
 app.use(session({
 	secret: 'secret',
 	resave: false,
-	saveUninitialized: true,
-	cookie: {
-		maxAge: 10000
-	}
+	saveUninitialized: true
 }));
+
+app.use(cookie_parser());
 
 const server = app.listen(8080, () => {
 	console.log('Server started!');
@@ -44,29 +42,30 @@ app.get('/', (req, res) => {
 
 /* TODO: 여기에 처리해야 할 요청의 주소별로 동작을 채워넣어 보세요..! */
 app.get('/user', (req, res) => {
-	console.log(req.cookies);
 	if(req.session.userid){
-		res.sendStatus(200);
+		res.status(200).send(JSON.stringify({output: req.session.userid}));
 	}else{
-		res.sendStatus(401);
+		res.status(401).end();
 	}
 });
 
 app.post('/logout', (req, res) => {
 	req.session.destroy();
-	res.sendStatus(200);
+	res.status(200).end();
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
 	const id = req.body.input.id;
 	const pw = req.body.input.pw;
 	const user = users[id];	
 	
 	if(!user){
 		res.status(401).send(JSON.stringify({output: '존재하지 않는 ID'}));
+		
 	}else if(user.pw == pw){
+		await make_directory(get_base_dir(id));
 		req.session['userid'] = id;
-		res.status(200).send(JSON.stringify({output: 'success'}));
+		res.status(200).send(JSON.stringify({output: id}));
 	}else{
 		res.status(401).send(JSON.stringify({output: '비밀번호 불일치'}));
 	}
@@ -74,50 +73,54 @@ app.post('/login', (req, res) => {
 
 app.get('/files', async (req, res) => {
 	try {
-		const filelist = await readdir(path.join(base_dir));
+		const filelist = await readdir(get_base_dir(req.session.userid));
 		res.status(200).send(JSON.stringify({output: filelist}));
 	} catch (error) {
-		res.sendStatus(500);
+		res.status(500).end();
 	};
 });
 
-app.post('/files/create', async (req, res) => {
+app.post('/create', async (req, res) => {
 	try {
 		const filename = req.body.input;
-		const filelist = await readdir(base_dir);
+		const filelist = await readdir(get_base_dir(req.session.userid));
 		if(filelist.includes(filename)){
-			res.sendStatus(409);
+			res.status(409).end();
 		}else{
-			const filepath = path.join(base_dir, filename);
+			const filepath = path.join(get_base_dir(req.session.userid), filename);
 			await writefile(filepath, '');
-			res.sendStatus(200);
+			res.status(200).end();
 		}
 	} catch (error) {
-		res.sendStatus(500);
+		res.status(500).end();
 	};
 });
 
-app.get('/files/:filename', async (req, res) => {
+app.get('/:filename', async (req, res) => {
 	try {
-		const filepath = path.join(base_dir, req.params.filename);
+		const filename = req.params.filename;
+		const filepath = path.join(get_base_dir(req.session.userid), filename);
 		const content = await readfile(filepath);
+		res.cookie(`${req.session.userid}.filename`, filename)
 		res.status(200).send(JSON.stringify({output: content}));
 	} catch (error) {
-		res.sendStatus(500);
+		res.status(500).end();
 	}
 });
 
-app.post('/files/:filename', async (req, res) => {
+app.post('/:filename', async (req, res) => {
 	try {
-		const filepath = path.join(base_dir, req.params.filename);
-		await writefile(filepath, req.body.input);
-		res.sendStatus(200);
+		const input = req.body.input;
+		const filepath = path.join(get_base_dir(req.session.userid), req.params.filename);
+		await writefile(filepath, input.content);
+		res.cookie(`${req.session.userid}.position`, input.position);
+		res.status(200).end();
 	} catch (error) {
-		res.sendStatus(500);
+		res.status(500).end();
 	}
 });
 
-async function readdir(dirpath){
+function readdir(dirpath){
 	return new Promise((resolve, reject) => {
 		fs.readdir(dirpath, (err, data) => {
 			if(err) reject(err);
@@ -126,7 +129,7 @@ async function readdir(dirpath){
 	});
 }
 
-async function writefile(filepath, text){
+function writefile(filepath, text){
 	return new Promise((resolve, reject) => {
 		fs.writeFile(filepath, text, {
 			encoding: 'utf8'
@@ -137,7 +140,7 @@ async function writefile(filepath, text){
 	});
 }
 
-async function readfile(filepath){
+function readfile(filepath){
 	return new Promise((resolve, reject) => {
 		fs.readFile(filepath, {
 			encoding: 'utf8'
@@ -146,4 +149,17 @@ async function readfile(filepath){
 			else resolve(data);
 		});
 	});
+}
+
+function make_directory(dirpath){
+	return new Promise((res, rej) => {
+		fs.mkdir(dirpath, err => {
+			if(err) rej(err);
+			else res(dirpath);
+		});
+	}).catch(err => {});
+}
+
+function get_base_dir(userid){
+	return path.join(__dirname, 'memo', userid);
 }
