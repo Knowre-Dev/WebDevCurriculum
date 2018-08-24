@@ -11,11 +11,11 @@ const users = {
 		name: 't'
 	},
 	'test2': {
-		pw: '2345',
+		pw: '1234',
 		name: 'tt'
 	},
 	'test3': {
-		pw: '3456',
+		pw: '1234',
 		name: 'ttt'
 	}
 };

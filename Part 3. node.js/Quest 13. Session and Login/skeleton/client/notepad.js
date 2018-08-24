@@ -40,42 +40,49 @@ class Notepad {
 				let span = document.createElement('span');
 				span.innerHTML = element;
 				div.appendChild(span);
-				this._attach_event(div);
+				this._file_event(div);
 
 				document.getElementById('files').appendChild(div);
 			});	
 		}).then(() => {
-			let userid = document.getElementById('userid').innerHTML;
-			let files = document.getElementById('files').children;
-			let test = document.cookie.split(';').filter(x => x.trim().startsWith(userid));
-			
+			const cookie = this._get_cookie();
+			const userid = document.getElementById('userid').innerHTML;
+			const files = document.getElementById('files').children;
+
 			for(let file of files){
-				
-				console.log(file);
+				if(file.children[0].innerHTML == cookie.get(`${userid}.filename`)){
+					file.click();
+					break;
+				}
 			}
 		}).catch(err => {
 			alert(err);
 		});
 	}
 
-	_attach_event(div){
+	_file_event(div){
 		div.onclick = () => {
 			const filename = div.children[0].innerHTML;
 			const req = new Request(`/${filename}`, {
 				method: 'GET'
 			});
-
+			
+			let title = document.getElementById('title');
+			let textarea = document.getElementById('content_text');
 			fetch(req).then(res => {
 				if(res.ok) return res.json();
 				else throw new Error(res.status);
 			}).then(result => {
-				let textarea = document.getElementById('content_text');
 				textarea.value = result.output;
 				textarea.name = filename;
 				textarea.disabled = false;
 				textarea.focus();
-				
-				document.getElementById('title').innerText = filename;
+				title.innerText = filename;
+			}).then(() => {
+				const cookie = this._get_cookie();
+				const userid = document.getElementById('userid').innerHTML;
+				const position = cookie.get(`${userid}.position`);
+				textarea.setSelectionRange(position, position);
 			}).catch(err => {
 				alert(err);
 			});
@@ -168,12 +175,12 @@ class Notepad {
 						console.log(res.status);
 					}
 				}
-			})
+			});
 		}
 	}
 
 	_textarea_auto_save(){
-		document.getElementById('content_text').onkeypress = () => {
+		document.getElementById('content_text').onkeydown = () => {
 			const userid = document.getElementById('userid');
 			const textarea = document.getElementById('content_text');
 			const req = new Request(`/${textarea.name}`, {
@@ -193,5 +200,15 @@ class Notepad {
 				}
 			});
 		}
+	}
+
+	_get_cookie(){
+		const cookies = document.cookie.split(';');
+		const map = new Map();
+		for(let cookie of cookies){
+			let part = cookie.split('=');
+			map.set(part[0].trim(),part[1].trim());
+		}
+		return map;
 	}
 };
