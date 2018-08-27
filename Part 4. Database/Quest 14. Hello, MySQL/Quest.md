@@ -24,3 +24,6 @@ CREATE INDEX MEMO_UserId ON MEMO(UserId);
 CREATE INDEX MEMO_UserId_Title ON MEMO(UserId, Title);
 ```
 
+### 사용자의 암호는 어떤 식으로 저장해야 할까요?
+
+  * 사용자의 암호는 해시함수와 솔팅, 키 스트레칭 등의 기법을 적절히 조합하여 암호화 한 후 저장한다.
