@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/style.css">
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="/notepad.js"></script>
+	</head>
+	<body>
+		<!-- TODO: 이 곳을 채워 클라이언트를 만들어 보세요 -->
+		<section id="notepad">
+			<section id="header">
+				<div>
+					<span id="userid"></span>
+				</div>
+				<input type="button" id="logout" value="로그아웃" />
+				<input type="button" id="popup_open" value="새 파일" />
+				<div>
+					<span id="title"></span>
+				</div>
+			</section>
+
+			<section id="navi">
+				<div id="files" class="files"></div>
+			</section>
+
+			<section id="main">
+				<div id="content">	
+					<textarea id="content_text" disabled="disabled"></textarea>				
+				</div>
+			</section>
+		</section>
+
+		<div id="popup" class="popup">
+			<div>
+				<input type="text" id="popup_text" />
+				<input type="button" id="create" value="만들기" />
+				<input type="button" id="popup_close" value="닫기" />
+			</div>
+		</div>
+
+		<div id="login" class="login">
+			<div>
+				id:<input type="text" id="login-id" />
+				<br>
+				pw:<input type="password" id="login-pw" />
+				<br>
+				<input type="button" id="signin" value="로그인" />
+			</div>
+		</div>
+		
+		<script>
+			let notepad = new Notepad();
+		</script>
+	</body>
+</html>

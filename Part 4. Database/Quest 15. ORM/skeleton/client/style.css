@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#notepad {
+    width: 100%;
+    height: 100%;
+}
+
+#navi {
+    float: left;
+    width: 30%;
+    height: 90%;
+    border: 1px solid black;
+}
+
+#files {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    float: left;
+    width: 60%;
+    height: 90%;
+    border: 1px solid black;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+#main textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#header {
+    position: relative;
+    margin: 10px;
+}
+
+.popup, .login {
+    position: fixed;
+    background: rgba(0,0,0,0.5);    
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup_open, .login_open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup > div, .login > div {
+    text-align: center;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px;
+    background: #ffffff;
+}
