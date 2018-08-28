@@ -3,7 +3,10 @@ const sequelize = new Sequelize('test', 'test', 'test', {
     host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: false,
-
+    logging: false,
+    query: {
+        raw:true
+    },
     pool: {
         max: 5,
         min: 0,
@@ -33,11 +36,21 @@ const User = sequelize.define('M_USER', {
 });
 
 User.sync({force: true}).then(() => {
-    return User.create({
-        id: 'test',
-        pw: 'test',
-        name: 'test'
-    });
+    
+    return User.bulkCreate(
+        [
+            {
+                id: 'test1',
+                pw: 'JPJi8J6DVt7Ga4Fp5LraJBw5rgtjHlzB44QK93RTozI=',
+                name: 'test1'
+            },
+            {
+                id: 'test2',
+                pw: 'f5ecW9of/65/JiJAUAzcqr83mZWfXVUcwo0O0j7l8pc=',
+                name: 'test2'
+            },
+        ]
+    );
 });
 
 const Memo = sequelize.define('MEMO', {
@@ -57,17 +70,21 @@ const Memo = sequelize.define('MEMO', {
 {
     indexes: [
         {
-            unique: true,
             fields: ['userId']
         },
         {
-            unique: true,
             fields: ['userId', 'title']
         }
     ]
 });
 
-Memo.sync({force: true});
+Memo.sync({force: true}).then(() => {
+    return Memo.create({
+        userId: 'test1',
+        title: 'testtest',
+        content: 'asdfasdfasdfasdf'
+    });
+});
 
 module.exports = {
     User: User,

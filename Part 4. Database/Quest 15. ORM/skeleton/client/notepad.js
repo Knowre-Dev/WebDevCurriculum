@@ -26,7 +26,7 @@ class Notepad {
 	}
 
 	_file_init(){
-		const req = new Request('/files', {
+		const req = new Request('/memos', {
 			method: 'GET'
 		});
 
@@ -38,7 +38,7 @@ class Notepad {
 				let div = document.createElement('div');
 				div.className = 'file';
 				let span = document.createElement('span');
-				span.innerHTML = element;
+				span.innerHTML = element.title;
 				div.appendChild(span);
 				this._file_event(div);
 
@@ -73,7 +73,7 @@ class Notepad {
 				if(res.ok) return res.json();
 				else throw new Error(res.status);
 			}).then(result => {
-				textarea.value = result.output;
+				textarea.value = result.output.content;
 				textarea.name = filename;
 				textarea.disabled = false;
 				textarea.focus();

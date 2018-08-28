@@ -1,10 +1,13 @@
 const express = require('express'),
 	path = require('path'),
 	fs = require('fs'),
+	crypto = require('crypto');
+	db = require('./db.js'),
 	session = require('express-session'),
 	cookie_parser = require('cookie-parser'),
-	app = express(),
-	db = require('./db.js');;
+	app = express();
+
+const salt = '!@#$%^';
 
 const users = {
 	'test1': {
@@ -57,14 +60,13 @@ app.post('/logout', (req, res) => {
 
 app.post('/login', async (req, res) => {
 	const id = req.body.input.id;
-	const pw = req.body.input.pw;
-	const user = users[id];	
-	
+	const pw = get_real_pw(req.body.input.pw);
+	const user = await db.User.findById('test1');
+
 	if(!user){
 		res.status(401).send(JSON.stringify({output: '존재하지 않는 ID'}));
 		
 	}else if(user.pw == pw){
-		await make_directory(get_base_dir(id));
 		req.session['userid'] = id;
 		res.status(200).send(JSON.stringify({output: id}));
 	}else{
@@ -72,95 +74,111 @@ app.post('/login', async (req, res) => {
 	}
 });
 
-app.get('/files', async (req, res) => {
+app.get('/memos', async (req, res) => {
 	try {
-		const filelist = await readdir(get_base_dir(req.session.userid));
-		res.status(200).send(JSON.stringify({output: filelist}));
+		const memos = await get_memos(req.session.userid);
+		res.status(200).json({output: memos});
 	} catch (error) {
+		console.log(error);
 		res.status(500).end();
 	};
 });
 
 app.post('/create', async (req, res) => {
 	try {
-		const filename = req.body.input;
-		const filelist = await readdir(get_base_dir(req.session.userid));
-		if(filelist.includes(filename)){
+		const title = req.body.input;
+		const memos = await get_memos(req.session.userid);
+		
+		if(memos.map(x => x.title).includes(title)){
 			res.status(409).end();
 		}else{
-			const filepath = path.join(get_base_dir(req.session.userid), filename);
-			await writefile(filepath, '');
+			await post_memo(req.session.userid, title);
 			res.status(200).end();
 		}
 	} catch (error) {
+		console.log(error);
 		res.status(500).end();
 	};
 });
 
-app.get('/:filename', async (req, res) => {
+app.get('/:title', async (req, res) => {
 	try {
-		const filename = req.params.filename;
-		const filepath = path.join(get_base_dir(req.session.userid), filename);
-		const content = await readfile(filepath);
-		res.cookie(`${req.session.userid}.filename`, filename)
-		res.status(200).send(JSON.stringify({output: content}));
+		const title = req.params.title;
+		const userid = req.session.userid;
+		const memo = await get_memo(userid, title);
+
+		res.cookie(`${req.session.userid}.filename`, title)
+		res.status(200).json({output: memo[0]});		
 	} catch (error) {
+		console.log(error);
 		res.status(500).end();
 	}
 });
 
-app.post('/:filename', async (req, res) => {
+app.post('/:title', async (req, res) => {
 	try {
 		const input = req.body.input;
-		const filepath = path.join(get_base_dir(req.session.userid), req.params.filename);
-		await writefile(filepath, input.content);
+		const title = req.params.title;
+		const userid = req.session.userid;
+		
+		await put_memo(userid, title, input.content);
+
 		res.cookie(`${req.session.userid}.position`, input.position);
 		res.status(200).end();
 	} catch (error) {
+		console.log(error);
 		res.status(500).end();
 	}
 });
 
-function readdir(dirpath){
-	return new Promise((resolve, reject) => {
-		fs.readdir(dirpath, (err, data) => {
-			if(err) reject(err);
-			else resolve(data);
-		});
-	});
-}
-
-function writefile(filepath, text){
-	return new Promise((resolve, reject) => {
-		fs.writeFile(filepath, text, {
-			encoding: 'utf8'
-		},(err) => {
-			if(err) reject(err);
-			else resolve();
-		})
-	});
-}
-
-function readfile(filepath){
-	return new Promise((resolve, reject) => {
-		fs.readFile(filepath, {
-			encoding: 'utf8'
-		}, (err, data) => {
-			if(err) reject(err);
-			else resolve(data);
-		});
-	});
-}
-
-function make_directory(dirpath){
+function get_memos(userid){
 	return new Promise((res, rej) => {
-		fs.mkdir(dirpath, err => {
-			if(err) rej(err);
-			else res(dirpath);
-		});
-	}).catch(err => {});
+		db.Memo.findAll({
+			attributes: ['title'],
+			where: {userId: userid}
+		}).then(result => res(result)).catch(err => rej(err));
+	});
 }
 
-function get_base_dir(userid){
-	return path.join(__dirname, 'memo', userid);
+function get_memo(userid, title){
+	return new Promise((res, rej) => {
+		db.Memo.findAll({
+			attributes: ['title', 'content'],
+			where: {
+				userId: userid,
+				title: title
+			}
+		}).then(result => res(result)).catch(err => rej(err));
+	})
+}
+
+function post_memo(userid, title){
+	return new Promise((res, rej) => {
+		db.Memo.create({
+			userId: userid,
+			title: title,
+			content: ''
+		}).then(() => res()).catch(err => rej(err));
+	});
+}
+
+function put_memo(userid, title, content){
+	return new Promise((res, rej) => {
+		db.Memo.update({
+			content: content
+		},{
+			where: {
+				userId: userid,
+				title: title
+			}
+		}).then(() => res()).catch(err => rej(err));
+	})
+}
+
+function get_real_pw(pw){
+	let real_pw = pw + salt;
+	for(let i=0; i<2; i++){
+		real_pw = crypto.createHash('sha256').update(real_pw).digest('base64');
+	}
+	return real_pw;
 }
