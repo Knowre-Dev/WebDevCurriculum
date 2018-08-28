@@ -78,13 +78,7 @@ const Memo = sequelize.define('MEMO', {
     ]
 });
 
-Memo.sync({force: true}).then(() => {
-    return Memo.create({
-        userId: 'test1',
-        title: 'testtest',
-        content: 'asdfasdfasdfasdf'
-    });
-});
+Memo.sync({force: true});
 
 module.exports = {
     User: User,
