@@ -131,48 +131,61 @@ app.post('/:title', async (req, res) => {
 	}
 });
 
-function get_memos(userid){
-	return new Promise((res, rej) => {
-		db.Memo.findAll({
-			attributes: ['title'],
-			where: {userId: userid}
-		}).then(result => res(result)).catch(err => rej(err));
-	});
+const get_memos = async function (userid) {
+	try {
+		const
+			res = await db.Memo.findAll({
+				attributes: ['title'],
+				where: {userId: userid}
+			});
+		return res;
+	} catch (e) {
+		throw e;
+	}
 }
 
-function get_memo(userid, title){
-	return new Promise((res, rej) => {
-		db.Memo.findAll({
-			attributes: ['title', 'content'],
+const get_memo = async (userid, title) => {
+	try {
+		const res =  await db.Memo.findAll({
+			ttributes: ['title', 'content'],
 			where: {
 				userId: userid,
 				title: title
 			}
-		}).then(result => res(result)).catch(err => rej(err));
-	})
+		});
+		return res;
+	} catch (error) {
+		throw error;
+	}
 }
 
-function post_memo(userid, title){
-	return new Promise((res, rej) => {
-		db.Memo.create({
+const post_memo = async (userid, title) => {
+	try {
+		const res = await db.Memo.create({
 			userId: userid,
 			title: title,
 			content: ''
-		}).then(() => res()).catch(err => rej(err));
-	});
+		});
+		return res;
+	} catch (error) {
+		throw error;
+	}
 }
 
-function put_memo(userid, title, content){
-	return new Promise((res, rej) => {
-		db.Memo.update({
+const put_memo = async (userid, title, content) => {
+	try {
+		const res = await db.Memo.update({
 			content: content
 		},{
 			where: {
 				userId: userid,
 				title: title
 			}
-		}).then(() => res()).catch(err => rej(err));
-	})
+		});
+		return res;
+	} catch (error) {
+		throw error;
+	}
 }
 
 function get_real_pw(pw){
