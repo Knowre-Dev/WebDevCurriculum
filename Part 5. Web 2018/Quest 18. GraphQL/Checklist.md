@@ -110,6 +110,16 @@ select `tag`.*, `post_tag`.`post_id` as `_pivot_post_id`, `post_tag`.`tag_id` as
   Batch 로딩을 위한 Function을 정의 한 후, 상위 GraphQLObjectType의 리졸버에 리스트 인자를 전달함으로써 해당 리스트에 해당하는 데이터를 한번에 로딩한다.
 
 
-* 클라이언트 상에서 GraphQL 요청을 보내려면 어떻게 해야 할까요?
-  * Apollo Client의 장점은 무엇일까요?
-  * Apollo Client를 쓰지 않고 Vanilla JavaScript로 GraphQL 요청을 보내려면 어떻게 해야 할까요?
+### 클라이언트 상에서 GraphQL 요청을 보내려면 어떻게 해야 할까요?
+
+  * Graphql의 Query 또는 Mutaion 문자열을 POST 메소드에 json 형식으로 전송한다.
+
+### Apollo Client의 장점은 무엇일까요?
+  
+  1. Declaretive data fetching: 데이터를 가져오고 UI렌더링하는 일련의 작업을 하나의 Query component로 관리 할 수 있기때문에, 클라이언트 구성하기가 쉽다.
+  
+  2. Zero-config caching: 어떠한 캐쉬 설정없이 아폴로 클라이언트 객체를 생성하는 것만으로 페이지 캐싱을 자동으로 수행하여, 페이지간 이동 시 캐싱된 페이지를 빠르게 로드한다. 
+
+### Apollo Client를 쓰지 않고 Vanilla JavaScript로 GraphQL 요청을 보내려면 어떻게 해야 할까요?
+
+  * 
