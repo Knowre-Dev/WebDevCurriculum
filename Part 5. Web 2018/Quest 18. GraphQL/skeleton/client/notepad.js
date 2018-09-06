@@ -10,33 +10,47 @@ class Notepad {
 	}
 
 	_user_init(){
-		const req = new Request('/user', {
-			method: 'GET'
-		});
+		const token = this._get_token();
+		if(token){
+			const query = `mutation {
+				auth
+			}`;
+			const req = new Request('/graphql', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+    				'Accept': 'application/json',
+					'Authorization': 'Bearer ' + token
+				},
+				body: JSON.stringify({
+					query
+				})
+			});
 
-		fetch(req).then(res => {
-			if(res.ok) return res.json();
-			else throw new Error();
-		}).then(result => {
-			document.getElementById('userid').innerHTML = result.output;
-			this._file_init();
-		}).catch(err => {
+			fetch(req)
+			.then(res => res.json())
+			.then(result => {
+				const userid = result.data.auth;
+				if(userid){
+					document.getElementById('userid').innerHTML = userid;
+					this._title_init(userid);
+				}else{
+					document.getElementById('login').classList.add('login_open');
+				}
+			});
+		}else{
 			document.getElementById('login').classList.add('login_open');
-		});
+		}
 	}
 
-	_file_init(){
-		let query = `
-		{
-			user(id: "test1"){
-				id,
-				lastTitle,
+	_title_init(userid){
+		this.userid = userid;
+		let query = `query {
+			getUser(id: "${this.userid}"){
+				lastTitle
 				memos{
-					id,
-					userId,
-					title,
-					content,
-					lastPosition
+					id
+					title
 				}
 			}
 		}`;
@@ -52,61 +66,69 @@ class Notepad {
 			})
 		});
 
-		fetch(req).then(res => {
+		fetch(req)
+		.then(res => {
 			if(res.ok) return res.json();
 			else throw new Error(res.status);
-		}).then(result => {
-			console.log(result);
-			result.output.map(element => {
+		})
+		.then(result => {
+			const user = result.data.getUser;
+			user.memos.map(element => {
 				let div = document.createElement('div');
 				div.className = 'file';
 				let span = document.createElement('span');
 				span.innerHTML = element.title;
 				div.appendChild(span);
-				this._file_event(div);
+				this._title_event(div);
 
 				document.getElementById('files').appendChild(div);
+				if(user.lastTitle == element.title) div.click();
 			});	
-		}).then(() => {
-			const cookie = this._get_cookie();
-			const userid = document.getElementById('userid').innerHTML;
-			const files = document.getElementById('files').children;
-
-			for(let file of files){
-				if(file.children[0].innerHTML == cookie.get(`${userid}.filename`)){
-					file.click();
-					break;
-				}
-			}
-		}).catch(err => {
+		})
+		.catch(err => {
 			alert(err);
 		});
 	}
 
-	_file_event(div){
+	_title_event(div){
 		div.onclick = () => {
-			const filename = div.children[0].innerHTML;
-			const req = new Request(`/${filename}`, {
-				method: 'GET'
+			const title = div.children[0].innerHTML;
+			const query = `query {
+				getMemo(userId: "${this.userid}", title: "${title}"){
+					id
+					title
+					content
+					lastPosition
+				}
+			}`;
+
+			const req = new Request('/graphql', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				body: JSON.stringify({
+					query
+				})
 			});
-			
-			let title = document.getElementById('title');
-			let textarea = document.getElementById('content_text');
-			fetch(req).then(res => {
+
+			fetch(req)
+			.then(res => {
 				if(res.ok) return res.json();
 				else throw new Error(res.status);
-			}).then(result => {
-				textarea.value = result.output.content;
-				textarea.name = filename;
+			})
+			.then(result => {
+				const memo = result.data.getMemo;
+				const textarea = document.getElementById('content_text');
+				textarea.value = memo.content;
+				textarea.name = memo.title;
 				textarea.disabled = false;
 				textarea.focus();
-				title.innerText = filename;
-			}).then(() => {
-				const cookie = this._get_cookie();
-				const userid = document.getElementById('userid').innerHTML;
-				const position = cookie.get(`${userid}.position`);
-				textarea.setSelectionRange(position, position);
-			}).catch(err => {
+				textarea.setSelectionRange(memo.lastPosition, memo.lastPosition);
+				document.getElementById('title').innerText = memo.title;
+			})
+			.catch(err => {
 				alert(err);
 			});
 		};
@@ -125,40 +147,45 @@ class Notepad {
 		document.getElementById('signin').onclick = () => {
 			const id = document.getElementById('login-id').value;
 			const pw = document.getElementById('login-pw').value;
-			const req = new Request('/login', {
+
+			const query = `mutation {
+				login(id: "${id}", pw: "${pw}")
+			}`;
+
+			const req = new Request('/graphql', {
 				method: 'POST',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				}),
-				body: JSON.stringify({input: {
-					id: id,
-					pw: pw
-				}})
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				body: JSON.stringify({
+					query
+				})
 			});
 
-			fetch(req).then(res => {
-				if(res.ok) return res.json();
-				else throw res.json();
-			}).then(result => {
-				document.getElementById('login').classList.remove('login_open')
-				document.getElementById('userid').innerHTML = result.output;
-				this._file_init();
-			}).catch(err => {
-				err.then(result => {
-					alert(result.output);
-				})
+			fetch(req)
+			.then(res => res.json())
+			.then(result => {
+				const msg = result.data.login;
+				if(msg == 'success'){
+					document.getElementById('login').classList.remove('login_open')
+					document.getElementById('userid').innerHTML = id;
+					this._title_init(id);
+				}else{
+					console.log(result);
+					alert(msg);
+				}
+			})
+			.catch(err => {
+				console.log(err);
 			});
 		};
 	}
 
 	_logout(){
 		document.getElementById('logout').onclick = () => {
-			const req = new Request('/logout', {
-				method: 'POST'
-			});
-
-			fetch(req).then(() => window.location.reload())
-			.catch(err => alert(err));
+	        document.cookie = 'user' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	        window.location.reload();
 		}
 	}
 
@@ -177,26 +204,32 @@ class Notepad {
 	}
 
 	_create(){
-		let create = document.getElementById('create');
-		create.onclick = () => {
+		document.getElementById('create').onclick = () => {
 			let popup_text = document.getElementById('popup_text');
-			const req = new Request('/create', {
+			const query = `mutation {
+				createMemo(
+					userId: "${this.userid}",
+					title: "${popup_text.value}"
+				)
+			}`;
+			const req = new Request('/graphql', {
 				method: 'POST',
 				headers: new Headers({
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
 				}),
-				body: JSON.stringify({input: popup_text.value})
+				body: JSON.stringify({
+					query
+				})
 			});
 
-			fetch(req).then(res => {
-				if(res.ok){
+			fetch(req)
+			.then(res => res.json())
+			.then(result => {
+				if(result.data.createMemo > 0){
 					window.location.reload();
 				}else{
-					if(res.status == 409){
-						alert('해당 파일이 이미 존재합니다.');
-					}else{
-						console.log(res.status);
-					}
+					alert('해당 파일이 이미 존재합니다.');
 				}
 			});
 		}
@@ -204,34 +237,37 @@ class Notepad {
 
 	_textarea_auto_save(){
 		document.getElementById('content_text').onkeydown = () => {
-			const userid = document.getElementById('userid');
 			const textarea = document.getElementById('content_text');
-			const req = new Request(`/${textarea.name}`, {
+			const query = `mutation {
+				updateMemo(
+					userId: "${this.userid}", 
+					title: "${textarea.name}", 
+					content: """${textarea.value}""",
+					lastPosition: ${textarea.selectionStart}
+				)
+			}`; 
+
+			const req = new Request('/graphql',{
 				method: 'POST',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				}),
-				body: JSON.stringify({input: {
-					content: textarea.value,
-					position: textarea.selectionStart
-				}})
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				body: JSON.stringify({
+					query
+				})
 			});
 
-			fetch(req).then(res => {
+			fetch(req)
+			.then(res => {
 				if(res.status != 200){
-					console.log(res.status);
+					console.log(res);
 				}
 			});
 		}
 	}
 
-	_get_cookie(){
-		const cookies = document.cookie.split(';');
-		const map = new Map();
-		for(let cookie of cookies){
-			let part = cookie.split('=');
-			map.set(part[0].trim(),part[1].trim());
-		}
-		return map;
+	_get_token(){
+		return '' || document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 	}
 };

@@ -1,11 +1,14 @@
 USE test;
 
---TABLE
+/*
+TABLE
+*/
 DROP TABLE IF EXISTS `USER`;
 CREATE TABLE USER (
   id                VARCHAR(50)     NOT NULL,
-  pw                VARCHAR(256)     NOT NULL,
+  pw                VARCHAR(256)    NOT NULL,
   name              VARCHAR(100)    NOT NULL,
+  salt              VARCHAR(10)     NOT NULL,
   lastTitle         VARCHAR(100),
   isEnable          BIT(1)          NOT NULL    DEFAULT 1,
 
@@ -20,24 +23,22 @@ CREATE TABLE MEMO (
   content           TEXT,
   lastPosition      INT,
 
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  INDEX `MEMO_UserId` (`UserId`),
+  INDEX `MEMO_UserId_Title` (`UserId`, `Title`)
 );
 
---INDEX
-CREATE INDEX MEMO_UserId ON MEMO(UserId);
-
-CREATE INDEX MEMO_UserId_Title ON MEMO(UserId, Title);
-
---INSERT DATA
+/*
+INSERT DATA
+*/
 INSERT INTO USER 
-(id, pw, name) 
+(id, pw, name, salt, lastTitle) 
 VALUES
-('test1', 'JPJi8J6DVt7Ga4Fp5LraJBw5rgtjHlzB44QK93RTozI=', 'test1'),
-('test2', 'f5ecW9of/65/JiJAUAzcqr83mZWfXVUcwo0O0j7l8pc=', 'test2');
+('test1', 'JPJi8J6DVt7Ga4Fp5LraJBw5rgtjHlzB44QK93RTozI=', 'test1', '!@#$%^', 'first title'),
+('test2', 'f5ecW9of/65/JiJAUAzcqr83mZWfXVUcwo0O0j7l8pc=', 'test2', '!@#$%^', null);
 
 INSERT INTO MEMO
 (userId, title, content)
 VALUES
 ('test1', 'first title', '1111111111111111111111'),
 ('test1', 'second title', '22222222222222222222');
-
