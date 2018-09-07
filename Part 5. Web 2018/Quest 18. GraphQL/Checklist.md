@@ -122,4 +122,4 @@ select `tag`.*, `post_tag`.`post_id` as `_pivot_post_id`, `post_tag`.`tag_id` as
 
 ### Apollo Client를 쓰지 않고 Vanilla JavaScript로 GraphQL 요청을 보내려면 어떻게 해야 할까요?
 
-  * 
+  * fetch를 통한 통신의 body에 graphql query를 넘겨주면된다. json을 기본 데이터 형식으로 사용하기 때문에 이미 json으로 서버 응답에 대한 작업을 만들어 놓았다면 그대로 사용하는 것이 가능하다.
