@@ -32,8 +32,39 @@
 
 ### Jest는 어떤 일을 하며 어떻게 사용하는 테스트 프레임워크일까요?
 
-  * 
+  * jest는 자바스크립트 코드를 테스트하는 테스트 프레임워크다. 특정 클래스, 메소드, 함수가 어떻게 동작하는지를 예측하여 그 결과 값을 비교하는 것으로 테스트가 진행되기 때문에, mocking을 통한 테스트가 편하도록 구성되어있다. 기본적인 사용법은 아래와 같다.
+  ``` js
+  function sum(a, b) {
+    return a + b;
+  }
+  
+  test('adds 1 + 2 to equal 3', () => {
+      expect(sum(1, 2)).toBe(3);
+  });
+  ```
 
 ### Jest 이외의 테스트 프레임워크는 어떤 것이 있고 어떤 장단점이 있을까요?
 
+  1. QUnit  
+   단점: 설정이 어렵고, 계속해서 수정이 필요하다. 비동기 코드의 테스트가 어렵다. 헤드리스 브라우저를 지원하지 않는다. 스냅샷 테스트를 지원하지 않는다.
+
+  2. Mocha  
+   장점: 다른 라이브러라를 추가하여 유연하게 사용하는 것이 가능하다. 비동기 코드의 테스트를 지원한다. 자바스트립트 커뮤니티에서 더 대중적이다.   
+   단점: 스냅샷 테스트를 지원하지 않는다.
+
 ### Puppeteer는 어떤 일을 하며 어떻게 사용하는 테스트 프레임워크일까요?
+
+  * Puppeteer는 Node.js 기반 크롬용 헤드리스 브라우저 테스트 프레임워크다. 브라우저에서 수동으로 할 수 있는 작업을 Puppeteer는 코드로 진행할 수 있게 해준다. 스크린샷을 찍거나 각종 이벤트를 테스트하기에 좋다.
+  사용법은 아래와 같아.
+  ``` js
+  const puppeteer = require('puppeteer');
+
+  (async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('https://news.ycombinator.com',   {waitUntil: 'networkidle2'});
+    await page.pdf({path: 'hn.pdf', format: 'A4'});
+  
+    await browser.close();
+  })();
+  ```
