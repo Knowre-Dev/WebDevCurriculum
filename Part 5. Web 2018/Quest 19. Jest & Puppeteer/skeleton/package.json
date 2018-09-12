@@ -12,13 +12,15 @@
     "graphql-tools": "^3.1.1",
     "jsonwebtoken": "^8.3.0",
     "mysql": "^2.16.0",
-    "npm": "^6.4.1"
+    "npm": "^6.4.1",
+    "r2": "^2.0.1"
   },
   "devDependencies": {
-    "jest": "^23.5.0"
+    "test": "^23.5.0",
+    "start-server-and-test": "^1.7.1"
   },
   "scripts": {
-    "test": "jest",
+    "test": "npm run start",
     "start": "node server.js"
   },
   "keywords": [],

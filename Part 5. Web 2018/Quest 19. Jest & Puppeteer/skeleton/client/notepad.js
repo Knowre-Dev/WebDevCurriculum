@@ -30,11 +30,15 @@ class Notepad {
 			fetch(req)
 			.then(res => res.json())
 			.then(result => {
-				const userid = result.data.auth;
-				if(userid){
-					document.getElementById('userid').innerHTML = userid;
-					this._title_init(userid);
-				}else{
+				try {
+					const userid = result.data.auth;
+					if(userid){
+						document.getElementById('userid').innerHTML = userid;
+						this._title_init(userid);
+					}else{
+						document.getElementById('login').classList.add('login_open');
+					}
+				} catch (error) {
 					document.getElementById('login').classList.add('login_open');
 				}
 			});

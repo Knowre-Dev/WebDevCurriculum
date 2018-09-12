@@ -34,3 +34,9 @@ app.use('/graphql', auth, graphqlHTTP((req,res) => ({
 	},
 	graphiql: true,
 })));
+
+app.use((err, req, res, next) => {
+	if(err.name == 'UnauthorizedError'){
+		res.json({});
+	}
+});

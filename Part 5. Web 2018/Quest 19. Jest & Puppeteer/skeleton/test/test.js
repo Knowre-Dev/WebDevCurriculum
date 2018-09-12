@@ -1,7 +1,6 @@
-function sum(a, b) {
-    return a + b;
-}
+const r2 = require('r2');
 
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
+test('test', async () => {
+    let res = await r2.post('http://localhost:8080').response;
+    console.log(res);
 });
