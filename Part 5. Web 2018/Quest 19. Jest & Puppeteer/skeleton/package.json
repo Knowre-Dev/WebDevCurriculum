@@ -25,6 +25,6 @@
     "jest": "^23.6.0"
   },
   "jest": {
-     "testRegex": "./test/.*.js$"
+    "testRegex": "./test/.*.js$"
   }
 }
