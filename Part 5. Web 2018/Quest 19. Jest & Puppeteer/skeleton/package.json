@@ -22,5 +22,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "jest": {
+    "testRegex": "./test/.*.js$"
+  }
 }
