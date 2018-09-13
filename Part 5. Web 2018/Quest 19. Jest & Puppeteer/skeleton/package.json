@@ -7,21 +7,18 @@
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "express-jwt": "^5.3.1",
-    "express-session": "^1.15.6",
     "graphql": "^0.13.1",
     "graphql-tools": "^3.1.1",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
     "mysql": "^2.16.0",
-    "npm": "^6.4.1",
     "r2": "^2.0.1"
   },
-  "devDependencies": {
-    "test": "^23.5.0",
-    "start-server-and-test": "^1.7.1"
-  },
   "scripts": {
-    "test": "npm run start",
-    "start": "node server.js"
+    "test": "npm run start & (sleep 2; jest) && npm run stop",
+    "start": "node server.js",
+    "stop": "kill -9 $(lsof -t -i:8080)"
   },
   "keywords": [],
   "author": "",

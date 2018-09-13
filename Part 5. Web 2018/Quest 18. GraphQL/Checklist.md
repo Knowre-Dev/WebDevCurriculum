@@ -49,7 +49,7 @@
   
  ``` json
   //요청 Query
-  mutaion {
+  mutation {
       user{
           id: "test",
           name: "t"
