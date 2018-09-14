@@ -1,10 +1,25 @@
-const r2 = require('r2');
+const 
+    database = require('../database.js'),
+    path = require('path'),
+    r2 = require('r2');
 
+const db = new database();
 const testUrl = 'http://localhost:8080/graphql'
 const headers = {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json'
 };
+
+beforeAll(async (done) => {
+    const result = await db.initialize(path.join(__dirname, '../script.sql'));
+    console.log(result);
+    done();
+})
+
+afterAll(async (done) => {
+    await db.close();
+    done();
+});
 
 test('login by id and pw', async () => {
     const res = await r2.post(testUrl, {
@@ -37,14 +52,41 @@ test('get user by id', async () => {
     expect(res.data.getUser.id).toBe('test1');
 });
 
+test('create memo by userid and title', async () => {
+    const res = await r2.post(testUrl, {
+        headers: headers,
+        body: JSON.stringify({
+            query: `
+                mutation {
+                    createMemo(userId: "test1", title: "test title")
+                }
+            `
+        })
+    }).json;
+    expect(res.data.createMemo).toBeGreaterThan(1);
+});
+
+test('update memo by userid and title', async () => {
+    const res = await r2.post(testUrl, {
+        headers: headers,
+        body: JSON.stringify({
+            query: `
+                mutation {
+                    updateMemo(userId: "test1", title: "test title", content: "test", lastPosition: 0)
+                }
+            `
+        })
+    }).json;
+    expect(res.data.updateMemo).toBe(1);
+});
+
 test('get memo by userid and title', async () => {
     const res = await r2.post(testUrl, {
         headers: headers,
         body: JSON.stringify({
             query: `
                 query {
-                    getMemo(userId: "test1", title: "first title"){
-                        id
+                    getMemo(userId: "test1", title: "test title"){
                         userId
                         title
                         content
@@ -54,33 +96,11 @@ test('get memo by userid and title', async () => {
             `
         })
     }).json;
-    expect(res.data.getMemo.title).toBe('first title');
-});
-
-test('create memo by userid and title', async () => {
-    const res = await r2.post(testUrl, {
-        headers: headers,
-        body: JSON.stringify({
-            query: `
-                mutation {
-                    createMemo(userId: "test1", title: "third title")
-                }
-            `
-        })
-    }).json;
-    expect(res.data.createMemo).toBe(3);
-});
-
-test('update memo by userid and title', async () => {
-    const res = await r2.post(testUrl, {
-        headers: headers,
-        body: JSON.stringify({
-            query: `
-                mutation {
-                    updateMemo(userId: "test1", title: "first title", content: "test", lastPosition: 0)
-                }
-            `
-        })
-    }).json;
-    expect(res.data.updateMemo).toBe(1);
+    
+    expect(res.data.getMemo).toEqual({
+        userId: 'test1',
+        title: 'test title',
+        content: 'test',
+        lastPosition: 0
+    });
 });

@@ -6,7 +6,7 @@ const database = require('./database.js');
 const db = new database();
 
 const typeDefs = `
-    type User {
+    type Member {
         id: String
         pw: String
         name: String
@@ -25,7 +25,7 @@ const typeDefs = `
     }
 
     type Query {
-        getUser(id: String): User
+        getUser(id: String): Member
         getMemo(userId: String, title: String): Memo
     }
 
@@ -41,7 +41,7 @@ const resolvers = {
     Query: {
         async getUser(root, {id}, context, info){
             try {
-                let sql = `select * from USER where id = ?`;
+                let sql = `select * from MEMBER where id = ?`;
                 let result = await db.query(sql, [id]);
                 return result[0];
             } catch (error) {
@@ -58,7 +58,7 @@ const resolvers = {
             }
         }
     },
-    User: {
+    Member: {
         async memos(user){
             try {
                 let sql = `select * from MEMO where userId = ?`;
@@ -85,7 +85,7 @@ const resolvers = {
         async login(root, {id, pw}, context, info){
             try {
                 let msg;
-                let sql = `select id, pw, salt from USER where id = ?`;
+                let sql = `select id, pw, salt from MEMBER where id = ?`;
                 let result = await db.query(sql, [id]);
                 if(result.length > 0){
                     if(result[0].pw == get_real_pw(pw, result[0].salt)){
@@ -114,7 +114,7 @@ const resolvers = {
                 where (select count(*) from MEMO where userId = ? and title = ?) = 0 `;
                 let {insertId} = await db.query(sql, [userId, title, userId, title]);
                 if(insertId > 0){
-                    sql = `update USER set lastTitle = ? where id = ?`
+                    sql = `update MEMBER set lastTitle = ? where id = ?`
                     await db.query(sql, [title, userId]);
                 }
                 return insertId;
@@ -127,7 +127,7 @@ const resolvers = {
                 let sql = `update MEMO set content = ?, lastPosition = ? where userId = ? and title = ?`;
                 let {affectedRows} = await db.query(sql, [content, lastPosition, userId, title]);
                 if(affectedRows > 0){
-                    sql = `update USER set lastTitle = ? where id = ?`
+                    sql = `update MEMBER set lastTitle = ? where id = ?`
                     await db.query(sql, [title, userId]);
                 }
                 return affectedRows;

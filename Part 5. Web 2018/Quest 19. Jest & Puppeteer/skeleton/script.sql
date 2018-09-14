@@ -3,8 +3,8 @@ USE test;
 /*
 TABLE
 */
-DROP TABLE IF EXISTS `USER`;
-CREATE TABLE USER (
+DROP TABLE IF EXISTS `MEMBER`;
+CREATE TABLE MEMBER (
   id                VARCHAR(50)     NOT NULL,
   pw                VARCHAR(256)    NOT NULL,
   name              VARCHAR(100)    NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE MEMO (
 /*
 INSERT DATA
 */
-INSERT INTO USER 
+INSERT INTO MEMBER 
 (id, pw, name, salt, lastTitle) 
 VALUES
 ('test1', 'JPJi8J6DVt7Ga4Fp5LraJBw5rgtjHlzB44QK93RTozI=', 'test1', '!@#$%^', 'first title'),
