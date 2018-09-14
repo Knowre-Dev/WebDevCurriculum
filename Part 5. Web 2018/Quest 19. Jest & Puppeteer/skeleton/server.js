@@ -40,5 +40,3 @@ app.use((err, req, res, next) => {
 		res.json({});
 	}
 });
-
-module.exports = server;

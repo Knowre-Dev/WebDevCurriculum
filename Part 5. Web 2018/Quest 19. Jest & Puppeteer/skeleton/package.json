@@ -16,7 +16,7 @@
     "r2": "^2.0.1"
   },
   "scripts": {
-    "test": "npm run start & (sleep 2; jest) && npm run stop",
+    "test": "npm run start & (sleep 1; jest) && npm run stop",
     "start": "node server.js",
     "stop": "kill -9 $(lsof -t -i:8080)"
   },
