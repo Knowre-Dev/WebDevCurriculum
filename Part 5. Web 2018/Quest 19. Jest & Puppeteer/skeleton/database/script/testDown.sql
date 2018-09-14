@@ -1,0 +1,4 @@
+USE test;
+
+DELETE FROM MEMBER WHERE id = 'test1';
+DELETE FROM MEMO WHERE userId = 'test1';

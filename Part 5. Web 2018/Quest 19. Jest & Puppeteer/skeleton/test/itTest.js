@@ -1,25 +1,25 @@
 const 
-    database = require('../database.js'),
+    database = require('../database/database.js'),
     path = require('path'),
     r2 = require('r2');
 
-const db = new database();
+// const db = new database();
 const testUrl = 'http://localhost:8080/graphql'
 const headers = {
     'Content-Type': 'application/json; charset=utf-8',
     'Accept': 'application/json'
 };
 
-beforeAll(async (done) => {
-    const result = await db.initialize(path.join(__dirname, '../script.sql'));
-    console.log(result);
-    done();
-})
+// beforeAll(async (done) => {
+//     await db.testUp(path.join(__dirname, '../database/script/testUp.sql'));
+//     done();
+// })
 
-afterAll(async (done) => {
-    await db.close();
-    done();
-});
+// afterAll(async (done) => {
+//     await db.testDown(path.join(__dirname, '../database/script/testDown.sql'));
+//     await db.close();
+//     done();
+// });
 
 test('login by id and pw', async () => {
     const res = await r2.post(testUrl, {
@@ -32,6 +32,7 @@ test('login by id and pw', async () => {
             `
         })
     }).json;
+
     expect(res.data.login).toBe('success');
 });
 
@@ -49,7 +50,11 @@ test('get user by id', async () => {
             `
         })
     }).json;
-    expect(res.data.getUser.id).toBe('test1');
+
+    expect(res.data.getUser).toEqual({
+        id: 'test1',
+        name: 'test1'
+    });
 });
 
 test('create memo by userid and title', async () => {
@@ -63,6 +68,7 @@ test('create memo by userid and title', async () => {
             `
         })
     }).json;
+
     expect(res.data.createMemo).toBeGreaterThan(1);
 });
 
@@ -77,6 +83,7 @@ test('update memo by userid and title', async () => {
             `
         })
     }).json;
+    
     expect(res.data.updateMemo).toBe(1);
 });
 
@@ -96,7 +103,7 @@ test('get memo by userid and title', async () => {
             `
         })
     }).json;
-    
+
     expect(res.data.getMemo).toEqual({
         userId: 'test1',
         title: 'test title',

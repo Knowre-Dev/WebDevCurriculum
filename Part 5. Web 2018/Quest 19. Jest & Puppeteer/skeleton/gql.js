@@ -1,9 +1,7 @@
-const jsonwebtoken = require('jsonwebtoken');
-const crypto = require('crypto');
-const { makeExecutableSchema } = require('graphql-tools');
-const database = require('./database.js');
-
-const db = new database();
+const 
+    jsonwebtoken = require('jsonwebtoken'),
+    crypto = require('crypto'),
+    { makeExecutableSchema } = require('graphql-tools');
 
 const typeDefs = `
     type Member {
@@ -42,7 +40,7 @@ const resolvers = {
         async getUser(root, {id}, context, info){
             try {
                 let sql = `select * from MEMBER where id = ?`;
-                let result = await db.query(sql, [id]);
+                let result = await context.db.query(sql, [id]);
                 return result[0];
             } catch (error) {
                 console.log(error)
@@ -51,7 +49,7 @@ const resolvers = {
         async getMemo(root, {userId, title}, context, info){
             try {
                 let sql = `select * from MEMO where userId = ? and title = ?`;
-                let result = await db.query(sql, [userId, title]);
+                let result = await context.db.query(sql, [userId, title]);
                 return result[0];
             } catch (error) {
                 console.log(error)
@@ -59,10 +57,10 @@ const resolvers = {
         }
     },
     Member: {
-        async memos(user){
+        async memos(root, _, context, info){
             try {
                 let sql = `select * from MEMO where userId = ?`;
-                let result = await db.query(sql, [user.id]);
+                let result = await context.db.query(sql, [root.id]);
                 return result;
             } catch (error) {
                 console.log(error)
@@ -86,7 +84,7 @@ const resolvers = {
             try {
                 let msg;
                 let sql = `select id, pw, salt from MEMBER where id = ?`;
-                let result = await db.query(sql, [id]);
+                let result = await context.db.query(sql, [id]);
                 if(result.length > 0){
                     if(result[0].pw == get_real_pw(pw, result[0].salt)){
                         context.res.cookie(
@@ -112,10 +110,10 @@ const resolvers = {
                 let sql = `insert into MEMO (userId, title) 
                 select ?, ? 
                 where (select count(*) from MEMO where userId = ? and title = ?) = 0 `;
-                let {insertId} = await db.query(sql, [userId, title, userId, title]);
+                let {insertId} = await context.db.query(sql, [userId, title, userId, title]);
                 if(insertId > 0){
                     sql = `update MEMBER set lastTitle = ? where id = ?`
-                    await db.query(sql, [title, userId]);
+                    await context.db.query(sql, [title, userId]);
                 }
                 return insertId;
             } catch (error) {
@@ -125,10 +123,10 @@ const resolvers = {
         async updateMemo(root, {userId, title, content, lastPosition}, context, info){
             try {
                 let sql = `update MEMO set content = ?, lastPosition = ? where userId = ? and title = ?`;
-                let {affectedRows} = await db.query(sql, [content, lastPosition, userId, title]);
+                let {affectedRows} = await context.db.query(sql, [content, lastPosition, userId, title]);
                 if(affectedRows > 0){
                     sql = `update MEMBER set lastTitle = ? where id = ?`
-                    await db.query(sql, [title, userId]);
+                    await context.db.query(sql, [title, userId]);
                 }
                 return affectedRows;
             } catch (error) {
