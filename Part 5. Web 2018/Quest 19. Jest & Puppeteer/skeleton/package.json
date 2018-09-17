@@ -10,13 +10,14 @@
     "graphql": "^0.13.1",
     "graphql-tools": "^3.1.1",
     "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
     "mysql": "^2.16.0",
     "puppeteer": "^1.8.0",
     "r2": "^2.0.1"
   },
   "scripts": {
-    "test": "npm run start & (sleep 1; npx jest) && npm run stop",
+    "test": "npm run start & (sleep 1; jest) && npm run stop",
     "start": "node server.js",
     "stop": "kill -9 $(lsof -t -i:8080)"
   },
@@ -34,7 +35,8 @@
     "transformIgnorePatterns": [
       "/node_modules/"
     ],
-    "testEnvironment": "./test/env.js"
-
+    "testEnvironment": "node",
+    "globalSetup": "./test/setup.js",
+    "globalTeardown": "./test/teardown.js"
   }
 }

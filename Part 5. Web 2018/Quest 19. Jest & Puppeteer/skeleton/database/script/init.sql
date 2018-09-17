@@ -1,6 +1,7 @@
 USE test;
 
-CREATE TABLE IF NOT EXISTS MEMBER (
+DROP TABLE IF EXISTS `MEMBER`;
+CREATE TABLE MEMBER (
   id                VARCHAR(50)     NOT NULL,
   pw                VARCHAR(256)    NOT NULL,
   name              VARCHAR(100)    NOT NULL,
@@ -11,7 +12,8 @@ CREATE TABLE IF NOT EXISTS MEMBER (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE IF NOT EXISTS MEMO (
+DROP TABLE IF EXISTS `MEMO`;
+CREATE TABLE MEMO (
   id                INT                         AUTO_INCREMENT,
   userId            VARCHAR(50)     NOT NULL,
   title             VARCHAR(100)    NOT NULL,

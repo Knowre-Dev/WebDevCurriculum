@@ -44,7 +44,7 @@ class database {
         });
     }
 
-    async testUp(path) {
+    async setUp(path) {
         const sql = await this.readFile(path, 'utf8');
         return new Promise((res, rej) => {
             this.connection.query(sql, (err, rows) => {
@@ -59,7 +59,7 @@ class database {
         });
     }
 
-    async testDown(path) {
+    async tearDown(path) {
         const sql = await this.readFile(path, 'utf8');
         return new Promise((res, rej) => {
             this.connection.query(sql, (err, rows) => {
