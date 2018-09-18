@@ -77,6 +77,8 @@ class Notepad {
 		})
 		.then(result => {
 			const user = result.data.getUser;
+			const files = document.getElementById('files');
+
 			user.memos.map(element => {
 				let div = document.createElement('div');
 				div.className = 'file';
@@ -85,7 +87,7 @@ class Notepad {
 				div.appendChild(span);
 				this._title_event(div);
 
-				document.getElementById('files').appendChild(div);
+				files.appendChild(div);
 				if(user.lastTitle == element.title) div.click();
 			});	
 		})
@@ -130,7 +132,7 @@ class Notepad {
 				textarea.disabled = false;
 				textarea.focus();
 				textarea.setSelectionRange(memo.lastPosition, memo.lastPosition);
-				document.getElementById('title').innerText = memo.title;
+				document.getElementById('title').innerHTML = memo.title;
 			})
 			.catch(err => {
 				alert(err);

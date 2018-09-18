@@ -1,10 +1,9 @@
-const 
-    r2 = require('r2'),
-    testUrl = 'http://localhost:8080/graphql',
-    headers = {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Accept': 'application/json'
-    };
+const r2 = require('r2');
+const testUrl = 'http://localhost:8080/graphql';
+const headers = {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Accept': 'application/json'
+};
 
 test('login by id and pw', async () => {
     try {
