@@ -1,2 +1,6 @@
 Hello, git!
 This is dummy text file!
+
+hello world!
+
+all new world!

@@ -1,0 +1,25 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.15.6",
+    "graphql": "^0.13.1",
+    "graphql-tools": "^3.1.1",
+    "jsonwebtoken": "^8.3.0",
+    "mysql": "^2.16.0",
+    "npm": "^6.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "express-jwt": "^5.3.1",
+    "graphql": "^0.13.1",
+    "graphql-tools": "^3.1.1",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "mysql": "^2.16.0",
+    "puppeteer": "^1.8.0",
+    "r2": "^2.0.1"
+  },
+  "scripts": {
+    "test": "npm run start & (sleep 1; jest) && npm run stop",
+    "start": "node server.js",
+    "stop": "kill -9 $(lsof -t -i:8080)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "jest": {
+    "roots": [
+      "./test/"
+    ],
+    "transform": {},
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testEnvironment": "node",
+    "globalSetup": "./test/setup.js",
+    "globalTeardown": "./test/teardown.js"
+  }
+}
