@@ -1,38 +1,49 @@
 body {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .contents {
-	/* TODO: 이 곳을 채우세요! */
+  /* TODO: 이 곳을 채우세요! */
+  display: grid;
+  grid-template-columns: 200px auto 300px;
+  grid-template-rows: 30px auto;
+  height: 100vh;
 }
 
 .main {
-	background-color: skyblue;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: skyblue;
+  /* TODO: 이 곳을 채우세요! */
+  height: 100vh;
 }
 
 .main header {
-	background-color: lightgray;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: lightgray;
+  /* TODO: 이 곳을 채우세요! */
 }
 
 .left {
-	background-color: pink;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: pink;
+  /* TODO: 이 곳을 채우세요! */
+  height: 100vh;
 }
 
 .right {
-	background-color: greenyellow;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: greenyellow;
+  /* TODO: 이 곳을 채우세요! */
+  height: 100vh;
 }
 
 footer {
-	background-color: yellow;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: yellow;
+  /* TODO: 이 곳을 채우세요! */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
 }

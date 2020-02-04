@@ -1,19 +1,26 @@
 body {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 aside {
-	background-color: pink;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: pink;
+  /* TODO: 이 곳을 채우세요! */
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
 }
 
 .main {
-	background-color: skyblue;
-	/* TODO: 이 곳을 채우세요! */
+  background-color: skyblue;
+  /* TODO: 이 곳을 채우세요! */
+  height: 100vh;
+  padding-left: 200px;
 }
