@@ -1,0 +1,2 @@
+Hello, git!
+This is dummy text file!
