@@ -18,7 +18,7 @@
   * XHTML 1.0, XHTML 1.1
   * XHTML 2.0
   * HTML5
-    * HTML 5.3
+
 * HTML 문서의 구조
 * HTML 문서의 엘리먼트
   * Semantic elements
