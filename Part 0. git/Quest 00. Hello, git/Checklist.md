@@ -141,13 +141,13 @@ Object File은 크게 세가지로 나뉩니다.
 
 이러한 상황에서 Merge를 하려면 Merge Commit 을 하나 더만들어서 아래처럼 병합해야 합니다.
 
-![img3](./img/Untitled 1.png)
+![img3](./img/Untitled1.png)
 
 위 그림처럼 Merge Commit Object가 생성되어 병합됩니다.
 
 ### Rebase
 
-![img4](./img/Untitled 2.png)
+![img4](./img/Untitled2.png)
 
 Rebase는 dev Branch의 root  Commit의 위치를 commit2에서 commit5로 바꾸어서 자연스럽게 연결 되어지게 만들어주는 것입니다.
 
