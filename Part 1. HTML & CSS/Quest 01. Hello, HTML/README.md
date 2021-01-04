@@ -11,7 +11,6 @@
   * Internet Explorer
   * Firefox
   * Chrome
-
   * Edge
 * HTML 표준의 역사
   * HTML 4.01
