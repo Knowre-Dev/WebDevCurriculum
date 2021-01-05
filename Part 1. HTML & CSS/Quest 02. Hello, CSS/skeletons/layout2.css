@@ -11,14 +11,27 @@ body {
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
+	padding-right: 300px;
+	padding-left: 200px;
+	height: 100vh;
 }
 
 .left {
 	background-color: pink;
 	/* TODO: 이 곳을 채우세요! */
+	width: 200px;
+	overflow: hidden;
+	left: 0;
+	height: 100vh;
+	position: absolute;
 }
 
 .right {
 	background-color: greenyellow;
 	/* TODO: 이 곳을 채우세요! */
+	width: 300px;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	position: absolute;
 }
