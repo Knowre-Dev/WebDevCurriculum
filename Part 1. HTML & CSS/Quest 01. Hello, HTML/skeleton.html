@@ -32,33 +32,69 @@
     <header class="main-header">
         <article class="main-header-RepoPath">
             <a href='AllRepo'>KnowRe</a>
-			/
-			<a href="SelectRepo">WebDevCurriculum</a>
-		</article>
-		<article class="main-header-RepoInfo">
-			<input type="button" value="Unwatch" onclick="location.href='Unwatch'"/>
-			<input type="text" value="19"/>
+            /
+            <a href="SelectRepo">WebDevCurriculum</a>
+        </article>
+        <article class="main-header-RepoInfo">
+            <input type="button" value="Unwatch" onclick="location.href='Unwatch'"/>
+            <input type="text" value="19"/>
             <input type="button" value="Star" onclick="location.href='Stars'"/>
             <input type="text" value="113"/>
             <input type="button" value="Fork" onclick="location.href='Stars'"/>
             <input type="text" value="106"/>
-		</article>
+        </article>
         <artile class="main-header-menu">
             <input type="button" value="Code" onclick="location.href='code'"/>
-            <input type="button" value="Issues" onclick="location.href='code'"/>
-            <input type="button" value="Pull Request" onclick="location.href='code'"/>
-            <input type="button" value="Projects" onclick="location.href='code'"/>
-            <input type="button" value="Insights" onclick="location.href='code'"/>
+            <input type="button" value="Issues" onclick="location.href='Issues'"/>
+            <input type="button" value="Pull Request" onclick="location.href='PR'"/>
+            <input type="button" value="Projects" onclick="location.href='Projects'"/>
+            <input type="button" value="Insights" onclick="location.href='Insights'"/>
         </artile>
-	</header>
-	<section class="main-detail">
-		<!-- TODO: 메인의 부분 -->
+    </header>
+    <section class="main-detail">
         <span>KnowRe web  development curriculum for noobs</span>
-	</section>
+        <!-- TODO: 메인의 부분 -->
+        <article class="main-detail-menu">
+            <span id="Commit-Count">44</span>
+            <input type="button" value="Commit" onclick="location.href='code'"/>
+            <span id="Branch-Count">1</span>
+            <input type="button" value="Branch" onclick="location.href='branch'"/>
+            <span id="Release-Count">0</span>
+            <input type="button" value="Release" onclick="location.href='code'"/>
+            <span id="Contributors-Count">2</span>
+            <input type="button" value="contributors" onclick="location.href='code'"/>
+            <input type="button" value="MIT" onclick="location.href='code'"/>
+            <canvas><!--막대 요소--></canvas>
+        </article>
+        <article class="main-detail-leftBT">
+            <input type="button" value="Branch:master"/>
+            <input type="button" value="New Pull Request" onclick="location.href='newPR'"/>
+        </article>
+        <article class="main-detail-rightBT">
+            <input type="button" value="Create New File" onclick="location.href='NewFile'"/>
+            <input type="button" value="Upload Files" onclick="location.href='Upload File'"/>
+            <input type="button" value="Find File" onclick="location.href='Find FIle'"/>
+            <input type="button" value="Clone or download" onclick="location.href='NewFile'"/>
+        </article>
+        <article class="main-detail-TopBox">
+            <div>
+                <span id="User">KnowRe </span>
+                <span id="Constraint">Quest 02 Kadded constraint </span>
+                <span id="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
+            </div>
+        </article>
+        <article class="main-detail-ContentBox">
+            <div class="main-detail-ContentBox-Content">
+                <span id="FolderName">Quest 00</span>
+                <span id="CommitMessage">Part 2 finished</span>
+                <span id="CommitDate">2 Years ago</span>
+            </div>
+        </article>
+    </section>
 </section>
 
 <footer>
-	<!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
+    <!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
 </footer>
 </body>
 </html>
