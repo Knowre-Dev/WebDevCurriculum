@@ -7,40 +7,58 @@
 </head>
 <body>
 <header>
-	<article class="head-search">
-		<input type="button" value="This Repository"/>
-		<label>
-			<input type="search" placeholder="Search"/>
-		</label>
-	</article>
-	<article class="head-MainMenu">
-		<!-- TODO: Clean Code 입니까? -->
-		<input type="button" value="Pull Request" onClick="location.href='pr'"/>
-		<input type="button" value="Issues" onClick="location.href='Issues'"/>
-		<input type="button" value="Marketplace" onClick="location.href='Issues'"/>
-		<input type="button" value="Explore" onClick="location.href='Explore'"/>
-	</article>
-	<article class="head-SubMenu">
-		<a href="notice">🔖</a>
-		<a href="plus">🔖</a>
-		<a href="profile">🔖</a>
-	</article>
+    <article class="head-search">
+        <input type="button" value="This Repository"/>
+        <label>
+            <input type="search" placeholder="Search"/>
+        </label>
+    </article>
+    <article class="head-MainMenu">
+        <!-- TODO: Clean Code? -->
+        <input type="button" value="Pull Request" onClick="location.href='pr'"/>
+        <input type="button" value="Issues" onClick="location.href='Issues'"/>
+        <input type="button" value="Marketplace" onClick="location.href='Issues'"/>
+        <input type="button" value="Explore" onClick="location.href='Explore'"/>
+    </article>
+    <article class="head-SubMenu">
+        <a href="notice">🔖</a>
+        <a href="plus">🔖</a>
+        <a href="profile">🔖</a>
+    </article>
 </header>
 
+<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
 <section class="main">
     <header class="main-header">
-        <a href='AllRepo'>KnowRe</a>
-		/
-		<a href="SelectRepo">WebDevCurriculum</a>
-    </header>
-	ㅈ
-    <section class="main-detail">
-        <!-- TODO: 메인의 부분 -->
-    </section>
+        <article class="main-header-RepoPath">
+            <a href='AllRepo'>KnowRe</a>
+			/
+			<a href="SelectRepo">WebDevCurriculum</a>
+		</article>
+		<article class="main-header-RepoInfo">
+			<input type="button" value="Unwatch" onclick="location.href='Unwatch'"/>
+			<input type="text" value="19"/>
+            <input type="button" value="Star" onclick="location.href='Stars'"/>
+            <input type="text" value="113"/>
+            <input type="button" value="Fork" onclick="location.href='Stars'"/>
+            <input type="text" value="106"/>
+		</article>
+        <artile class="main-header-menu">
+            <input type="button" value="Code" onclick="location.href='code'"/>
+            <input type="button" value="Issues" onclick="location.href='code'"/>
+            <input type="button" value="Pull Request" onclick="location.href='code'"/>
+            <input type="button" value="Projects" onclick="location.href='code'"/>
+            <input type="button" value="Insights" onclick="location.href='code'"/>
+        </artile>
+	</header>
+	<section class="main-detail">
+		<!-- TODO: 메인의 부분 -->
+        <span>KnowRe web  development curriculum for noobs</span>
+	</section>
 </section>
 
 <footer>
-    <!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
+	<!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
 </footer>
 </body>
 </html>
