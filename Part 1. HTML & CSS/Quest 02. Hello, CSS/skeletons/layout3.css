@@ -50,8 +50,6 @@ body {
 footer {
 	background-color: yellow;
 	/* TODO: 이 곳을 채우세요! */
-	padding-left: 200px;
-	padding-right: 300px;
 	/*position: absolute;*/
 	/*bottom: 0;*/
 	height: 50px;
