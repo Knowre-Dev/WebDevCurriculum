@@ -9,20 +9,24 @@
 		<header>
 			<article class="head-search">
 				<input type="button" value="This Repository"/>
-				<label>
-					<input type="search" placeholder="Search"/>
-				</label>
+				<label><input type="search" placeholder="Search"/></label>
 			</article>
-			<article class="head-MainMenu">
-				<input type="button" value="Pull Request" onClick="location.href='pr'"/>
-				<input type="button" value="Issues" onClick="location.href='Issues'"/>
-				<input type="button" value="Marketplace" onClick="location.href='Issues'"/>
-				<input type="button" value="Explore" onClick="location.href='Explore'"/>
-			</article>
+
+			<nav class="head-MainMenu">
+				<ul class="head-MainMenu-content">
+					<li><a href="pr"><input type="button" value="Pull Request"/></a></li>
+					<li><a href="Issues"><input type="button" value="Issues"/></a></li>
+					<li><a href="MarketPlace"><input type="button" value="Marketplace"/></a></li>
+					<li><a href="Explore"><input type="button" value="Explore"/></a></li>
+				</ul>
+			</nav>
+
 			<article class="head-SubMenu">
-				<a href="notice">🔖</a>
-				<a href="plus">🔖</a>
-				<a href="profile">🔖</a>
+				<ul class="head-SubMenu-Content">
+					<li><a href="notice">🔖</a></li>
+					<li><a href="plus">🔖</a></li>
+					<li><a href="profile">🔖</a></li>
+				</ul>
 			</article>
 		</header>
 		<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
@@ -32,48 +36,51 @@
 					<a href='AllRepo'>KnowRe</a>
 					/
 					<a href="SelectRepo">WebDevCurriculum</a>
-
 				</article>
 				<article class="main-header-RepoInfo">
-					<input type="button" value="Unwatch" onclick="location.href='Unwatch'"/>
-					<input type="text" value="19"/>
-					<input type="button" value="Star" onclick="location.href='Stars'"/>
-					<input type="text" value="113"/>
-					<input type="button" value="Fork" onclick="location.href='Stars'"/>
-					<input type="text" value="106"/>
+					<a href=""><input type="button" value="Unwatch"/></a>
+					<label><input type="text" value="19"/></label>
+					<a href=""><input type="button" value="Star"/></a>
+					<label><input type="text" value="113"/></label>
+					<a href=""><input type="button" value="Fork"/></a>
+					<label><input type="text" value="106"/></label>
 				</article>
-				<artile class="main-header-menu">
-					<input type="button" value="Code" onclick="location.href='code'"/>
-					<input type="button" value="Issues" onclick="location.href='Issues'"/>
-					<input type="button" value="Pull Request" onclick="location.href='PR'"/>
-					<input type="button" value="Projects" onclick="location.href='Projects'"/>
-					<input type="button" value="Insights" onclick="location.href='Insights'"/>
-				</artile>
+				<nav class="main-header-menu">
+					<a href=""><input type="button" value="Code"/></a>
+					<a href=""><input type="button" value="Issues"/></a>
+					<a href=""><input type="button" value="Pull Request"/></a>
+					<a href=""><input type="button" value="Projects"/></a>
+					<a href=""><input type="button" value="Insights"/></a>
+				</nav>
 			</header>
+
 			<section class="main-detail">
 				<span>KnowRe web  development curriculum for noobs</span>
 				<!-- TODO: 메인의 부분 -->
-				<article class="main-detail-menu">
+				<nav class="main-detail-menu">
 					<span id="Commit-Count">44</span>
-					<input type="button" value="Commit" onclick="location.href='code'"/>
+					<a href=""><input type="button" value="Commit"/></a>
 					<span id="Branch-Count">1</span>
-					<input type="button" value="Branch" onclick="location.href='branch'"/>
+					<a href=""><input type="button" value="Branch"/></a>
 					<span id="Release-Count">0</span>
-					<input type="button" value="Release" onclick="location.href='code'"/>
+					<a><input type="button" value="Release"/></a>
 					<span id="Contributors-Count">2</span>
-					<input type="button" value="contributors" onclick="location.href='code'"/>
-					<input type="button" value="MIT" onclick="location.href='code'"/>
-				</article>
+					<a href=""><input type="button" value="contributors"/></a>
+					<a href=""><input type="button" value="MIT"/></a>
+				</nav>
+
 				<article class="main-detail-leftBT">
 					<input type="button" value="Branch:master"/>
-					<input type="button" value="New Pull Request" onclick="location.href='newPR'"/>
+					<input type="button" value="New Pull Request"/>
 				</article>
-				<article class="main-detail-rightBT">
-					<input type="button" value="Create New File" onclick="location.href='NewFile'"/>
-					<input type="button" value="Upload Files" onclick="location.href='Upload File'"/>
-					<input type="button" value="Find File" onclick="location.href='Find FIle'"/>
-					<input type="button" value="Clone or download" onclick="location.href='NewFile'"/>
-				</article>
+
+				<nav class="main-detail-rightBT">
+					<a><input type="button" value="Create New File"/></a>
+					<a href=""><input type="button" value="Upload Files"/></a>
+					<a><input type="button" value="Find File"/></a>
+					<a><input type="button" value="Clone or download"/></a>
+				</nav>
+
 				<article class="main-detail-ContentTopBox">
 					<div>
 						<span id="User">KnowRe </span>
@@ -81,6 +88,7 @@
 						<span id="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
 					</div>
 				</article>
+
 				<article class="main-detail-ContentBox">
 					<div class="main-detail-ContentBox-Content">
 						<!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
@@ -90,12 +98,15 @@
 					</div>
 					...
 				</article>
+
 				<article class="main-detail-ReadMeTopBox">
 					<span id="Readme">README.md</span>
 				</article>
+
 				<article class="main-detail-ReadMeBox">
 					<span id="ReadmeText">KnowRe Web development curriculum</span>
 				</article>
+
 			</section>
 		</section>
 

@@ -10,4 +10,14 @@ body {
 	/* TODO: 어떤 코드가 들어가야 할까요? */
 }
 
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
 /* TODO: 또 어떤 코드들이 들어가야 할까요? */
+
+.head-MainMenu-content{
+    display: flex;
+    flex-basis: auto;
+}
