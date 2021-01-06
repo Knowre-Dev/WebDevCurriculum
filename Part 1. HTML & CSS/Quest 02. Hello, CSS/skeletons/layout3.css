@@ -16,14 +16,13 @@ body {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
 	height: 100vh;
-
 }
 
 .main header {
 	background-color: lightgray;
 	/* TODO: 이 곳을 채우세요! */
-	padding-left: 200px;
-	padding-right: 300px;
+	margin-left: 200px;
+	margin-right: 300px;
 	height: 30px;
 }
 
@@ -32,6 +31,7 @@ body {
 	/* TODO: 이 곳을 채우세요! */
 	position: absolute;
 	left:0;
+	top: 0;
 	width: 200px;
 	height: 100vh;
 	overflow: hidden;
@@ -40,17 +40,15 @@ body {
 .right {
 	background-color: greenyellow;
 	/* TODO: 이 곳을 채우세요! */
-	width: 300px;
 	position: absolute;
 	right: 0;
 	top: 0;
+	width: 300px;
 	height: 100vh;
 }
 
 footer {
 	background-color: yellow;
 	/* TODO: 이 곳을 채우세요! */
-	/*position: absolute;*/
-	/*bottom: 0;*/
 	height: 50px;
 }
