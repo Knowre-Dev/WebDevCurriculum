@@ -13,12 +13,16 @@ aside {
 	/* TODO: 이 곳을 채우세요! */
 	width: 200px;
 	height: 100vh;
-	position: absolute;
+	position: relative;
+	overflow: hidden;
 }
 
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
-	padding-left: 200px;
-	height: 100vh;
+	position: absolute;
+	top:0;
+	left: 0;
+	bottom: 0;
+	margin-left: 200px;
 }

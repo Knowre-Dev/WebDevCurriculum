@@ -6,5 +6,120 @@
 	</head>
 	<body>
 		<!-- TODO: Quest 1에서 완성한 HTML을 바탕으로 필요한 부분을 수정해 보세요 -->
+		<header>
+			<article class="head-search">
+				<input type="button" value="This Repository"/>
+				<label>
+					<input type="search" placeholder="Search"/>
+				</label>
+			</article>
+			<article class="head-MainMenu">
+				<input type="button" value="Pull Request" onClick="location.href='pr'"/>
+				<input type="button" value="Issues" onClick="location.href='Issues'"/>
+				<input type="button" value="Marketplace" onClick="location.href='Issues'"/>
+				<input type="button" value="Explore" onClick="location.href='Explore'"/>
+			</article>
+			<article class="head-SubMenu">
+				<a href="notice">🔖</a>
+				<a href="plus">🔖</a>
+				<a href="profile">🔖</a>
+			</article>
+		</header>
+		<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
+		<section class="main">
+			<header class="main-header">
+				<article class="main-header-RepoPath">
+					<a href='AllRepo'>KnowRe</a>
+					/
+					<a href="SelectRepo">WebDevCurriculum</a>
+
+				</article>
+				<article class="main-header-RepoInfo">
+					<input type="button" value="Unwatch" onclick="location.href='Unwatch'"/>
+					<input type="text" value="19"/>
+					<input type="button" value="Star" onclick="location.href='Stars'"/>
+					<input type="text" value="113"/>
+					<input type="button" value="Fork" onclick="location.href='Stars'"/>
+					<input type="text" value="106"/>
+				</article>
+				<artile class="main-header-menu">
+					<input type="button" value="Code" onclick="location.href='code'"/>
+					<input type="button" value="Issues" onclick="location.href='Issues'"/>
+					<input type="button" value="Pull Request" onclick="location.href='PR'"/>
+					<input type="button" value="Projects" onclick="location.href='Projects'"/>
+					<input type="button" value="Insights" onclick="location.href='Insights'"/>
+				</artile>
+			</header>
+			<section class="main-detail">
+				<span>KnowRe web  development curriculum for noobs</span>
+				<!-- TODO: 메인의 부분 -->
+				<article class="main-detail-menu">
+					<span id="Commit-Count">44</span>
+					<input type="button" value="Commit" onclick="location.href='code'"/>
+					<span id="Branch-Count">1</span>
+					<input type="button" value="Branch" onclick="location.href='branch'"/>
+					<span id="Release-Count">0</span>
+					<input type="button" value="Release" onclick="location.href='code'"/>
+					<span id="Contributors-Count">2</span>
+					<input type="button" value="contributors" onclick="location.href='code'"/>
+					<input type="button" value="MIT" onclick="location.href='code'"/>
+				</article>
+				<article class="main-detail-leftBT">
+					<input type="button" value="Branch:master"/>
+					<input type="button" value="New Pull Request" onclick="location.href='newPR'"/>
+				</article>
+				<article class="main-detail-rightBT">
+					<input type="button" value="Create New File" onclick="location.href='NewFile'"/>
+					<input type="button" value="Upload Files" onclick="location.href='Upload File'"/>
+					<input type="button" value="Find File" onclick="location.href='Find FIle'"/>
+					<input type="button" value="Clone or download" onclick="location.href='NewFile'"/>
+				</article>
+				<article class="main-detail-ContentTopBox">
+					<div>
+						<span id="User">KnowRe </span>
+						<span id="Constraint">Quest 02 added constraint </span>
+						<span id="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
+					</div>
+				</article>
+				<article class="main-detail-ContentBox">
+					<div class="main-detail-ContentBox-Content">
+						<!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
+						<span class="FolderName">Quest 00</span>
+						<span class="CommitMessage">Part 2 finished</span>
+						<span class="CommitDate">2 Years ago</span>
+					</div>
+					...
+				</article>
+				<article class="main-detail-ReadMeTopBox">
+					<span id="Readme">README.md</span>
+				</article>
+				<article class="main-detail-ReadMeBox">
+					<span id="ReadmeText">KnowRe Web development curriculum</span>
+				</article>
+			</section>
+		</section>
+
+		<footer>
+			<!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
+			<section class="foot">
+				<article class="foot-left">
+					<span>2018 GitHub inc.</span>
+					<a href="./Terms">Terms</a>
+					<a href="./Privacy">Privacy</a>
+					<a href="./Security">Security</a>
+					<a href="./Status">Status</a>
+					<a href="./Help">Help</a>
+				</article>
+				<article class="foot-right">
+					<a href="./ContactGithub">Contact GitHub</a>
+					<a href="./API">API</a>
+					<a href="./Training">Training</a>
+					<a href="./Shop">Shop</a>
+					<a href="./Blog">Blog</a>
+					<a href="./About">About</a>
+				</article>
+
+			</section>
+		</footer>
 	</body>
 </html>
