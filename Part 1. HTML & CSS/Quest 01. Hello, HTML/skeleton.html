@@ -13,7 +13,7 @@
     </article>
 
     <nav class="head-MainMenu">
-        <ul>
+        <ul class="head-MainMenu-content">
             <li><a href="pr"><input type="button" value="Pull Request"/></a></li>
             <li><a href="Issues"><input type="button" value="Issues"/></a></li>
             <li><a href="MarketPlace"><input type="button" value="Marketplace"/></a></li>
@@ -36,19 +36,29 @@
             <a href="SelectRepo">WebDevCurriculum</a>
         </article>
         <article class="main-header-RepoInfo">
-            <a href=""><input type="button" value="Unwatch"/></a>
-            <label><input type="text" value="19"/></label>
-            <a href=""><input type="button" value="Star"/></a>
-            <label><input type="text" value="113"/></label>
-            <a href=""><input type="button" value="Fork"/></a>
-            <label><input type="text" value="106"/></label>
+            <ul class="main-header-RepoInfo-content">
+                <li>
+                    <a href=""><input type="button" value="Unwatch"/></a>
+                    <label><input type="text" value="19"/></label>
+                </li>
+                <li>
+                    <a href=""><input type="button" value="Star"/></a>
+                    <label><input type="text" value="113"/></label>
+                </li>
+                <li>
+                    <a href=""><input type="button" value="Fork"/></a>
+                    <label><input type="text" value="106"/></label>
+                </li>
+            </ul>
         </article>
         <nav class="main-header-menu">
-            <a href=""><input type="button" value="Code"/></a>
-            <a href=""><input type="button" value="Issues"/></a>
-            <a href=""><input type="button" value="Pull Request"/></a>
-            <a href=""><input type="button" value="Projects"/></a>
-            <a href=""><input type="button" value="Insights"/></a>
+            <ul class="main_header-menu-content">
+                <li><a href=""><input type="button" value="Code"/></a></li>
+                <li><a><input type="button" value="Issues"/></a></li>
+                <li><a href=""><input type="button" value="Pull Request"/></a></li>
+                <li><a href=""><input type="button" value="Projects"/></a></li>
+                <li><a href=""><input type="button" value="Insights"/></a></li>
+            </ul>
         </nav>
     </header>
 
@@ -56,15 +66,27 @@
         <span>KnowRe web  development curriculum for noobs</span>
         <!-- TODO: 메인의 부분 -->
         <nav class="main-detail-menu">
-            <span id="Commit-Count">44</span>
-            <a href=""><input type="button" value="Commit"/></a>
-            <span id="Branch-Count">1</span>
-            <a href=""><input type="button" value="Branch"/></a>
-            <span id="Release-Count">0</span>
-            <a><input type="button" value="Release"/></a>
-            <span id="Contributors-Count">2</span>
-            <a href=""><input type="button" value="contributors"/></a>
-            <a href=""><input type="button" value="MIT"/></a>
+            <ul class="main-detail-menu-content">
+                <li>
+                    <span id="Commit-Count">44</span>
+                    <a href=""><input type="button" value="Commit"/></a>
+                </li>
+                <li>
+                    <span id="Branch-Count">1</span>
+                    <a href=""><input type="button" value="Branch"/></a>
+                </li>
+                <li>
+                    <span id="Release-Count">0</span>
+                    <a><input type="button" value="Release"/></a>
+                </li>
+                <li>
+                    <span id="Contributors-Count">2</span>
+                    <a href=""><input type="button" value="contributors"/></a>
+                </li>
+                <li>
+                    <a href=""><input type="button" value="MIT"/></a>
+                </li>
+            </ul>
         </nav>
 
         <article class="main-detail-leftBT">
@@ -73,14 +95,16 @@
         </article>
 
         <nav class="main-detail-rightBT">
-            <a><input type="button" value="Create New File"/></a>
-            <a href=""><input type="button" value="Upload Files"/></a>
-            <a><input type="button" value="Find File"/></a>
-            <a><input type="button" value="Clone or download"/></a>
+            <ul class="main-detail-rightBT-content">
+                <li><a href=""><input type="button" value="Create New File"/></a></li>
+                <li><a href=""><input type="button" value="Upload Files"/></a></li>
+                <li><a href=""><input type="button" value="Find File"/></a></li>
+                <li><a href=""><input type="button" value="Clone or download"/></a></li>
+            </ul>
         </nav>
 
         <article class="main-detail-ContentTopBox">
-            <div>
+            <div >
                 <span id="User">KnowRe </span>
                 <span id="Constraint">Quest 02 added constraint </span>
                 <span id="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
@@ -113,19 +137,23 @@
     <section class="foot">
         <article class="foot-left">
             <span>2018 GitHub inc.</span>
-            <a href="./Terms">Terms</a>
-            <a href="./Privacy">Privacy</a>
-            <a href="./Security">Security</a>
-            <a href="./Status">Status</a>
-            <a href="./Help">Help</a>
+            <ul class="foot-left-content">
+                <li><a href="./Terms">Terms</a></li>
+                <li><a href="./Privacy">Privacy</a></li>
+                <li><a href="./Security">Security</a></li>
+                <li><a href="./Status">Status</a></li>
+                <li><a href="./Help">Help</a></li>
+            </ul>
         </article>
         <article class="foot-right">
-            <a href="./ContactGithub">Contact GitHub</a>
-            <a href="./API">API</a>
-            <a href="./Training">Training</a>
-            <a href="./Shop">Shop</a>
-            <a href="./Blog">Blog</a>
-            <a href="./About">About</a>
+            <ul class="foot-right-content">
+                <li><a href="./ContactGithub">Contact GitHub</a></li>
+                <li><a href="./API">API</a></li>
+                <li><a href="./Training">Training</a></li>
+                <li><a href="./Shop">Shop</a></li>
+                <li><a href="./Blog">Blog</a></li>
+                <li><a href="./About">About</a></li>
+            </ul>
         </article>
 
     </section>
