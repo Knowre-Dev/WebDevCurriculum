@@ -6,31 +6,33 @@
 	</head>
 	<body>
 		<!-- TODO: Quest 1에서 완성한 HTML을 바탕으로 필요한 부분을 수정해 보세요 -->
-		<header>
+		<header class="topHeader">
 			<article class="head-search">
+				<img id="mainImg" src="./img/octoface.svg" alt="Path Error" width="24" height="24"/>
 				<input id="head-search-bt" type="button" value="This Repository"/>
-				<label><input type="search" placeholder="Search"/></label>
+				<label><input id="head-search-form" type="search" placeholder="Search"/></label>
 			</article>
 
 			<nav class="head-MainMenu">
 				<ul class="head-MainMenu-content">
-					<li><a href="pr"><input type="button" value="Pull Request"/></a></li>
-					<li><a href="Issues"><input type="button" value="Issues"/></a></li>
-					<li><a href="MarketPlace"><input type="button" value="Marketplace"/></a></li>
-					<li><a href="Explore"><input type="button" value="Explore"/></a></li>
+					<li><a href="pr"><input class="head-MainMenu-content-bt" type="button" value="Pull Request"/></a></li>
+					<li><a href="Issues"><input class="head-MainMenu-content-bt" type="button" value="Issues"/></a></li>
+					<li><a href="MarketPlace"><input class="head-MainMenu-content-bt" type="button" value="Marketplace"/></a></li>
+					<li><a href="Explore"><input class="head-MainMenu-content-bt" type="button" value="Explore"/></a></li>
 				</ul>
 			</nav>
 
 			<article class="head-SubMenu">
-				<a href="notice">🔖</a>
-				<a href="plus">🔖</a>
-				<a href="profile">🔖</a>
+				<a href=""><img src="./img/bell.svg"/></a>
+				<a href=""><img src="./img/plus.svg"/></a>
+				<a href=""><img src="./img/file-media.svg"/></a>
 			</article>
 		</header>
 		<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
 		<section class="main">
 			<header class="main-header">
 				<article class="main-header-RepoPath">
+					<img id="repoIcon" src="./img/repo.svg"/>
 					<a href='AllRepo'>KnowRe</a>
 					/
 					<a href="SelectRepo">WebDevCurriculum</a>
