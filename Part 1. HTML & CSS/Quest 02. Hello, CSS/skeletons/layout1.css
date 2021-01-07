@@ -26,3 +26,8 @@ aside {
 	bottom: 0;
 	margin-left: 200px;
 }
+
+
+.ul_list li{
+	list-style: none;
+}

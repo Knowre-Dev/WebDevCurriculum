@@ -14,8 +14,26 @@ ul{
     list-style: none;
     padding-left: 0;
 }
-
 /* TODO: 또 어떤 코드들이 들어가야 할까요? */
+
+header{
+    display: flex;
+    flex-basis: auto;
+    width: 100%;
+    height: 70px;
+    background: #343434;
+}
+
+
+.head-search{
+    padding: 20px;
+}
+
+#head-search-bt{
+    width: 150px;
+
+    background: #474747;
+}
 
 .head-MainMenu-content{
     display: flex;
