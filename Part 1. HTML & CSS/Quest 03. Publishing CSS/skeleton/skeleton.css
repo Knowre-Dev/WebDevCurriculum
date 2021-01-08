@@ -44,6 +44,9 @@ ul{
     background: #474747;
     border-radius: 8px;
 }
+#head-search-bt:hover{
+    color:orange;
+}
 
 #head-search-form{
     height: 30px;
@@ -97,18 +100,19 @@ ul{
     position: relative;
     font-size: 20px;
     margin-top:15px;
-    margin-left: 5%;
+    margin-left: 150px;
 }
 
 .main-header-RepoInfo{
     position: absolute;
-    top: 7%;
+    margin-right: 150px;
+    top: 65px;
     right: 0;
 }
 
 .main-header-RepoInfo-content {
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
     flex-basis: auto;
 }
 
@@ -116,7 +120,7 @@ ul{
     height: 30px;
     background: #d1d1d1;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .main-header-RepoInfo-content-txt{
     height: 30px;
@@ -126,11 +130,14 @@ ul{
     border: none;
     border-radius: 5px;
     outline: none;
-    margin-right: 10px;
+    margin-right: 20px;
 }
+
 
 .main-header-menu{
     display: flex;
+    align-items: flex-end;
+    margin-left: 85px;
 }
 
 .main-header-menu-content{
@@ -140,9 +147,33 @@ ul{
     margin-left: 5%;
 }
 
+.main-header-menu-content-img{
+    position: absolute;
+    top: 33%;
+    margin-left: -2%;
+}
+
 .main-header-menu-content-bt{
+    display: flex;
+    justify-content: center;
     width: 100px;
     height: 55px;
+}
+
+.main-detail{
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.main-detail-txt{
+    display: flex;
+    margin-top:20px;
+    padding-bottom: 15px;
+}
+
+.foot{
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 
