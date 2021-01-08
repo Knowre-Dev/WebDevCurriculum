@@ -54,15 +54,11 @@ ul{
     flex-wrap: nowrap;
 }
 
-.head-SubMenu{
-    margin-top: 30px;
-}
-
 .head-MainMenu-content{
     display: flex;
     flex-basis: auto;
-
 }
+
 .head-MainMenu-content-bt{
     width: 100%;
     background: #343434;
@@ -71,6 +67,11 @@ ul{
     border: none;
     outline: none;
     font-size: 17px;
+}
+
+
+.head-SubMenu{
+    margin-top: 30px;
 }
 
 .main{
@@ -79,48 +80,45 @@ ul{
     justify-content: flex-start;
 }
 
-.main-header-RepoPath{
-    align-content: stretch;
-    align-items: baseline;
-}
-
-#repoIcon{
-
-}
-
 .main-header{
     background: #dedede;
 }
 
 .main-header-RepoPath{
     display: flex;
+    position: relative;
     font-size: 20px;
     margin-top:15px;
     margin-left: 5%;
 }
 
-.main-header-RepoInfo
-{
+.main-header-RepoInfo{
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+.main-header-RepoInfo-content {
     display: flex;
     justify-content: flex-end;
     flex-basis: auto;
-    bottom: 15px;
-    width: 100%;
 }
 
-.head-MainMenu-content{
-    display: flex;
-    flex-basis: auto;
+.main-header-RepoInfo-content-bt{
+    height: 30px;
+    background: #d1d1d1;
+    border-radius: 5px;
+    margin-left: 10px;
 }
-
-.head-MainMenu-content-bt{
-    width: 100%;
-    background: #343434;
-    color: #f1d7d9;
-    height: 60px;
+.main-header-RepoInfo-content-txt{
+    height: 30px;
+    width: 35px;
+    font-size: 15px;
+    text-align: center;
     border: none;
+    border-radius: 5px;
     outline: none;
-    font-size: 17px;
+    margin-right: 10px;
 }
 
 .main-header-menu-content{
