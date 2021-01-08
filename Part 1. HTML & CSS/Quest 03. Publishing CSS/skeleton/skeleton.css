@@ -37,14 +37,18 @@ ul{
 }
 
 #mainImg{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
 }
 
 #head-search-bt{
-    width: 40%;
-    color: #d0caca;
+    width: 30%;
     height: 30px;
     background: #474747;
-    border-radius: 8px;
+    border-radius: 5px 0 0 5px;
+    border-width: 0;
+    color: #FFFFFF;
 }
 #head-search-bt:hover{
     color:orange;
@@ -53,7 +57,11 @@ ul{
 #head-search-form{
     height: 30px;
     width:100%;
-    border-radius: 8px;
+    background: #474747;
+    color: #d1d1d1;
+    border-radius: 0 5px 5px 0;
+    border-width: 0;
+    border-color: #474747;
 }
 
 .head-MainMenu{
@@ -114,23 +122,24 @@ ul{
 
 .main-header-RepoInfo-content {
     display: flex;
-    align-items: flex-end;
-    flex-basis: auto;
 }
 
 .main-header-RepoInfo-content-bt{
     height: 30px;
+    position: relative;
     background: #d1d1d1;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    border-width: 0;
     margin-left: 20px;
 }
 .main-header-RepoInfo-content-txt{
     height: 30px;
     width: 35px;
+    background: #f9fbfb;
     font-size: 15px;
     text-align: center;
     border: none;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     outline: none;
     margin-right: 20px;
 }
@@ -167,6 +176,9 @@ ul{
     margin-right: 150px;
 }
 
+.main-detail-menu{
+}
+
 .main-detail-txt{
     display: flex;
     margin-top:20px;
@@ -180,10 +192,12 @@ ul{
     /*border-style: groove;*/
     height: 60px;
     outline: orange;
+    border-style: ridge;
     background: #fbfdfd;
 }
 
 .main-detail-menu-content-value{
+    font-weight: bold;
 }
 
 .main-detail-menu-content-bt{
@@ -191,7 +205,6 @@ ul{
     outline: none;
     height: 50px;
     background: none;
-    margin-left: 10px;
     font-size: 16px;
 }
 
@@ -199,9 +212,75 @@ ul{
     color: orange;
 }
 
+.main-detail-left{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.main-detail-left-bt{
+    display: inline-flex;
+    justify-content: center;
+    background: #f9fbfb;
+    height: 30px;
+    width: 140px;
+    font-weight: bold;
+    border-style: ridge;
+    border-radius: 5px;
+    border-width: 1px;
+    color: #474747;
+}
+
+.main-detail-right-content{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 153px;
+    bottom: 45%;
+
+}
+
+#greenbt{
+    height: 30px;
+    width: 160px;
+    font-weight: bold;
+    background: #11aa18;
+    border-style: ridge;
+    border-width: 1px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+#findbt{
+    height: 30px;
+    width: 90px;
+    font-weight: bold;
+    background: #f9fbfb;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: #d1d1d1;
+    border-radius: 5px;
+    color: #474747;
+    margin-right: 10px;
+}
+.main-detail-right-bt{
+    height: 30px;
+    width: 140px;
+    font-weight: bold;
+    background: #f9fbfb;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: #d1d1d1;
+    border-radius: 5px;
+    color: #474747;
+}
+
+.main-detail-ContentTopBox{
+    height: 50px;
+    width: 100%;
+}
+
+
 .foot{
     margin-left: 150px;
     margin-right: 150px;
 }
-
-
