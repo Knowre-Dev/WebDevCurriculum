@@ -7,6 +7,8 @@ html {
     font-family: "서울남산체 B";
 }
 
+/* TODO : 브라우저마다 결과 다름 */
+
 body {
 	/* TODO: 어떤 코드가 들어가야 할까요? */
     margin: 0;
@@ -235,7 +237,7 @@ ul{
     justify-content: flex-end;
     position: absolute;
     right: 153px;
-    bottom: 45%;
+    bottom: 48%;
 
 }
 
