@@ -18,7 +18,7 @@ ul{
 
 .topHeader{
     display: flex;
-    flex-basis: auto;
+    justify-content: space-around;
     /*justify-content: space-around;*/
     width: 100%;
     height: 100px;
@@ -26,6 +26,8 @@ ul{
 }
 
 .head-search{
+    display: flex;
+    flex-wrap: nowrap;
     padding: 20px;
 }
 
@@ -34,7 +36,7 @@ ul{
 }
 
 #head-search-bt{
-    width: 150px;
+    width: 40%;
     color: #d0caca;
     height: 30px;
     background: #474747;
@@ -43,29 +45,26 @@ ul{
 
 #head-search-form{
     height: 30px;
-    width: 190px;
+    width:90%;
     border-radius: 8px;
 }
 
 .head-MainMenu{
-
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .head-SubMenu{
     margin-top: 30px;
-    margin-left: 30%;
 }
 
 .head-MainMenu-content{
     display: flex;
     flex-basis: auto;
-    border: none;
-    outline: none;
-    background-color: #343434;
-    margin-top: 20px;
-    margin-right: 50px;
+
 }
 .head-MainMenu-content-bt{
+    width: 100%;
     background: #343434;
     color: #f1d7d9;
     height: 60px;
@@ -78,7 +77,6 @@ ul{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
 }
 
 .main-header-RepoPath{
