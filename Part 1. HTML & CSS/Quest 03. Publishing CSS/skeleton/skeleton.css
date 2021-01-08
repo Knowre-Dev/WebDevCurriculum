@@ -8,6 +8,7 @@ html {
 
 body {
 	/* TODO: 어떤 코드가 들어가야 할까요? */
+    margin: 0;
 }
 
 ul{
@@ -18,21 +19,22 @@ ul{
 
 .topHeader{
     display: flex;
-    justify-content: space-around;
     /*justify-content: space-around;*/
     width: 100%;
-    height: 100px;
+    height: 70px;
     background: #343434;
 }
 
 .head-search{
     display: flex;
     flex-wrap: nowrap;
+    position: relative;
+    justify-content: flex-end;
+    width: 30%;
     padding: 20px;
 }
 
 #mainImg{
-    margin-top: 10px;
 }
 
 #head-search-bt{
@@ -45,12 +47,15 @@ ul{
 
 #head-search-form{
     height: 30px;
-    width:90%;
+    width:100%;
     border-radius: 8px;
 }
 
 .head-MainMenu{
     display: flex;
+    position: absolute;
+    right: 45%;
+    top: 0;
     flex-wrap: nowrap;
 }
 
@@ -62,8 +67,8 @@ ul{
 .head-MainMenu-content-bt{
     width: 100%;
     background: #343434;
-    color: #f1d7d9;
-    height: 60px;
+    color: #FFFFFF;
+    height: 40px;
     border: none;
     outline: none;
     font-size: 17px;
@@ -71,7 +76,10 @@ ul{
 
 
 .head-SubMenu{
-    margin-top: 30px;
+    position: absolute;
+    right: 6%;
+    top: 0;
+    margin-top: 20px;
 }
 
 .main{
@@ -81,7 +89,7 @@ ul{
 }
 
 .main-header{
-    background: #dedede;
+    background-color: rgba(226,226,226,0.5);
 }
 
 .main-header-RepoPath{
@@ -94,7 +102,7 @@ ul{
 
 .main-header-RepoInfo{
     position: absolute;
-    top: 10%;
+    top: 7%;
     right: 0;
 }
 
@@ -121,8 +129,13 @@ ul{
     margin-right: 10px;
 }
 
+.main-header-menu{
+    display: flex;
+}
+
 .main-header-menu-content{
     display: flex;
+    margin-top: 20px;
     flex-basis: auto;
     margin-left: 5%;
 }
