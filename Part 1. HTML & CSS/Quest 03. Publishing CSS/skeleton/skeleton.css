@@ -85,5 +85,53 @@ ul{
 }
 
 #repoIcon{
+
 }
+
+.main-header{
+    background: #dedede;
+}
+
+.main-header-RepoPath{
+    display: flex;
+    font-size: 20px;
+    margin-top:15px;
+    margin-left: 5%;
+}
+
+.main-header-RepoInfo
+{
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: auto;
+    bottom: 15px;
+    width: 100%;
+}
+
+.head-MainMenu-content{
+    display: flex;
+    flex-basis: auto;
+}
+
+.head-MainMenu-content-bt{
+    width: 100%;
+    background: #343434;
+    color: #f1d7d9;
+    height: 60px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+}
+
+.main-header-menu-content{
+    display: flex;
+    flex-basis: auto;
+    margin-left: 5%;
+}
+
+.main-header-menu-content-bt{
+    width: 100px;
+    height: 55px;
+}
+
 
