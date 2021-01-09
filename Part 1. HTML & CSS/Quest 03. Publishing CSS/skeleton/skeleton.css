@@ -290,17 +290,58 @@ ul{
 }
 
 .main-detail-ContentTopBox-div{
+    margin-left: 20px;
     width: 100%;
 }
 
-#User, #Constraint{
+#User{
+    position: relative;
+    font-weight: bold;
+}
 
+#Constraint{
+    color: #474747;
 }
 
 #LastCommit{
-    
+    position: absolute;
+    right: 160px;
+    color: #474747;
 }
 
+
+.main-detail-ContentBox-Content{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    border-width: 1px;
+    border-style: ridge;
+    border-radius: 5px;
+}
+
+.FolderPath{
+    position: relative;
+    color: #2628d8;
+    margin-left: 20px;
+}
+
+.CommitMessage{
+    position: absolute;
+    left: 700px;
+    color: #474747;
+}
+
+
+.CommitDate{
+    position: absolute;
+    right: 170px;
+    color: #474747;
+}
+
+.main-detail-ReadMeTopBox{
+
+}
 
 .foot{
     margin-left: 150px;
