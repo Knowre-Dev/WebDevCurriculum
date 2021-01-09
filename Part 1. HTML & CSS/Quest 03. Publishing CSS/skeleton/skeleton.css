@@ -237,7 +237,7 @@ ul{
     justify-content: flex-end;
     position: absolute;
     right: 153px;
-    bottom: 48%;
+    top: 335px;
 
 }
 
@@ -264,7 +264,7 @@ ul{
     color: #474747;
     margin-right: 10px;
 }
-.main-detail-right-bt{
+.main-detail-right-content-bt{
     height: 30px;
     width: 140px;
     font-weight: bold;
@@ -277,8 +277,28 @@ ul{
 }
 
 .main-detail-ContentTopBox{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     height: 50px;
     width: 100%;
+    background: #d1f8ff;
+    border-radius: 5px;
+    border-style: ridge;
+    border-width: 2px;
+    border-color: #77cfe2;
+}
+
+.main-detail-ContentTopBox-div{
+    width: 100%;
+}
+
+#User, #Constraint{
+
+}
+
+#LastCommit{
+    
 }
 
 
