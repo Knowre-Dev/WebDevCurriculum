@@ -33,17 +33,17 @@ ul{
     flex-wrap: nowrap;
     position: relative;
     justify-content: flex-end;
-    width: 30%;
+    width: 450px;
     padding: 20px;
 }
 
-#mainImg{
+.mainImg{
     margin-right: 10px;
     width: 30px;
     height: 30px;
 }
 
-#head-search-bt{
+.head-search-bt{
     width: 30%;
     height: 30px;
     background: #474747;
@@ -51,11 +51,11 @@ ul{
     border-width: 0;
     color: #FFFFFF;
 }
-#head-search-bt:hover{
+.head-search-bt:hover{
     color:orange;
 }
 
-#head-search-form{
+.head-search-form{
     height: 30px;
     width:100%;
     background: #474747;
@@ -88,7 +88,6 @@ ul{
     font-size: 17px;
 }
 
-
 .head-SubMenu{
     position: absolute;
     right: 6%;
@@ -103,7 +102,10 @@ ul{
 }
 
 .main-header{
-    background-color: rgba(226,226,226,0.5);
+    background-color: #f8fafa;
+    border-bottom-width: 2px;
+    border-bottom-color: #d1d1d1;
+    border-bottom-style: solid;
 }
 
 .main-header-RepoPath{
@@ -145,7 +147,6 @@ ul{
     margin-right: 20px;
 }
 
-
 .main-header-menu{
     display: flex;
     align-items: flex-end;
@@ -154,10 +155,10 @@ ul{
 
 .main-header-menu-content{
     display: flex;
-    margin-top: 20px;
     flex-basis: auto;
-
-    margin-left: 5%;
+    margin-top:20px;
+    margin-left:85px;
+    margin-bottom: 0;
 }
 
 .main-header-menu-content-img{
@@ -167,10 +168,46 @@ ul{
 }
 
 .main-header-menu-content-bt{
-    display: flex;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom: transparent;
+    border-radius: 2px;
+    background: #f8fafa;
     justify-content: center;
     width: 100px;
     height: 55px;
+}
+
+.main-header-menu-content-bt.code {
+    background: white;
+    border-right-width: 1px;
+    border-right-color: #d1d1d1;
+    border-right-style: solid;
+    border-left-width: 1px;
+    border-left-color: #d1d1d1;
+    border-left-style: solid;
+    border-top-color: coral;
+    border-top-width: 5px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    outline: none;
+}
+
+.main-header-menu-content-bt:hover{
+    border-top-color: #474747;
+    border-top-width: 4px;
+    outline: none;
+}
+
+.main-header-menu-content-bt:active{
+    background: white;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-top-color: deeppink;
+    border-top-width: 5px;
+    outline: none;
 }
 
 .main-detail{
@@ -179,8 +216,6 @@ ul{
 }
 
 .main-detail-menu{
-
-
 }
 
 .main-detail-header{
@@ -199,10 +234,10 @@ ul{
     align-items: center;
     height: 60px;
     outline: orange;
-    background: #fbfdfd;
+    background: #f9fbfb;
     border-color: #edf2f9;
     border-radius: 10px;
-    border-style: ridge;
+    border-style: solid;
     border-width: 1px;
 }
 
@@ -216,6 +251,7 @@ ul{
     height: 50px;
     background: none;
     font-size: 16px;
+    color: #474747;
 }
 
 .main-detail-menu-content-bt:hover{
@@ -233,7 +269,7 @@ ul{
     height: 30px;
     width: 140px;
     font-weight: bold;
-    border-style: ridge;
+    border-style: solid;
     border-radius: 5px;
     border-width: 1px;
     border-color: #edf2f9;
@@ -254,36 +290,36 @@ ul{
     margin: 0;
 }
 
-/*#greenbt{*/
-/*    height: 30px;*/
-/*    width: 160px;*/
-/*    font-weight: bold;*/
-/*    background: #11aa18;*/
-/*    border-style: ridge;*/
-/*    border-width: 1px;*/
-/*    border-radius: 5px;*/
-/*    color: #FFFFFF;*/
-/*}*/
+.main-detail-right-content .greenbt{
+    height: 30px;
+    width: 160px;
+    font-weight: bold;
+    background: #11aa18;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
 
-/*#findbt{*/
-/*    height: 30px;*/
-/*    width: 90px;*/
-/*    font-weight: bold;*/
-/*    background: #f9fbfb;*/
-/*    border-style: ridge;*/
-/*    border-width: 1px;*/
-/*    border-color: #edf2f9;*/
-/*    border-radius: 3px;*/
-/*    color: #474747;*/
-/*    margin-right: 10px;*/
-/*}*/
+.main-detail-right-content .findbt{
+    height: 30px;
+    width: 90px;
+    font-weight: bold;
+    background: #f9fbfb;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edf2f9;
+    border-radius: 3px;
+    color: #474747;
+    margin-right: 10px;
+}
 
 .main-detail-right-content-bt{
     height: 30px;
     width: 140px;
     font-weight: bold;
     background: #f9fbfb;
-    border-style: ridge;
+    border-style: solid;
     border-width: 1px;
     border-color: #edf2f9;
     border-radius: 3px;
@@ -296,11 +332,11 @@ ul{
     align-items: center;
     height: 50px;
     width: 100%;
-    background: #d1f8ff;
+    background: #d9eaff;
     border-radius: 2px;
-    border-style: ridge;
+    border-style: solid;
     border-width: 1px;
-    border-color: #edf2f9;
+    border-color: #58bfe2;
 
 }
 
@@ -309,16 +345,16 @@ ul{
     width: 100%;
 }
 
-#User{
+.User{
     position: relative;
     font-weight: bold;
 }
 
-#Constraint{
+.Constraint{
     color: #474747;
 }
 
-#LastCommit{
+.LastCommit{
     position: absolute;
     right: 160px;
     color: #474747;
@@ -330,10 +366,10 @@ ul{
     width: 100%;
     height: 50px;
     align-items: center;
-    border-width: 1px;
-    border-style: ridge;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
     border-radius: 2px;
-    border-color: #f9fbfb;
+    border-color: #d1d1d1;
 }
 
 .FolderPath{
@@ -361,13 +397,14 @@ ul{
     margin-top: 20px;
     width: 100%;
     height: 50px;
+    background: #edf2f9;
     border-radius: 3px;
-    border-color: #f9fbfb;
-    border-style: ridge;
+    border-color: #d1d1d1;
+    border-style: solid;
     border-width: 1px;
 }
 
-#Readme{
+.Readme{
     margin-left: 20px;
     font-weight: bold;
 }
@@ -377,14 +414,15 @@ ul{
     align-items: center;
     width: 100%;
     height: 200px;
-    border-style: ridge;
+    border-style: solid;
     border-width: 1px;
-    border-color: #f9fbfb;
+    border-color: #d1d1d1;
+    border-top-width: 0;
     border-radius: 3px;
     font-size: 40px;
 }
 
-#ReadmeText{
+.ReadmeText{
     margin-left: 50px;
 }
 
