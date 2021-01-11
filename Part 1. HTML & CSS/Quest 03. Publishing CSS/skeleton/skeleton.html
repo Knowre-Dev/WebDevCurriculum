@@ -1,179 +1,186 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./skeleton.css">
-	</head>
-	<body>
-		<!-- TODO: Quest 1에서 완성한 HTML을 바탕으로 필요한 부분을 수정해 보세요 -->
-		<header class="topHeader">
-			<article class="head-search">
-				<img class="mainImg" src="./img/octoface.svg" alt="Path Error" width="24" height="24"/>
-				<input class="head-search-bt" type="button" value="This Repository"/>
-				<label><input class="head-search-form" type="search" placeholder="Search"/></label>
-			</article>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./skeleton.css">
+</head>
+<body>
+<!-- TODO: Quest 1에서 완성한 HTML을 바탕으로 필요한 부분을 수정해 보세요 -->
+<header class="topHeader">
+    <section>≈
+        <article class="head-search">
+            <img class="mainImg" src="./img/octoface.svg" alt="Path Error" width="24" height="24"/>
+            <input class="head-search-bt" type="button" value="This Repository"/>
+            <label><input class="head-search-form" type="search" placeholder="Search"/></label>
+        </article>
 
-			<nav class="head-MainMenu">
-				<ul class="head-MainMenu-content">
-					<li><a href="pr"><input class="head-MainMenu-content-bt" type="button" value="Pull Request"/></a></li>
-					<li><a href="Issues"><input class="head-MainMenu-content-bt" type="button" value="Issues"/></a></li>
-					<li><a href="MarketPlace"><input class="head-MainMenu-content-bt" type="button" value="Marketplace"/></a></li>
-					<li><a href="Explore"><input class="head-MainMenu-content-bt" type="button" value="Explore"/></a></li>
-				</ul>
-			</nav>
+        <nav class="head-MainMenu">
+            <ul class="head-MainMenu-content">
+                <li><a href="pr"><input class="head-MainMenu-content-bt" type="button" value="Pull Request"/></a></li>
+                <li><a href="Issues"><input class="head-MainMenu-content-bt" type="button" value="Issues"/></a></li>
+                <li><a href="MarketPlace"><input class="head-MainMenu-content-bt" type="button"
+                                                 value="Marketplace"/></a></li>
+                <li><a href="Explore"><input class="head-MainMenu-content-bt" type="button" value="Explore"/></a></li>
+            </ul>
+        </nav>
 
-			<article class="head-SubMenu">
-				<a href=""><img src="./img/bell.svg"/></a>
-				<a href=""><img src="./img/plus.svg"/></a>
-				<a href=""><img src="./img/file-media.svg"/></a>
-			</article>
-		</header>
-		<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
-		<section class="main">
-			<header class="main-header">
-				<article class="main-header-RepoPath">
-					<img class="repoIcon" src="./img/repo.svg"/>
-					<a href='AllRepo'><span>KnowRe</span></a>
-					/
-					<a href="SelectRepo">WebDevCurriculum</a>
-				</article>
-				<article class="main-header-RepoInfo">
-					<ul class="main-header-RepoInfo-content">
-						<li>
-							<img class="main-header-menu-content-img" src="./img/unlock.svg"/>
-							<a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Unwatch"/></a>
-							<label><input class="main-header-RepoInfo-content-txt" type="text" value="19"/></label>
-						</li>
-						<li>
-							<img class="main-header-menu-content-img" src="./img/star-fill.svg"/>
-							<a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Star"/></a>
-							<label><input class="main-header-RepoInfo-content-txt" type="text" value="113"/></label>
-						</li>
-						<li>
-							<img class="main-header-menu-content-img" src="./img/git-fork.svg"/>
-							<a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Fork"/></a>
-							<label><input class="main-header-RepoInfo-content-txt" type="text" value="106"/></label>
-						</li>
-					</ul>
-				</article>
-				<nav class="main-header-menu">
-					<ul class="main-header-menu-content">
-						<li><a href=""><input class="main-header-menu-content-bt code" type="button" value="Code"/></a></li>
-						<li><a href=""><input class="main-header-menu-content-bt" type="button" value="Issues"/></a></li>
-						<li><a href=""><input class="main-header-menu-content-bt" type="button" value="Pull Request"/></a></li>
-						<li><a href=""><input class="main-header-menu-content-bt" type="button" value="Projects"/></a></li>
-						<li><a href=""><input class="main-header-menu-content-bt" type="button" value="Insights"/></a></li>
-					</ul>
-				</nav>
-			</header>
+        <article class="head-SubMenu">
+            <a href=""><img src="./img/bell.svg"/></a>
+            <a href=""><img src="./img/plus.svg"/></a>
+            <a href=""><img src="./img/file-media.svg"/></a>
+        </article>
+    </section>
+</header>
+<!-- Article 안에 Section 이 조금 더 자연스러운거 같은데,,? -->
+<section class="main">
+    <header class="main-header">
+        <article class="main-header-RepoPath">
+            <img class="repoIcon" src="./img/repo.svg"/>
+            <a href='AllRepo'><span>KnowRe</span></a>
+            /
+            <a href="SelectRepo">WebDevCurriculum</a>
+        </article>
+        <article class="main-header-RepoInfo">
+            <ul class="main-header-RepoInfo-content">
+                <li>
+                    <img class="main-header-menu-content-img" src="./img/unlock.svg"/>
+                    <a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Unwatch"/></a>
+                    <label><input class="main-header-RepoInfo-content-txt" type="text" value="19"/></label>
+                </li>
+                <li>
+                    <img class="main-header-menu-content-img" src="./img/star-fill.svg"/>
+                    <a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Star"/></a>
+                    <label><input class="main-header-RepoInfo-content-txt" type="text" value="113"/></label>
+                </li>
+                <li>
+                    <img class="main-header-menu-content-img" src="./img/git-fork.svg"/>
+                    <a href=""><input class="main-header-RepoInfo-content-bt" type="button" value="Fork"/></a>
+                    <label><input class="main-header-RepoInfo-content-txt" type="text" value="106"/></label>
+                </li>
+            </ul>
+        </article>
+        <nav class="main-header-menu">
+            <ul class="main-header-menu-content">
+                <li><a href=""><input class="main-header-menu-content-bt code" type="button" value="Code"/></a></li>
+                <li><a href=""><input class="main-header-menu-content-bt" type="button" value="Issues"/></a></li>
+                <li><a href=""><input class="main-header-menu-content-bt" type="button" value="Pull Request"/></a></li>
+                <li><a href=""><input class="main-header-menu-content-bt" type="button" value="Projects"/></a></li>
+                <li><a href=""><input class="main-header-menu-content-bt" type="button" value="Insights"/></a></li>
+            </ul>
+        </nav>
+    </header>
 
-			<section class="main-detail">
-				<span class="main-detail-txt">KnowRe web  development curriculum for noobs</span>
-				<!-- TODO: 메인의 부분 -->
-				<nav class="main-detail-menu">
-					<ul class="main-detail-menu-content">
-						<li>
-							<span class="main-detail-menu-content-value">44</span>
-							<a href=""><input class="main-detail-menu-content-bt" type="button" value="commit"/></a>
-						</li>
-						<li>
-							<span class="main-detail-menu-content-value">1</span>
-							<a href=""><input class="main-detail-menu-content-bt" type="button" value="branch"/></a>
-						</li>
-						<li>
-							<span class="main-detail-menu-content-value">0</span>
-							<a><input class="main-detail-menu-content-bt" type="button" value="release"/></a>
-						</li>
-						<li>
-							<span class="main-detail-menu-content-value">2</span>
-							<a href=""><input class="main-detail-menu-content-bt" type="button" value="contributors"/></a>
-						</li>
-						<li>
-							<a href=""><input class="main-detail-menu-content-bt" type="button" value="MIT"/></a>
-						</li>
-					</ul>
-				</nav>
-				<header class="main-detail-header">
-					<article class="main-detail-left">
-						<input type="button" class="main-detail-left-bt" value="Branch:master ▼"/>
-						<input type="button" class="main-detail-left-bt" value="New Pull Request"/>
-					</article>
+    <section class="main-detail">
+        <span class="main-detail-txt">KnowRe web  development curriculum for noobs</span>
+        <!-- TODO: 메인의 부분 -->
+        <nav class="main-detail-menu">
+            <ul class="main-detail-menu-content">
+                <li>
+                    <span class="main-detail-menu-content-value">44</span>
+                    <a href=""><input class="main-detail-menu-content-bt" type="button" value="commit"/></a>
+                </li>
+                <li>
+                    <span class="main-detail-menu-content-value">1</span>
+                    <a href=""><input class="main-detail-menu-content-bt" type="button" value="branch"/></a>
+                </li>
+                <li>
+                    <span class="main-detail-menu-content-value">0</span>
+                    <a><input class="main-detail-menu-content-bt" type="button" value="release"/></a>
+                </li>
+                <li>
+                    <span class="main-detail-menu-content-value">2</span>
+                    <a href=""><input class="main-detail-menu-content-bt" type="button" value="contributors"/></a>
+                </li>
+                <li>
+                    <a href=""><input class="main-detail-menu-content-bt" type="button" value="MIT"/></a>
+                </li>
+            </ul>
+        </nav>
+        <header class="main-detail-header">
+            <article class="main-detail-left">
+                <input type="button" class="main-detail-left-bt" value="Branch:master ▼"/>
+                <input type="button" class="main-detail-left-bt" value="New Pull Request"/>
+            </article>
 
-					<nav class="main-detail-right">
-						<ul class="main-detail-right-content">
-							<li><a href=""><input class="main-detail-right-content-bt" type="button" value="Create New File"/></a></li>
-							<li><a href=""><input class="main-detail-right-content-bt" type="button" value="Upload Files"/></a></li>
-							<li><a href=""><input class="main-detail-right-content-bt findbt" type="button" value="Find File"/></a></li>
-							<li><a href=""><input class="main-detail-right-content-bt greenbt" type="button" value="Clone or download ▼"/></a></li>
-						</ul>
-					</nav>
-				</header>
+            <nav class="main-detail-right">
+                <ul class="main-detail-right-content">
+                    <li><a href=""><input class="main-detail-right-content-bt" type="button"
+                                          value="Create New File"/></a></li>
+                    <li><a href=""><input class="main-detail-right-content-bt" type="button" value="Upload Files"/></a>
+                    </li>
+                    <li><a href=""><input class="main-detail-right-content-bt findbt" type="button" value="Find File"/></a>
+                    </li>
+                    <li><a href=""><input class="main-detail-right-content-bt greenbt" type="button"
+                                          value="Clone or download ▼"/></a></li>
+                </ul>
+            </nav>
+        </header>
 
-				<article class="main-detail-ContentTopBox">
-					<div class="main-detail-ContentTopBox-div">
-						<span class="User">KnowRe </span>
-						<span class="Constraint">Quest 02 added constraint </span>
-						<span class="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
-					</div>
-				</article>
+        <article class="main-detail-ContentTopBox">
+            <div class="main-detail-ContentTopBox-div">
+                <span class="User">KnowRe </span>
+                <span class="Constraint">Quest 02 added constraint </span>
+                <span class="LastCommit">Latest commit 8a3080e on 7 Aug 2016</span>
+            </div>
+        </article>
 
-				<article class="main-detail-ContentBox">
-					<div class="main-detail-ContentBox-Content">
-						<!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
-						<span class="FolderPath">Part0. git/Quest 0</span>
-						<span class="CommitMessage">Part 2 finished</span>
-						<span class="CommitDate">2 Years ago</span>
-					</div>
-					<div class="main-detail-ContentBox-Content">
-						<!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
-						<span class="FolderPath">Part 1. HTML & CSS</span>
-						<span class="CommitMessage">Quest 02 added constraint</span>
-						<span class="CommitDate">2 Years ago</span>
-					</div>
-					<div class="main-detail-ContentBox-Content">
-						<!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
-						<span class="FolderPath">README.md</span>
-						<span class="CommitMessage">Fix: Removed advertisement</span>
-						<span class="CommitDate">2 Years ago</span>
-					</div>
-				</article>
+        <article class="main-detail-ContentBox">
+            <div class="main-detail-ContentBox-Content">
+                <!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
+                <span class="FolderPath">Part0. git/Quest 0</span>
+                <span class="CommitMessage">Part 2 finished</span>
+                <span class="CommitDate">2 Years ago</span>
+            </div>
+            <div class="main-detail-ContentBox-Content">
+                <!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
+                <span class="FolderPath">Part 1. HTML & CSS</span>
+                <span class="CommitMessage">Quest 02 added constraint</span>
+                <span class="CommitDate">2 Years ago</span>
+            </div>
+            <div class="main-detail-ContentBox-Content">
+                <!-- 컨텐츠 마다 똑같이 적용 할 것이기 때문에 class 사용 -->
+                <span class="FolderPath">README.md</span>
+                <span class="CommitMessage">Fix: Removed advertisement</span>
+                <span class="CommitDate">2 Years ago</span>
+            </div>
+        </article>
 
-				<article class="main-detail-ReadMeTopBox">
-					<span class="Readme">README.md</span>
-				</article>
+        <article class="main-detail-ReadMeTopBox">
+            <span class="Readme">README.md</span>
+        </article>
 
-				<article class="main-detail-ReadMeBox">
-					<span class="ReadmeText">KnowRe Web development curriculum 2018</span>
-				</article>
+        <article class="main-detail-ReadMeBox">
+            <span class="ReadmeText">KnowRe Web development curriculum 2018</span>
+        </article>
 
-			</section>
-		</section>
+    </section>
+</section>
 
-		<footer>
-			<!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
-			<section class="foot">
-				<article class="foot-left">
-					<ul class="foot-left-content">
-						<span>2018 GitHub inc.</span>
-						<li><a href="./Terms">Terms</a></li>
-						<li><a href="./Privacy">Privacy</a></li>
-						<li><a href="./Security">Security</a></li>
-						<li><a href="./Status">Status</a></li>
-						<li><a href="./Help">Help</a></li>
-					</ul>
-				</article>
-				<article class="foot-right">
-					<ul class="foot-right-content">
-						<li><a href="./ContactGithub">Contact GitHub</a></li>
-						<li><a href="./API">API</a></li>
-						<li><a href="./Training">Training</a></li>
-						<li><a href="./Shop">Shop</a></li>
-						<li><a href="./Blog">Blog</a></li>
-						<li><a href="./About">About</a></li>
-					</ul>
-				</article>
+<footer>
+    <!-- TODO: 하단의 Copyright, Terms, Privacy 등은 어떻게 처리하면 좋을까요? -->
+    <section class="foot">
+        <article class="foot-left">
+            <ul class="foot-left-content">
+                <span>2018 GitHub inc.</span>
+                <li><a href="./Terms">Terms</a></li>
+                <li><a href="./Privacy">Privacy</a></li>
+                <li><a href="./Security">Security</a></li>
+                <li><a href="./Status">Status</a></li>
+                <li><a href="./Help">Help</a></li>
+            </ul>
+        </article>
+        <article class="foot-right">
+            <ul class="foot-right-content">
+                <li><a href="./ContactGithub">Contact GitHub</a></li>
+                <li><a href="./API">API</a></li>
+                <li><a href="./Training">Training</a></li>
+                <li><a href="./Shop">Shop</a></li>
+                <li><a href="./Blog">Blog</a></li>
+                <li><a href="./About">About</a></li>
+            </ul>
+        </article>
 
-			</section>
-		</footer>
-	</body>
+    </section>
+</footer>
+</body>
 </html>

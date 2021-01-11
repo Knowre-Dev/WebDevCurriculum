@@ -10,25 +10,26 @@ body {
 
 .contents {
 	/* TODO: 이 곳을 채우세요! */
+	height: 100%;
 }
 
-
+.main {
+	background-color: skyblue;
+	/* TODO: 이 곳을 채우세요! */
+	position: absolute;
+	margin-left: 200px;
+	margin-right: 300px;
+	height: 100%;
+	margin-bottom: 50px;
+}
 
 .main header {
 	background-color: lightgray;
 	position: relative;
+	width: 100%;
 	/* TODO: 이 곳을 채우세요! */
 	height: 30px;
 }
-
-.main{
-	background-color: skyblue;
-	/* TODO: 이 곳을 채우세요! */
-	margin-left: 200px;
-	margin-right: 300px;
-}
-
-
 
 .left {
 	background-color: pink;
@@ -37,8 +38,9 @@ body {
 	left:0;
 	top: 0;
 	width: 200px;
-	height: 100vh;
+	height: 100%;
 	overflow: hidden;
+	margin-bottom: 50px;
 }
 
 .right {
@@ -48,13 +50,17 @@ body {
 	right: 0;
 	top: 0;
 	width: 300px;
-	height: 100vh;
-}
+	height: 100%;
+	margin-bottom: 50px;
 
+}
 
 
 footer {
 	background-color: yellow;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	/* TODO: 이 곳을 채우세요! */
 	height: 50px;
 }
