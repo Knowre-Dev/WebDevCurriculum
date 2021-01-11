@@ -21,45 +21,55 @@ ul {
 
 /* TODO: 또 어떤 코드들이 들어가야 할까요? */
 
-.topHeader {
-    display: flex;
-    /*justify-content: space-around;*/
+
+
+.head {
     width: 100%;
     height: 70px;
     background: #343434;
 }
 
-.head-search {
-    display: flex;
-    flex-wrap: nowrap;
+.head .search {
+    display: inline-block;
     position: relative;
-    justify-content: flex-end;
-    width: 450px;
-    padding: 20px;
+    right: 0;
+    margin-top : 10px;
+    margin-left:150px;
 }
 
-.mainImg {
+.head .search .mainImg {
+    display: inline-block;
+    position: relative;
+    right: 0;
     margin-right: 10px;
     width: 30px;
     height: 30px;
 }
 
-.head-search-bt {
-    width: 30%;
+.head .search .bt {
+    display: inline-block;
+    position: relative;
+    right: 0;
+    width: 150px;
     height: 30px;
     background: #474747;
     border-radius: 5px 0 0 5px;
     border-width: 0;
     color: #FFFFFF;
+    font-size: 15px;
+    margin: 0;
 }
 
-.head-search-bt:hover {
-    color: orange;
+.head .search .bt:hover {
+    color: #58bfe2;
 }
 
-.head-search-form {
+.head .search .form {
+    position: relative;
+    right: 0;
+    top:0;
     height: 30px;
-    width: 100%;
+    width: 200px;
     background: #474747;
     color: #d1d1d1;
     border-radius: 0 5px 5px 0;
@@ -67,20 +77,20 @@ ul {
     border-color: #474747;
 }
 
-.head-MainMenu {
-    display: flex;
+.head .MainMenu {
     position: absolute;
-    right: 45%;
-    top: 0;
+    top:0;
+    right: 35%;
+    display: inline-flex;
     flex-wrap: nowrap;
 }
 
-.head-MainMenu-content {
+.head .MainMenu .content {
     display: flex;
-    flex-basis: auto;
+    position: relative;
 }
 
-.head-MainMenu-content-bt {
+.head .MainMenu .content .bt {
     width: 100%;
     background: #343434;
     color: #FFFFFF;
@@ -90,7 +100,7 @@ ul {
     font-size: 17px;
 }
 
-.head-SubMenu {
+.head .SubMenu {
     position: absolute;
     right: 6%;
     top: 0;
@@ -103,33 +113,49 @@ ul {
     justify-content: flex-start;
 }
 
-.main-header {
+.main .header {
     background-color: #f8fafa;
     border-bottom-width: 2px;
     border-bottom-color: #d1d1d1;
     border-bottom-style: solid;
 }
 
-.main-header-RepoPath {
+.main .header .RepoPath {
     display: flex;
     position: relative;
     font-size: 20px;
+    text-decoration: none;
     margin-top: 15px;
     margin-left: 150px;
 }
 
-.main-header-RepoInfo {
+.main .header .RepoPath .repo{
+    text-decoration: none;
+}
+
+.main .header .RepoPath .name{
+    text-decoration: none;
+}
+
+
+.main .header .RepoInfo {
     position: absolute;
     margin-right: 150px;
     top: 65px;
     right: 0;
 }
 
-.main-header-RepoInfo-content {
+.main .header .RepoInfo .content {
     display: flex;
 }
 
-.main-header-RepoInfo-content-bt {
+.main .header .RepoInfo .content .img {
+    position: absolute;
+    top: 33%;
+    margin-left: -2%;
+}
+
+.main .header .RepoInfo .content .bt {
     height: 30px;
     position: relative;
     background: #f8fafa;
@@ -140,7 +166,7 @@ ul {
     margin-left: 20px;
 }
 
-.main-header-RepoInfo-content-txt {
+.main .header .RepoInfo .content .txt {
     height: 30px;
     width: 35px;
     background: #f9fbfb;
@@ -152,13 +178,13 @@ ul {
     margin-right: 20px;
 }
 
-.main-header-menu {
+.main .header .menu {
     display: flex;
     align-items: flex-end;
     margin-left: 85px;
 }
 
-.main-header-menu-content {
+.main .header .menu .content {
     display: flex;
     flex-basis: auto;
     margin-top: 20px;
@@ -166,13 +192,7 @@ ul {
     margin-bottom: 0;
 }
 
-.main-header-menu-content-img {
-    position: absolute;
-    top: 33%;
-    margin-left: -2%;
-}
-
-.main-header-menu-content-bt {
+.main .header .menu .content .bt {
     border-right-width: 0;
     border-left-width: 0;
     border-top-width: 0;
@@ -184,7 +204,7 @@ ul {
     height: 55px;
 }
 
-.main-header-menu-content-bt.code {
+.main .header .menu .content .bt.code {
     background: white;
     border-right-width: 1px;
     border-right-color: #d1d1d1;
@@ -196,17 +216,18 @@ ul {
     border-top-width: 5px;
     border-bottom-color: white;
     border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-bottom-width: 3px;
+    z-index: 1;
     outline: none;
 }
 
-.main-header-menu-content-bt:hover {
+.main .header .menu .content .bt:hover {
     border-top-color: #474747;
     border-top-width: 4px;
     outline: none;
 }
 
-.main-header-menu-content-bt:active {
+.main .header .menu .content .bt:active {
     background: white;
     border-right-width: 1px;
     border-left-width: 1px;
@@ -215,25 +236,22 @@ ul {
     outline: none;
 }
 
-.main-detail {
+.main .detail {
     margin-left: 150px;
     margin-right: 150px;
 }
 
-.main-detail-menu {
-}
-
-.main-detail-header {
-    position: relative;
-}
-
-.main-detail-txt {
+.main .detail .txt {
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     padding-bottom: 15px;
 }
 
-.main-detail-menu-content {
+.main .detail .menu {
+
+}
+
+.main .detail .menu .content {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -241,16 +259,16 @@ ul {
     outline: orange;
     background: #f9fbfb;
     border-color: #d1d1d1;
-    border-radius: 10px;
+    border-radius: 5px;
     border-style: solid;
     border-width: 1px;
 }
 
-.main-detail-menu-content-value {
+.main .detail .menu .content .value {
     font-weight: bold;
 }
 
-.main-detail-menu-content-bt {
+.main .detail .menu .content .bt {
     border: none;
     outline: none;
     height: 50px;
@@ -259,17 +277,21 @@ ul {
     color: #474747;
 }
 
-.main-detail-menu-content-bt:hover {
+.main .detail .menu .content .bt:hover {
     color: orange;
 }
 
-.main-detail-left {
+.main .detail .bthead {
+    position: relative;
+}
+
+.main .detail .bthead .left {
     display: inline-block;
     position: relative;
     margin-bottom: 10px;
 }
 
-.main-detail-left-bt {
+.main .detail .bthead .left .bt {
     background: #f9fbfb;
     height: 30px;
     width: 140px;
@@ -277,17 +299,17 @@ ul {
     border-style: solid;
     border-radius: 5px;
     border-width: 1px;
-    border-color: #edf2f9;
+    border-color: #d1d1d1;
     color: #474747;
 }
 
-.main-detail-right {
+.main .detail .bthead .right {
     display: inline-block;
     position: absolute;
     right: 0;
 }
 
-.main-detail-right-content {
+.main .detail .bthead .right .content {
     display: flex;
     justify-content: flex-start;
     position: relative;
@@ -295,7 +317,19 @@ ul {
     margin: 0;
 }
 
-.main-detail-right-content .greenbt {
+.main .detail .bthead .right .content .bt {
+    height: 30px;
+    width: 140px;
+    font-weight: bold;
+    background: #f9fbfb;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #d1d1d1;
+    color: #474747;
+}
+
+.main .detail .bthead .right .content .greenbt {
     height: 30px;
     width: 160px;
     font-weight: bold;
@@ -306,32 +340,20 @@ ul {
     color: #FFFFFF;
 }
 
-.main-detail-right-content .findbt {
+.main .detail .bthead .right .content .findbt {
     height: 30px;
     width: 90px;
     font-weight: bold;
     background: #f9fbfb;
     border-style: solid;
+    border-radius: 5px;
     border-width: 1px;
-    border-color: #edf2f9;
-    border-radius: 3px;
+    border-color: #d1d1d1;
     color: #474747;
     margin-right: 10px;
 }
 
-.main-detail-right-content-bt {
-    height: 30px;
-    width: 140px;
-    font-weight: bold;
-    background: #f9fbfb;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #edf2f9;
-    border-radius: 3px;
-    color: #474747;
-}
-
-.main-detail-ContentTopBox {
+.main .detail .ContentTopBox {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -345,28 +367,31 @@ ul {
 
 }
 
-.main-detail-ContentTopBox-div {
+.main .detail .ContentTopBox .div {
     margin-left: 20px;
     width: 100%;
 }
 
-.User {
+.main .detail .ContentTopBox .div .User {
     position: relative;
     font-weight: bold;
 }
 
-.Constraint {
+.main .detail .ContentTopBox .div .Constraint {
     color: #474747;
 }
 
-.LastCommit {
+.main .detail .ContentTopBox .div .LastCommit {
     position: absolute;
     right: 160px;
     color: #474747;
 }
 
+.main .detail .ContentBox{
 
-.main-detail-ContentBox-Content {
+}
+
+.main .detail .ContentBox .Content {
     display: flex;
     width: 100%;
     height: 50px;
@@ -377,26 +402,26 @@ ul {
     border-color: #d1d1d1;
 }
 
-.FolderPath {
+.main .detail .ContentBox .Content .FolderPath {
     position: relative;
     color: #2628d8;
     margin-left: 20px;
 }
 
-.CommitMessage {
+.main .detail .ContentBox .Content .CommitMessage {
     position: absolute;
     left: 700px;
     color: #474747;
 }
 
 
-.CommitDate {
+.main .detail .ContentBox .Content .CommitDate {
     position: absolute;
     right: 170px;
     color: #474747;
 }
 
-.main-detail-ReadMeTopBox {
+.main .detail .ReadMeTopBox {
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -409,12 +434,12 @@ ul {
     border-width: 1px;
 }
 
-.Readme {
+.main .detail .ReadMeTopBox .Readme {
     margin-left: 20px;
     font-weight: bold;
 }
 
-.main-detail-ReadMeBox {
+.main .detail .ReadMeBox {
     display: flex;
     align-items: center;
     width: 100%;
@@ -427,7 +452,7 @@ ul {
     font-size: 40px;
 }
 
-.ReadmeText {
+.main .detail .ReadMeBox .ReadmeText {
     margin-left: 50px;
 }
 
@@ -437,12 +462,12 @@ ul {
     margin: 100px 150px 30px;
 }
 
-.foot-left {
+.foot .left {
     position: relative;
     /*width: 30%;*/
 }
 
-.foot-left-content {
+.foot .left .content {
     display: flex;
     justify-content: space-between;
     font-size: 15px;
@@ -450,13 +475,13 @@ ul {
 
 }
 
-.foot-right {
+.foot .right {
     position: absolute;
     right: 150px;
     width: 40%;
 }
 
-.foot-right-content {
+.foot .right .content {
     width: 70%;
     position: absolute;
     right: 0;
