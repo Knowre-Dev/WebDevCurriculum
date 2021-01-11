@@ -12,7 +12,7 @@ body {
 	/* TODO: 이 곳을 채우세요! */
 	display: flex;
 	flex-flow: row;
-	height: 100vh;
+	height: 100%;
 }
 
 .main {
