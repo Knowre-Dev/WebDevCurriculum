@@ -242,7 +242,7 @@ ul {
 
 }
 
-.main .header .menu .content .bt.code {
+.main .header .menu .content .bt.active {
     background: white;
     border-right-width: 1px;
     border-right-color: #d1d1d1;

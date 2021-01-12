@@ -10,10 +10,8 @@ function stars(num) {
             }
         }
         document.write(res);
-        console.log(res);
-        console.log("\n");
+        console.log(res + "\n");
     }
 }
-
-let num = prompt();
+num = prompt();
 stars(num)
