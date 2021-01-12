@@ -16,7 +16,7 @@ ul {
 
 .head {
     width: 100%;
-    height: 70px;
+    height: 75px;
     background: #343434;
 }
 
@@ -24,14 +24,16 @@ ul {
     display: inline-block;
     position: relative;
     right: 0;
-    margin-top : 10px;
-    margin-left:150px;
+    margin-top : 20px;
+    margin-left:200px;
 }
 
 .head .search .mainImg {
     display: inline-block;
-    position: relative;
-    right: 0;
+    text-align: center;
+    position: absolute;
+    left: -40px;
+    z-index: 1;
     margin-right: 10px;
     width: 30px;
     height: 30px;
@@ -131,6 +133,7 @@ ul {
 
 .main .header .RepoInfo {
     position: absolute;
+    display: inline-block;
     margin-right: 150px;
     top: 65px;
     right: 0;
@@ -140,22 +143,50 @@ ul {
     display: flex;
 }
 
-.main .header .RepoInfo .content .img {
-    position: absolute;
-    top: 33%;
-    margin-left: -2%;
-}
+/*.main .header .RepoInfo .content .img {*/
+/*    position: absolute;*/
+/*    top: 33%;*/
+/*    margin-left: -2%;*/
+/*}*/
 
 .main .header .RepoInfo .content .bt {
-    height: 30px;
+    height: 35px;
+    width: auto;
     position: relative;
-    background: #f8fafa;
+    right: 0;
+    background: #edf2f9;
     border-radius: 5px 0 0 5px;
     border-width: 1px;
     border-style: solid;
     border-color: #d1d1d1;
-    margin-left: 20px;
 }
+
+.main .header .RepoInfo .content .bt .txt{
+    position: relative;
+    background: #d1d1d1;
+    top: -5px;
+    left: 10px;
+    font-size: 15px;
+}
+
+.main .header .RepoInfo .content .subbt{
+    height: 35px;
+    position: relative;
+    top: -6px;
+    left: -3px;
+    background: #f8fafa;
+    margin-right: 15px;
+    border-radius: 0 5px 5px 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d1d1;
+}
+
+.main .header .RepoInfo .content .bt .img{
+    position: relative;
+    bottom: -1px;
+}
+
 
 .main .header .RepoInfo .content .txt {
     height: 30px;
@@ -177,13 +208,13 @@ ul {
 
 .main .header .menu .content {
     display: flex;
-    flex-basis: auto;
     margin-top: 20px;
-    margin-left: 85px;
+    margin-left: 50px;
     margin-bottom: 0;
 }
 
 .main .header .menu .content .bt {
+    position: relative;
     border-right-width: 0;
     border-left-width: 0;
     border-top-width: 0;
@@ -191,8 +222,24 @@ ul {
     border-radius: 2px;
     background: #f8fafa;
     justify-content: center;
-    width: 100px;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 10px;
     height: 55px;
+}
+
+.main .header .menu .content .bt .txt{
+    position: relative;
+    left: 0;
+    top:-8px;
+    font-size: 15px;
+}
+
+.main .header .menu .content .bt .icon{
+    position: relative;
+    top: -2px;
+    margin-top: 10px;
+
 }
 
 .main .header .menu .content .bt.code {
@@ -255,7 +302,10 @@ ul {
     border-width: 1px;
 }
 
+
 .main .detail .menu .content .value {
+    position: relative;
+    left: 0;
     font-weight: bold;
 }
 
@@ -266,6 +316,12 @@ ul {
     background: none;
     font-size: 16px;
     color: #474747;
+}
+
+.main .detail .menu .content .icon{
+    position: relative;
+    top: 6px;
+    left :0;
 }
 
 .main .detail .menu .content .bt:hover {
@@ -355,7 +411,6 @@ ul {
     border-style: solid;
     border-width: 1px;
     border-color: #58bfe2;
-
 }
 
 .main .detail .ContentTopBox .div {
@@ -365,16 +420,29 @@ ul {
 
 .main .detail .ContentTopBox .div .User {
     position: relative;
+    left: 0;
+    top: -10px;
     font-weight: bold;
 }
 
+.main .detail .ContentTopBox .div .yunmin{
+    position: relative;
+    top: 3px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
 .main .detail .ContentTopBox .div .Constraint {
+    position: relative;
+    top: -10px;
     color: #474747;
 }
 
 .main .detail .ContentTopBox .div .LastCommit {
     position: absolute;
-    right: 160px;
+    right: 170px;
+    top: 407px;
     color: #474747;
 }
 
