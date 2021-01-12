@@ -11,15 +11,14 @@ body {
 .contents {
 	/* TODO: 이 곳을 채우세요! */
 	display: flex;
-	flex-flow: row;
 	height: 100%;
 }
 
 .main {
 	background-color: skyblue;
 	/* TODO: 이 곳을 채우세요! */
+	position: relative;
 	flex: 1;
-
 }
 
 .main header {
@@ -33,17 +32,26 @@ body {
 	background-color: pink;
 	/* TODO: 이 곳을 채우세요! */
 	flex-basis: 200px;
+	flex-shrink: 0;
+	flex-grow: 0;
 	overflow: hidden;
+	padding-bottom: 50px;
 }
 
 .right {
 	background-color: greenyellow;
 	/* TODO: 이 곳을 채우세요! */
 	flex-basis: 300px;
+	flex-shrink: 0;
+	flex-grow: 0;
+	padding-bottom: 50px;
 }
 
 footer {
 	background-color: yellow;
 	/* TODO: 이 곳을 채우세요! */
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 	height: 50px;
 }

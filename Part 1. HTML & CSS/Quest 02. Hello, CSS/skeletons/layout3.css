@@ -29,6 +29,7 @@ body {
 	width: 100%;
 	/* TODO: 이 곳을 채우세요! */
 	height: 30px;
+	overflow: hidden;
 }
 
 .left {
