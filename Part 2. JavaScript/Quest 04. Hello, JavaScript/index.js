@@ -1,17 +1,23 @@
 function stars(num) {
-    let i, j, res;
+    let i, j;
     for (i = 0; i < num; i++) {             // n번 반복
-        res = "";
-        for (j = 0; j < num + (num - 1); j++) {         // n = 4, 반복 당 넓이 : 4+(4-1) = 7
-            if (j <= num - 1 + i && j >= num - 1 - i) {  // 좌우의 Space 구현
-                res += "*";
-            } else {
-                res += " ";
-            }
-        }
-        document.write(res);
-        console.log(res + "\n");
+        // num - i + 1 만큼 공백 출력
+        // i + 1 만큼 * 출력
+        console.log(
+            letters(num - i + 1, " ")
+            +letters(i*2+1,"*")
+        );
     }
 }
+
+// Array.fill : 지정한 값으로 치환 함
+// Array.join : 구분자를 치환하여 연결 함
+
+function letters(num, letter){
+    let arr = new Array(num);
+    arr.fill(letter);
+    return arr.join("");
+}
+
 num = prompt();
 stars(num)
