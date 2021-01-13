@@ -4,7 +4,7 @@ function stars(num) {
         // num - i + 1 만큼 공백 출력
         // i + 1 만큼 * 출력
         console.log(
-            letters(num - i + 1, " ")
+            letters(num - i, " ")
             +letters(i*2+1,"*")
         );
     }
@@ -17,6 +17,7 @@ function letters(num, letter){
     let arr = new Array(num);
     arr.fill(letter);
     return arr.join("");
+    // return (new Array(num)).fill(letter).join("");
 }
 
 num = prompt();
