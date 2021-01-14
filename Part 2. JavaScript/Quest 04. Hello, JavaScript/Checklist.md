@@ -199,8 +199,8 @@ Arrow Function은 ES6 문법입니다. `function` 키워드를  사용해서 함
 **또한 화살표 함수는 항상 익명함수입니다.**
 
 ```jsx
-// General Function
-let func =  function() {console.log("func"}};
+// General Function}
+let func =  function() {console.log("func"};
 
 // Arrow Function
 let func2 = () => console.log("func2");
