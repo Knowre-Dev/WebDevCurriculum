@@ -38,17 +38,16 @@
 			for(let node of row1Squares) {
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
 				node.addEventListener('click', 	function(event){
-					if(!status){
-						node.style.background = 'yellow';
-						status = 1;
-					}else{
+					if(node.style.background === "yellow"){
 						node.style.background = 'white';
-						status = 0;
+					}else{
+						node.style.background = 'yellow';
 					}
 				})
 			}
 
 			let row2Squares = document.querySelectorAll('.row2 .square');
+			// node 변수가 var 로 선언되어 있다면 var 의 scope(함수 내) 생명 주기로 인해 마지막 node 를 계속 참조한다.
 			for(let node of row2Squares) {
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
 				node.addEventListener('click', function(event){
