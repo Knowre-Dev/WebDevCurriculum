@@ -92,3 +92,30 @@ console.log(name);  // Yunmin
 그래서 ES6이후 이를 보완하기 위해 추가된 선언 방식이 `let` 과 `const` 입니다.
 
 기본적으로 `var` 예약어는 이제 잘 사용하지 않습니다.
+
+위 문법을 `let` 문법을 사용하여 똑같이 실행한다면,
+
+```jsx
+let name = 'knowre';
+console.log(name);  // knowre
+
+let name = 'Yunmin'
+console.log(name);  // SyntaxError : Identifier 'name' has already been declared
+```
+
+`name` 이 이미 선언되었다는 에러 메세지가 나옵니다. 이는 `const` 도 마찬가지 입니다.
+
+즉, 변수 재선언이 되지 않습니다.
+
+
+```jsx
+let name = 'knowre';
+console.log(name);  // knowre
+
+let name = 'Yunmin'
+console.log(name);  // SyntaxError : Identifier 'name' has already been declared
+
+name = 'Song'
+console.log(name) // Song
+```
+let 은 재할당이 가능합니다.
