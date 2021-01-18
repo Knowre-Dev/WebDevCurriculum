@@ -10,7 +10,7 @@ class Desktop {
 
     // 클릭 된 요소 아이디 얻음
     getID(element){
-        let id = element.getAttribute('class');
+        let id = element.getAttribute('class');     // 클릭한 Element 의 class 값 가져옴
         console.log(id);
         if(id === 'icon'){
             this.icon.Drag(element);
@@ -24,6 +24,7 @@ class Desktop {
 class Icon {
     constructor() {
         this.mEvent = new Mouse();
+        // TODO : 화면에 아이콘 뿌려주는 코드?
     }
     Drag(element){
         this.mEvent.mouseEvent(element);
@@ -34,10 +35,6 @@ class Icon {
 class Folder extends Icon{          // Open 기능만 추가하면 됨
     constructor() {
         super();
-
-    }
-    Drag(element){
-        console.log(super.Drag(element) + "Folder!!");
 
     }
 };
