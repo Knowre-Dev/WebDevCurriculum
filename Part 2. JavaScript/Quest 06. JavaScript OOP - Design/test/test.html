@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag & Drop</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        .outer{
+            position: relative;
+            margin: 50px;
+            height: 300px;
+
+            background-color: burlywood;
+
+        }
+        .box{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 10px;
+            left: 10px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="box"></div>
+</div>
+<script>
+    const box = document.querySelector('.box');
+    let drag = false;
+    let originTop;
+    let originLeft;
+    let originX;
+    let originY;
+
+    box.addEventListener('mousedown', e => {
+        drag = true;
+
+        // 클릭이 일어난 순간에 상대적 위치 저장
+        originTop = box.offsetTop;
+        originLeft = box.offsetLeft;
+        originX = e.clientX;
+        originY = e.clientY;
+        console.log(e);
+    })
+
+    document.addEventListener('mouseup', e => {
+        drag = false;
+    })
+
+    document.addEventListener('mousemove', e => {
+        if(drag){
+            // 상대적 위치를 유지하며 박스 위치 변경
+            const diffX = e.clientX - originX;
+            const diffY = e.clientY - originY;
+            const largeBox = document.querySelector('.outer').getBoundingClientRect();
+            const smallBox = box.getBoundingClientRect();
+
+            //Math.min(Math.max(최소위치, resultX), 최대위치)
+            const resultTop = Math.min(
+                Math.max(0, originTop + diffY),
+                largeBox.height - smallBox.height
+            );
+            const resultLeft = Math.min(
+                Math.max(0, originLeft + diffX),
+                largeBox.width - smallBox.width
+            );
+
+            //최종 box위치
+            box.style.top = `${resultTop}px`;
+            box.style.left = `${resultLeft}px`;
+        }
+
+    })
+</script>
+</body>
+</html>

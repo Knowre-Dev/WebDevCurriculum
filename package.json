@@ -1,0 +1,19 @@
+{
+  "name": "webdevcurriculum",
+  "version": "1.0.0",
+  "description": "* Knowre의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2018년 버전입니다.\r * 이 커리큘럼을 통해 신입 개발자들은 git, HTML, CSS, front-end JavaScript, node.js, MySQL, 그리고 더 나아가 선택된 몇 가지의 최신 웹 기술과 그 작동 원리에 대해 익히게 됩니다.",
+  "main": "Part 3. node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SongYunMin/WebDevCurriculum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SongYunMin/WebDevCurriculum/issues"
+  },
+  "homepage": "https://github.com/SongYunMin/WebDevCurriculum#readme"
+}
