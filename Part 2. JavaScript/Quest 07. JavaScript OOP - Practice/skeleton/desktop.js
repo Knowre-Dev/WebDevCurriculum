@@ -26,76 +26,64 @@ class Mouse {
     }
 
     mouseEvent() {
-        let drag = false;
-        let originTop;
-        let originLeft;
-        let originX;
-        let originY;
-        const classNode = document.querySelectorAll('.icon');     // NodeList
-        const box = document.querySelector('.box');
-        // for (let node of classNode) {
-            box.addEventListener('mousedown', e => {
-                drag = true;
-                originTop = box.offsetTop;
-                originLeft = box.offsetLeft;
-                originX = e.clientX;
-                originY = e.clientY;
-                console.log("Mouse down");
-            })
-            document.addEventListener('mouseup', e => {
-                drag = false;
-                console.log("Mouse Up");
-            })
-            document.addEventListener('mousemove', e => {
-                if (drag) {
-                    const diffX = e.clientX - originX;
-                    const diffY = e.clientY - originY;
-                    const desktopBox = document.querySelector('.desktop')
-                        .getBoundingClientRect();
-                    const smallBox = box.getBoundingClientRect();
+        window.addEventListener("load", function () {
+            // let section = document.querySelector(".desktop");
+            let desktop = document.querySelector(".desktop");
+            let icon = desktop.querySelector(".icon");
+            let dragging = false;
+            let offset = {x: 0, y: 0};
+            let current = null;
+            let left = desktop.offsetLeft;
+            let top = desktop.offsetTop;
 
-                    // Math.min(Math.max(최소위치, resultX), 최대위치)
-                    const resultTop = Math.min(
-                        Math.max(0, originTop + diffY),
-                        desktopBox.height - smallBox.height
-                    );
-
-                    const resultLeft = Math.min(
-                        Math.max(0, originLeft + diffX),
-                        desktopBox.width - smallBox.width
-                    );
-                    box.style.top = `${resultTop}px`;
-                    box.style.left = `${resultLeft}px`;
+            desktop.onmousedown = function (e) {
+                console.log("Mouse Down");
+                if (e.target.classList.contains("icon")) {
+                    dragging = true;
+                    current = e.target;
+                    offset.x = e.offsetX;
+                    offset.y = e.offsetY;
                 }
-            });
-            //
-            // node.addEventListener('dblclick', e => {
-            //     console.log("Mouse double Click");
-            //     if (this.determiningValue(node)) {
-            //         this.window = new Window();
-            //     }
-            // })
-        }
-    // }
+            };
+
+            desktop.onmousemove = function (e) {
+                if (!dragging) return;
+                current.style.left = e.pageX - offset.x - left + "px";
+                current.style.top = e.pageY - offset.y - top + "px";
+            };
+
+            desktop.onmouseup = function (e) {
+                dragging = false;
+                console.log("Mouse Up");
+            };
+
+            desktop.ondblclick = function(e){
+                console.log("double click");
+                new Window(e.target);
+            }
+
+        })
+    }
+
 }
 
 // 열린 폴더의 화면
 class Window {
     constructor(element) {
         this.element = element;
-        console.log("Windows Object");
+        console.log(element);
+        openWindow();
     }
 
     openWindow() {
-
+        const a = document.querySelector(".window");
+        a.style.visibility = "visible"
     }
 
     closeWindow() {
 
     }
 }
-
 const myDeskTop = new Desktop();
 
-// TODO : Folder 지우는 것 고려
-// TODO : 10~ 16 Line 지우는 것 고려
+// TODO : Window 완성해야 함 - visible 이용

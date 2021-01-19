@@ -6,8 +6,9 @@
       <option name="myIgnoreVendorSpecificProperties" value="false" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="1">
+          <list size="2">
             <item index="0" class="java.lang.String" itemvalue="flex-start" />
+            <item index="1" class="java.lang.String" itemvalue="user-drag" />
           </list>
         </value>
       </option>
