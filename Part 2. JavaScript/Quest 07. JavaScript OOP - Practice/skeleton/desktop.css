@@ -1,8 +1,8 @@
 /* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
 .desktop{
     position: relative;
-    width: 100%;
-    height: 100vh;
+    height: 300px;
+    background-color: burlywood;
 }
 
 .desktop .icon{
@@ -21,5 +21,14 @@
 .desktop .icon .iconImg{
     width: 50px;
     height: 50px;
+}
+
+.box{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top:10px;
+    left: 10px;
+    background-color: cornflowerblue;
 }
 
