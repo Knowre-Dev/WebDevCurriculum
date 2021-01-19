@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./desktop.css">
-		<script src="./desktop.js"></script>
-	</head>
-	<body>
-		<section class="desktop">
-		</section>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./desktop.css">
+</head>
+<body>
+<section class="desktop">
+	<button type="button" id="dragdiv" class="icon">
+		<img class="bt" src="./img/icon.png" alt="이미지를 로드 할 수 없음"/>
+	</button>
+	<button type="button" id="dragdiv1" class="folder" onmousedown="myDeskTop.getID(this)">
+		<img class="bt" src="./img/folder.png" alt="이미지를 로드 할 수 없음"/>
+	</button>
+	<button type="button" id="dragdiv2" class="folder" onmousedown="myDeskTop.getID(this)">
+		<img class="bt" src="./img/folder.png" alt="이미지를 로드 할 수 없음"/>
+	</button>
 
-		<script>
-			let myDesktop = new Desktop(
-				/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-			);
-		</script>
-	</body>
+</section>
+<script src="./desktop.js"></script>
+</body>
 </html>

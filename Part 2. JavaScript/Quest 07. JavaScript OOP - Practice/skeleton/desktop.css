@@ -1,1 +1,25 @@
 /* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
+.desktop{
+    width: 100%;
+    height: 100vh;
+}
+
+.desktop .icon{
+    background: transparent;
+    border-style: none;
+}
+
+.desktop .folder{
+    background: transparent;
+    border-style: none;
+}
+
+.desktop .icon .bt{
+    width: 50px;
+    height: 50px;
+}
+
+.desktop .folder .bt{
+    width: 50px;
+    height: 50px;
+}
