@@ -6,7 +6,7 @@ class Desktop {
     }
 
     // 클릭 된 요소 아이디 얻음
-    getID(element){
+    getID(element) {
         this.icon.Drag(element);
     }
 }
@@ -16,44 +16,84 @@ class Icon {
     constructor() {
         this.mEvent = new Mouse();
     }
-    Drag(element){
+
+    Drag(element) {
         this.mEvent.mouseEvent(element);
     }
 }
 
 // 마우스 이벤트
-class Mouse{
-    constructor(element) {                      // 요소 값
-        this.element = element;
-        this.mouseEvent(element);
+class Mouse {
+    // HTML 에서 받아오는게 아
+    constructor() {                      // 요소 값
+        this.a = '1';
+        this.drag = null;
+        this.originTop = null;
+        this.originLeft = null;
+        this.originX = null;
+        this.originY = null
+        this.mouseEvent();
     }
 
-    mouseEvent(element) {
-        const icon = document.querySelector('.bt');
-        let drag = false;
-        let originTop;
-        let originLeft;
-        let originX;
-        let originY;
+    determiningValue(value) {
+        return (value.classList.contains('f'));
+    }
 
-        icon.addEventListener('mouseup', e=>{
-            console.log("Mouse Up!");
-        });
-        // element.onmousedown = function(){
-        //     console.log("Mouse Down");
-        //     drag = true;
-        //
-        // }
-        icon.addEventListener('mousedown', e=>{
-            console.log("Mouse Down!");
-        })
-        // 더블 클릭을 했을때
-        icon.ondblclick = function(){        // Mouse Double Click
-            console.log("Mouse double Click");
-            const buf = element.getAttribute('class');
-            if(buf === 'folder') {
-                this.window = new Window(element);          // 새 창
-            }
+    getPositioningValue(node, e) {
+        this.originTop = node.offsetTop;
+        this.originLeft = node.offsetLeft;
+        this.originX = e.clientX;
+        this.originY = e.clientY;
+    }
+
+    setPositioningValue(node, e){
+        const diffX = e.clientX - this.originX;
+        const diffY = e.clientY - this.originY;
+        const desktopBox = document.querySelector('.desktop').getBoundingClientRect();
+        const smallBox = node.getBoundingClientRect();
+        console.log(desktopBox);
+        console.log(smallBox);
+        // Math.min(Math.max(최소위치, resultX), 최대위치)
+        const resultTop = Math.min(
+            Math.max(0, this.originTop + diffY),
+            desktopBox.height - smallBox.height
+        );
+        const resultLeft = Math.min(
+            Math.max(0, this.originLeft + diffX),
+            desktopBox.width - smallBox.width
+        );
+        console.log(resultTop+'px');
+        node.style.top = `${resultTop}+px`;
+        node.style.left = `${resultLeft}+px`;
+    }
+
+    mouseEvent() {
+        const classNode = document.querySelectorAll('.iconImg');     // NodeList
+        console.log(classNode);
+
+        for (let node of classNode) {
+            node.addEventListener('mousedown', e => {
+                this.drag = true;
+                this.getPositioningValue(node, e);
+            })
+
+            document.addEventListener('mouseup', e => {
+                this.drag = false;
+            })
+
+            document.addEventListener('mousemove', e => {
+                if (this.drag) {
+                    console.log("move");
+                    this.setPositioningValue(node, e);
+                }
+            })
+
+            node.addEventListener('dblclick', e => {
+                console.log("Mouse double Click");
+                if (this.determiningValue(node)) {
+                    this.window = new Window();
+                }
+            })
         }
     }
 }
@@ -64,9 +104,11 @@ class Window {
         this.element = element;
         console.log("Windows Object");
     }
+
     openWindow() {
 
     }
+
     closeWindow() {
 
     }
