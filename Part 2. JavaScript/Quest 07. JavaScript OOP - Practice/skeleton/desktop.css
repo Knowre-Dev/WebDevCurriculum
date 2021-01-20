@@ -1,4 +1,3 @@
-/* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
 .desktop{
     position: relative;
     width: 100%;
@@ -22,13 +21,12 @@
 }
 
 .desktop .window{
-    visibility: hidden;
-    display: block;
+    /*visibility: hidden;*/
     position: absolute;
     width: 500px;
     height: 300px;
-    top: 50%;
-    left: 30%;
+    top: 50px;
+    left: 30px;
     background-color: rgba(255,255,255,0.7);
 }
 

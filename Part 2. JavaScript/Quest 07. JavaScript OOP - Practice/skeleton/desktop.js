@@ -36,7 +36,8 @@ class Mouse {
 
             desktop.onmousedown = function (e) {
                 console.log("Mouse Down");
-                if (e.target.classList.contains("icon")) {
+                if (e.target.classList.contains("icon") ||
+                e.target.classList.contains("window.top")) {
                     dragging = true;
                     current = e.target;
                     offset.x = e.offsetX;
@@ -78,6 +79,7 @@ class Window {
         console.log(this.element.getAttribute('class'));
         const window = document.querySelector(".window");
         console.log(window.getAttribute('class'));
+        console.log("정상");
         window.style.visibility = "visible";
         window.innerHTML =
             "<div class=\'top\'>" +
@@ -86,11 +88,11 @@ class Window {
             "<span class=\'X\'>X</span>" +
             "</div>" +
             "</div>";
-
         this.mEvent.mouseEvent();
+
     }
 
-    closeWindow() {
+    closeWindow(){
 
     }
 }
