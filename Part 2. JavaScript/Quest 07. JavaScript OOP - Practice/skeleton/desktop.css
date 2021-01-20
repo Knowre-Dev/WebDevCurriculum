@@ -42,7 +42,7 @@
 .desktop .window .top .title {
     position: relative;
     font-size: 22px;
-    color: #edf2f9;
+    color: #f9fbfb;
     margin-left: 10px;
 }
 
@@ -54,8 +54,8 @@
     background: red;
 }
 
-.desktop .window .top .xbox .X {
-    font-size: 30px;
+.desktop .window .top .xbox .x {
+    font-size: 25px;
     margin-left: 5px;
     color: #edf2f9;
 }

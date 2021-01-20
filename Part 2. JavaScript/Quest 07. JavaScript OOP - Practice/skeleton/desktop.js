@@ -58,40 +58,44 @@ class Mouse {
             desktop.ondblclick = function (e) {
                 console.log("double click");
                 if (e.target.classList.contains("f")) {  // folder 일때만
-                    const window = new Window(e.target);
-                    window.openWindow();
+                    const window = new Window();
+                    window.openWindow(e.target);
                 }
-            }
+            };
         })
     }
 }
 
 // 열린 폴더의 화면
 class Window {
-    constructor(element) {          // element : e.target  (Folder 만 들어옴)
+    constructor() {                         // element : e.target  (Folder 만 들어옴)
         console.log("Window Class");
-        this.element = element;     // Parameter 초기화
-        this.mEvent = new Mouse();  // Mouse 객체 생성
+        this.mEvent = new Mouse();          // Mouse 객체 생성
     }
 
-    openWindow() {
-        console.log(this.element.getAttribute('class'));
+    openWindow(element) {                  // New Window Open
+        console.log(element.getAttribute('class'));
         const window = document.querySelector(".window");
         console.log(window.getAttribute('class'));
         console.log("정상");
         window.style.visibility = "visible";            // Folder 숨겨 둠 (이게 맞냐..?)
         window.innerHTML =                              // Insert HTML
             "<div class=\'top\'>" +
-            "<span class=\'title\'>Folder</span>" +
-            "<span class=\'X\'>X</span>" +
-            "</div>" +
+                "<span class=\'title\'>Folder</span>" +
+                "<div id=\'xbox\' class=\'xbox\'>" +
+                    "<span class=\'x\'>X</span>" +
+                "</div>" +
             "</div>";
-        this.mEvent.mouseEvent();
+        const xbox = document.querySelector(".desktop .window .xbox");
+        console.log("XBOX : " + xbox);
+        this.closeWindow(window, xbox);
 
     }
 
-    closeWindow(){
-
+    closeWindow(window, xbox){
+        xbox.onclick = function(e) {
+            window.style.visibility = "hidden";
+        }
     }
 }
 
