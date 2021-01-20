@@ -18,10 +18,9 @@ class Icon {
     }
 }
 
-// 마우스 이벤트
+// Mouse Class
 class Mouse {
-    // HTML 에서 받아오는게 아님
-    constructor() {                      // 요소 값
+    constructor() {
         this.mouseEvent();
     }
 
@@ -52,13 +51,15 @@ class Mouse {
             };
 
             desktop.onmouseup = function (e) {
-                dragging = false;
                 console.log("Mouse Up");
+                dragging = false;
             };
 
-            desktop.ondblclick = function(e){
+            desktop.ondblclick = function (e) {
                 console.log("double click");
-                new Window(e.target);
+                if (e.target.classList.contains("f")) {  // folder 일때만
+                    new Window(e.target);
+                }
             }
         })
     }
@@ -66,17 +67,26 @@ class Mouse {
 
 // 열린 폴더의 화면
 class Window {
-    constructor(element) {
-        this.element = element;
-        console.log(element.getAttribute('class'));
-        this.mEvent = new Mouse();
+    constructor(element) {          // element : e.target  (Folder 만 들어옴)
+        console.log("Window Class");
+        this.element = element;     // Parameter 초기화
+        this.mEvent = new Mouse();  // Mouse 객체 생성
         this.openWindow();
     }
 
     openWindow() {
-        const a = document.querySelector(".window");
-        a.innerHTML = "<h2>Folder 1</h2>";
-        a.style.visibility = "visible";
+        console.log(this.element.getAttribute('class'));
+        const window = document.querySelector(".window");
+        console.log(window.getAttribute('class'));
+        window.style.visibility = "visible";
+        window.innerHTML =
+            "<div class=\'top\'>" +
+            "<span class=\'title\'>Folder</span>" +
+            "<div class=\'xbox\'>" +
+            "<span class=\'X\'>X</span>" +
+            "</div>" +
+            "</div>";
+
         this.mEvent.mouseEvent();
     }
 
@@ -84,4 +94,5 @@ class Window {
 
     }
 }
+
 const myDeskTop = new Desktop();

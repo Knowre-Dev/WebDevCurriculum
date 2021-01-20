@@ -33,14 +33,31 @@
 }
 
 .desktop .window .top{
-    position: relative;
+    display: flex;
+    align-content: center;
     width: 100%;
-    height: 50px;
+    height: 30px;
     background-color: #2628d8;
     z-index: 1;
 }
 
-/*.container .icon .img{*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*}*/
+.desktop .window .top .title {
+    position: relative;
+    font-size: 22px;
+    color: #edf2f9;
+    margin-left: 10px;
+}
+
+.desktop .window .top .xbox {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0;
+    background: red;
+}
+
+.desktop .window .top .xbox .X {
+    font-size: 30px;
+    margin-left: 5px;
+    color: #edf2f9;
+}
