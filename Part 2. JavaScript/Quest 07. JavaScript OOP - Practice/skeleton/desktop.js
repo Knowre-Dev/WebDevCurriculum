@@ -26,8 +26,7 @@ class Mouse {
 
     mouseEvent() {
         window.addEventListener("load", function () {
-            let desktop = document.querySelector(".desktop");
-            let icon = desktop.querySelector(".icon");
+            const desktop = document.querySelector(".desktop");
             let dragging = false;
             let offset = {x: 0, y: 0};
             let current = null;
@@ -37,9 +36,9 @@ class Mouse {
             desktop.onmousedown = function (e) {
                 console.log("Mouse Down");
                 if (e.target.classList.contains("icon") ||
-                e.target.classList.contains("window.top")) {
+                e.target.classList.contains("window")) {
                     dragging = true;
-                    current = e.target;
+                    current = e.target;             // target Element를 변수에 저장
                     offset.x = e.offsetX;
                     offset.y = e.offsetY;
                 }
@@ -59,7 +58,8 @@ class Mouse {
             desktop.ondblclick = function (e) {
                 console.log("double click");
                 if (e.target.classList.contains("f")) {  // folder 일때만
-                    new Window(e.target);
+                    const window = new Window(e.target);
+                    window.openWindow();
                 }
             }
         })
@@ -72,7 +72,6 @@ class Window {
         console.log("Window Class");
         this.element = element;     // Parameter 초기화
         this.mEvent = new Mouse();  // Mouse 객체 생성
-        this.openWindow();
     }
 
     openWindow() {
@@ -80,11 +79,10 @@ class Window {
         const window = document.querySelector(".window");
         console.log(window.getAttribute('class'));
         console.log("정상");
-        window.style.visibility = "visible";
-        window.innerHTML =
+        window.style.visibility = "visible";            // Folder 숨겨 둠 (이게 맞냐..?)
+        window.innerHTML =                              // Insert HTML
             "<div class=\'top\'>" +
             "<span class=\'title\'>Folder</span>" +
-            "<div class=\'xbox\'>" +
             "<span class=\'X\'>X</span>" +
             "</div>" +
             "</div>";

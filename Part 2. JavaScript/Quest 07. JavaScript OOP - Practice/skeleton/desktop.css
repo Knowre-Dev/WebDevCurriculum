@@ -21,12 +21,13 @@
 }
 
 .desktop .window{
-    /*visibility: hidden;*/
+    visibility: hidden;
     position: absolute;
     width: 500px;
     height: 300px;
     top: 50px;
     left: 30px;
+    z-index: 100;
     background-color: rgba(255,255,255,0.7);
 }
 
@@ -36,7 +37,6 @@
     width: 100%;
     height: 30px;
     background-color: #2628d8;
-    z-index: 1;
 }
 
 .desktop .window .top .title {
