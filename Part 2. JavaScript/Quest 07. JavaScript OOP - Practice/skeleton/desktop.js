@@ -27,7 +27,6 @@ class Mouse {
 
     mouseEvent() {
         window.addEventListener("load", function () {
-            // let section = document.querySelector(".desktop");
             let desktop = document.querySelector(".desktop");
             let icon = desktop.querySelector(".icon");
             let dragging = false;
@@ -61,23 +60,24 @@ class Mouse {
                 console.log("double click");
                 new Window(e.target);
             }
-
         })
     }
-
 }
 
 // 열린 폴더의 화면
 class Window {
     constructor(element) {
         this.element = element;
-        console.log(element);
-        openWindow();
+        console.log(element.getAttribute('class'));
+        this.mEvent = new Mouse();
+        this.openWindow();
     }
 
     openWindow() {
         const a = document.querySelector(".window");
-        a.style.visibility = "visible"
+        a.innerHTML = "<h2>Folder 1</h2>";
+        a.style.visibility = "visible";
+        this.mEvent.mouseEvent();
     }
 
     closeWindow() {
@@ -85,5 +85,3 @@ class Window {
     }
 }
 const myDeskTop = new Desktop();
-
-// TODO : Window 완성해야 함 - visible 이용
