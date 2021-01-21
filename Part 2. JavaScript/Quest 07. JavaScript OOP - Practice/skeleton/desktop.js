@@ -10,12 +10,14 @@ class Desktop {
 // 일반 아이콘
 class Icon {
     constructor() {
-        const iconCount = document.querySelectorAll(".f");
+        const iconCount = document.querySelectorAll(".icon");
         let index = 1;
         console.log(iconCount);
-        for(let node of iconCount){
-            node.setAttribute("id", "folder"+index++);
-            console.log(node.getAttribute("id","folder1"));
+        for (let node of iconCount) {
+            node.setAttribute("id", "folder" + index++);
+            console.log(node.getAttribute("id", "folder1"));
+            let buf = index * 100;
+            node.style.top = buf + "px";
         }
         this.mEvent = new Mouse();
     }
