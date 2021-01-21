@@ -101,4 +101,5 @@ class Window {
     }
 }
 
-new Desktop();
+let firstDesktop = new Desktop();
+let secondDesktop = new Desktop();

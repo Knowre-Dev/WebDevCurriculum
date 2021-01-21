@@ -3,7 +3,7 @@
     width: 100%;
     height: 100vh;
     background-image: url("./img/background.jpeg");
-    background-size: cover;
+    background-size: contain;
 }
 
 .desktop .icon{
