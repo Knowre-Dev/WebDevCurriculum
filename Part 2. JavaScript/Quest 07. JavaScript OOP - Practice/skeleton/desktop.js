@@ -2,24 +2,26 @@
 class Desktop {
     constructor() {                     // 생성자
         console.log("DeskTop 생성");
-        new Icon();         // 아이콘, 폴더생성'
-        // 여기다 CSS를 날리면?
+        new Icon();         // 아이콘, 폴더생성
     }
 }
 
 // 일반 아이콘
 class Icon {
     constructor() {
+        this.setIconId();
+        this.mEvent = new Mouse();
+    }
+
+    setIconId() {               // 아이콘 배치, 아이콘 id 부여
         const iconCount = document.querySelectorAll(".icon");
         let index = 1;
         console.log(iconCount);
         for (let node of iconCount) {
             node.setAttribute("id", "folder" + index++);
-            console.log(node.getAttribute("id", "folder1"));
             let buf = index * 100;
             node.style.top = buf + "px";
         }
-        this.mEvent = new Mouse();
     }
 }
 
@@ -39,7 +41,6 @@ class Mouse {
             let top = desktop.offsetTop;
 
             desktop.onmousedown = function (e) {
-                console.log("Mouse Down");
                 if (e.target.classList.contains("icon") ||
                     e.target.classList.contains("window")) {
                     dragging = true;
@@ -56,12 +57,10 @@ class Mouse {
             };
 
             desktop.onmouseup = function (e) {
-                console.log("Mouse Up");
                 dragging = false;
             };
 
             desktop.ondblclick = function (e) {
-                console.log("double click");
                 if (e.target.classList.contains("f")) {  // folder 일때만
                     const window = new Window();
                     window.openWindow(e.target);
@@ -81,8 +80,6 @@ class Window {
     openWindow(element) {                  // New Window Open
         console.log(element.getAttribute('class'));
         const window = document.querySelector(".window");
-
-
         const name = element.getAttribute("id");
         window.style.visibility = "visible";            // Folder 숨겨 둠 (이게 맞냐..?)
         window.innerHTML =                              // Insert HTML
@@ -90,10 +87,9 @@ class Window {
             "<div id=\'xbox\' class=\'xbox\'>" +
             "<span class=\'x\'>X</span>" +
             "</div>";
+
         const xbox = document.querySelector(".desktop .window .xbox");
         const title = document.querySelector(".desktop .window .title");
-        console.log("XBOX : " + xbox);
-        console.log("TITLE : " + title);
         title.innerHTML = name;
         this.closeWindow(window, xbox);
     }
