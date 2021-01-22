@@ -1,0 +1,15 @@
+.firstDesktop {
+	position: relative;
+	display: inline-block;
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+}
+
+.secondDesktop {
+	position: relative;
+	display: inline-block;
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+}

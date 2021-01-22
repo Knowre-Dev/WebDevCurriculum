@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./desktop.css">
+    <link rel="stylesheet" href="desktop3.css">
+    <link rel="stylesheet" href="myDesktop.css">
 </head>
 <body>
+    <div class="firstDesktop"></div>
+    <div class="secondDesktop"></div>
 
-<template class="template-desktop">
+    <template class="template-icon">
+        <img class="icon" src="img/icon.png" />
+    </template>
+
+    <template class="template-folder">
+        <img class="icon" src="img/folder.png" />
+    </template>
+    <!-- <template class="template-desktop">
     <section class="desktop">
         <img class="icon f" src="./img/folder.png"/>
         <img class="icon f" src="./img/folder.png"/>
@@ -17,16 +27,23 @@
     </div>
 </section>
 </template>
-
-<template class="template-icon">
-    <img class="icon i" src="./img/icon.png"/>
-</template>
-
-<template class="template_folder">
-
-
-</template>
-
-<script src="./desktop.js"></script>
+ -->
+    <script src="desktop3.js"></script>
+    <script>
+        const firstDesktop = new Desktop(
+            document.querySelector('.firstDesktop'),
+            {
+                folder: 1,
+                icon: 2
+            }
+        );
+        const secondDesktop = new Desktop(
+            document.querySelector('.secondDesktop'),
+            {
+                folder: 0,
+                icon: 1
+            }
+        );
+    </script>
 </body>
 </html>
