@@ -19,30 +19,25 @@
 <template class="template-folder">
     <img class="icon" src="img/folder.png"/>
 </template>
-<!-- <template class="template-desktop">
-<section class="desktop">
-    <img class="icon f" src="./img/folder.png"/>
-    <img class="icon f" src="./img/folder.png"/>
-    <div class="window">
-    <div class="top"></div>
-</div>
-</section>
+
+<template class="template-window">
+    <div class="window"></div>
 </template>
--->
+
 <script src="desktop.js"></script>
 <script>
     const firstDesktop = new Desktop(
         document.querySelector('.firstDesktop'),
         {
-            folder: 1,
-            icon: 2
+            folder: 3,
+            icon: 4
         }
     );
     const secondDesktop = new Desktop(
         document.querySelector('.secondDesktop'),
         {
-            folder: 0,
-            icon: 1
+            folder: 2,
+            icon: 4
         }
     );
 </script>

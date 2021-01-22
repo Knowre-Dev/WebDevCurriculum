@@ -16,6 +16,17 @@
     user-drag: none;
 }
 
+.desktop .window{
+    width: 200px;
+    height: 200px;
+    background-color: #d1d1d1;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
 /* 
 .desktop .window{
     visibility: hidden;
