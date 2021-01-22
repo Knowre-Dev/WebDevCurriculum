@@ -2,6 +2,7 @@ class Desktop {
     #dom            // Private Field
     #icons
     #folders
+    #windows
 
     // 생성자
     constructor(dom, initIcon) {
@@ -10,12 +11,16 @@ class Desktop {
 
         this.#icons = [];                       // Array
         this.#folders = [];
+        this.#windows = [];
+
         for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
             this.newIcon(new Icon());
         }
         for (let i = 0; i < initIcon.folder; i++) {
             this.newFolder(new Folder());
         }
+        // 무조건 생성이 되기 때문에 당연히 2개 Desktop 전부 생김
+        this.newWindow(new Window());
     }
 
     importIconDom(iconDom) {
@@ -46,6 +51,12 @@ class Desktop {
         icon.moveIcon(this.getAutoNewPosition());
         this.#folders.push(icon);
     }
+
+    newWindow(window) {
+        this.#dom.appendChild(window.getDom());
+        this.#windows.push(window);
+    }
+
 }
 
 // 일반 아이콘
@@ -80,12 +91,12 @@ class Icon {
     }
 }
 
-// Folder Class
+// Folder Class - Icon과 동작방식 같음
 class Folder {
     #dom                        // Private Field
 
     constructor() {             // 생성자
-        this.prepareDom();      // icon 과 같음
+        this.prepareDom();
         this.addEvents();
     }
 
@@ -164,7 +175,7 @@ class DraggableHandler {
     addDblClick() {
         this.#dom.addEventListener('dblclick', e => {
             console.info(e);
-            new Window(this.#dom);
+            const w = new Window(this.#dom);
         });
     }
 }
@@ -176,6 +187,14 @@ class Window{
         this.#dom = dom;
         this.prepareDom();          // Ready to Template
         this.createWindow();
+    }
+
+    getDom(){
+        return this.#dom;
+    }
+
+    hideWindow(){
+
     }
 
     prepareDom(){
