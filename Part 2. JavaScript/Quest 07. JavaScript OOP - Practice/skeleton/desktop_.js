@@ -1,5 +1,5 @@
 // 처음에는 세개의 아이콘이 있음
-class Desktop {
+class Desktop_ {
     constructor() {                     // 생성자
         console.log("DeskTop 생성");
         new Icon();         // 아이콘, 폴더생성
@@ -76,7 +76,30 @@ class Window {
         console.log("Window Class");
         this.mEvent = new Mouse();          // Mouse 객체 생성
     }
+
+    openWindow(element) {                  // New Window Open
+        console.log(element.getAttribute('class'));
+        const window = document.querySelector(".window");
+        const name = element.getAttribute("id");
+        window.style.visibility = "visible";            // Folder 숨겨 둠 (이게 맞냐..?)
+        window.innerHTML =                              // Insert HTML
+            "<span class=\'title\'></span>" +
+            "<div id=\'xbox\' class=\'xbox\'>" +
+            "<span class=\'x\'>X</span>" +
+            "</div>";
+
+        const xbox = document.querySelector(".desktop .window .xbox");
+        const title = document.querySelector(".desktop .window .title");
+        title.innerHTML = name;
+        this.closeWindow(window, xbox);
+    }
+
+    closeWindow(window, xbox) {
+        xbox.onclick = function (e) {
+            window.style.visibility = "hidden";
+        }
+    }
 }
 
-let firstDesktop = new Desktop();
-let secondDesktop = new Desktop();
+let firstDesktop = new Desktop_();
+let secondDesktop = new Desktop_();

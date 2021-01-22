@@ -1,15 +1,22 @@
+.monitor{
+	display: flex;
+	justify-content: flex-start;
+}
+
 .firstDesktop {
 	position: relative;
-	display: inline-block;
-	width: 600px;
-	height: 600px;
+	display: block;
+	width: 50%;
+	margin: 0;
+	height: 100vh;
 	border: 1px solid black;
 }
 
 .secondDesktop {
 	position: relative;
-	display: inline-block;
-	width: 600px;
-	height: 600px;
+	display: block;
+	width: 50%;
+	margin: 0;
+	height: 100vh;
 	border: 1px solid black;
 }

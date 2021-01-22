@@ -8,42 +8,43 @@
     <link rel="stylesheet" href="myDesktop.css">
 </head>
 <body>
+<div class="monitor">
     <div class="firstDesktop"></div>
     <div class="secondDesktop"></div>
+</div>
+<template class="template-icon">
+    <img class="icon" src="img/icon.png"/>
+</template>
 
-    <template class="template-icon">
-        <img class="icon" src="img/icon.png" />
-    </template>
-
-    <template class="template-folder">
-        <img class="icon" src="img/folder.png" />
-    </template>
-    <!-- <template class="template-desktop">
-    <section class="desktop">
-        <img class="icon f" src="./img/folder.png"/>
-        <img class="icon f" src="./img/folder.png"/>
-        <div class="window">
-        <div class="top"></div>
-    </div>
+<template class="template-folder">
+    <img class="icon" src="img/folder.png"/>
+</template>
+<!-- <template class="template-desktop">
+<section class="desktop">
+    <img class="icon f" src="./img/folder.png"/>
+    <img class="icon f" src="./img/folder.png"/>
+    <div class="window">
+    <div class="top"></div>
+</div>
 </section>
 </template>
- -->
-    <script src="desktop3.js"></script>
-    <script>
-        const firstDesktop = new Desktop(
-            document.querySelector('.firstDesktop'),
-            {
-                folder: 1,
-                icon: 2
-            }
-        );
-        const secondDesktop = new Desktop(
-            document.querySelector('.secondDesktop'),
-            {
-                folder: 0,
-                icon: 1
-            }
-        );
-    </script>
+-->
+<script src="desktop.js"></script>
+<script>
+    const firstDesktop = new Desktop(
+        document.querySelector('.firstDesktop'),
+        {
+            folder: 1,
+            icon: 2
+        }
+    );
+    const secondDesktop = new Desktop(
+        document.querySelector('.secondDesktop'),
+        {
+            folder: 0,
+            icon: 1
+        }
+    );
+</script>
 </body>
 </html>
