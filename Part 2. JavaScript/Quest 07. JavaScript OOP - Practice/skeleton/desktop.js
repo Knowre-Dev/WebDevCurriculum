@@ -19,15 +19,6 @@ class Desktop {
         for (let i = 0; i < initIcon.folder; i++) {
             this.newFolder(new Folder());
         }
-        this.setDeskTopId();
-    }
-
-    importIconDom(iconDom) {
-        console.info(iconDom);
-        this.#dom.appendChild(iconDom);
-    }
-
-    setDeskTopId(){
     }
 
     //Icon 자리 배치 Return : x, y 값
@@ -56,6 +47,7 @@ class Desktop {
         this.#folders.push(icon);
     }
 
+    // New Window
     newWindow(window) {
         this.#dom.appendChild(window.getDom());
     }
@@ -74,6 +66,7 @@ class Icon {
         return this.#dom;
     }
 
+    // Desktop Class 값 ㅂㅈ
     setDeskTopId(deskID){
         this.#dom.classList.add(deskID);
     }
