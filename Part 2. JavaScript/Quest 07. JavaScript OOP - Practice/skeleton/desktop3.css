@@ -17,14 +17,18 @@
 }
 
 .window{
+    position: absolute;
     width: 200px;
     height: 200px;
-    background-color: #d1d1d1;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    user-drag: none;
+    top: 30px;
+    left: 50px;
+    z-index: 1;
+    background-color: #58bfe2;
+    /*-webkit-user-drag: none;*/
+    /*-khtml-user-drag: none;*/
+    /*-moz-user-drag: none;*/
+    /*-o-user-drag: none;*/
+    /*user-drag: none;*/
 }
 
 /* 

@@ -2,7 +2,7 @@ class Desktop {
     #dom            // Private Field
     #icons
     #folders
-    #windows
+    #initIcon
 
     // 생성자
     constructor(dom, initIcon) {
@@ -11,7 +11,7 @@ class Desktop {
 
         this.#icons = [];                       // Array
         this.#folders = [];
-        this.#windows = [];
+        this.#initIcon = initIcon.desktop;
 
         for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
             this.newIcon(new Icon());
@@ -19,13 +19,15 @@ class Desktop {
         for (let i = 0; i < initIcon.folder; i++) {
             this.newFolder(new Folder());
         }
-        // 무조건 생성이 되기 때문에 당연히 2개 Desktop 전부 생김
-        this.newWindow(new Window());
+        this.setDeskTopId();
     }
 
     importIconDom(iconDom) {
         console.info(iconDom);
         this.#dom.appendChild(iconDom);
+    }
+
+    setDeskTopId(){
     }
 
     //Icon 자리 배치 Return : x, y 값
@@ -40,6 +42,7 @@ class Desktop {
 
     // New Icon
     newIcon(icon) {                     // Parameter : Icon DOM
+        icon.setDeskTopId(this.#initIcon);
         this.#dom.appendChild(icon.getDom());       // icon 의 DOM 을 얻어 Desktop DOM 에 붙임
         icon.moveIcon(this.getAutoNewPosition());   // icon 포지셔닝
         this.#icons.push(icon);                     // icon DOM push
@@ -47,6 +50,7 @@ class Desktop {
 
     // New Folder
     newFolder(icon) {
+        icon.setDeskTopId(this.#initIcon);
         this.#dom.appendChild(icon.getDom());
         icon.moveIcon(this.getAutoNewPosition());
         this.#folders.push(icon);
@@ -54,22 +58,24 @@ class Desktop {
 
     newWindow(window) {
         this.#dom.appendChild(window.getDom());
-        this.#windows.push(window);
     }
-
 }
 
 // 일반 아이콘
 class Icon {
     #dom                    // Private Field
     constructor() {         // 생성자
-        this.prepareDom();  //
+        this.prepareDom();  // DOM 활성화 메서드
         this.addEvents();   // 합성 클래스 호출 메서드
     }
 
     // Icon DOM 얻음 Return : Icon DOM
     getDom() {
         return this.#dom;
+    }
+
+    setDeskTopId(deskID){
+        this.#dom.classList.add(deskID);
     }
 
     // Icon 이동
@@ -83,6 +89,7 @@ class Icon {
         const t = document.querySelector('.template-icon');     // template DOM Select
         const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
         this.#dom = tmpl.querySelector('.icon');                // template icon 선택한 뒤 지역 dom 에 포함
+        this.#dom.classList.add()
     }
 
     // 합성 Class Object 생성 Argument : Icon template DOM
@@ -102,6 +109,10 @@ class Folder {
 
     getDom() {
         return this.#dom;
+    }
+
+    setDeskTopId(deskID){
+        this.#dom.classList.add(deskID);
     }
 
     moveIcon(coord) {
@@ -175,18 +186,23 @@ class DraggableHandler {
     addDblClick() {
         this.#dom.addEventListener('dblclick', e => {
             console.info(e);
-            const w = new Window(this.#dom);
+            if(e.target.classList.contains("1")){
+                firstDesktop.newWindow(new Window(this.#dom));
+            }
+            else{
+                secondDesktop.newWindow(new Window(this.#dom));
+            }
         });
     }
 }
 
 class Window{
     #dom
-
     constructor(dom) {
         this.#dom = dom;
         this.prepareDom();          // Ready to Template
         this.createWindow();
+        this.addEvents();
     }
 
     getDom(){
@@ -206,5 +222,10 @@ class Window{
     createWindow(){
         console.log("Ready to Windows!!");
         console.log(this.#dom);
+    }
+
+    addEvents() {
+        // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
+        new DraggableHandler(this.#dom);
     }
 }
