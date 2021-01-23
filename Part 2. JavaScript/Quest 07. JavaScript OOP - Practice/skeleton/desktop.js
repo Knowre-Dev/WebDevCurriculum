@@ -137,6 +137,7 @@ class DraggableHandler {
         if (option.dblClick) {
             this.addDblClick();
         }
+
     }
 
     addDragAndDrop() {
