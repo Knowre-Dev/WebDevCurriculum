@@ -22,13 +22,19 @@
     height: 200px;
     top: 30px;
     left: 50px;
-    z-index: 1;
     background-color: #58bfe2;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
+}
+
+.top{
+    width: 100%;
+    height: 30px;
+    z-index: 1;
+    background-color: #d9eaff;
 }
 
 /* 

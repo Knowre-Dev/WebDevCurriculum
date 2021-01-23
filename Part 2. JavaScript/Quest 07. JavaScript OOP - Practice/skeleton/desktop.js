@@ -168,7 +168,7 @@ class DraggableHandler {
                     };
                 }
             });
-    
+
             const mouseUpEvent = document.addEventListener('mouseup', () => {
                 pushed = false;
                 // document.removeEventListener('mousemove', mouseMoveEvent);
@@ -195,7 +195,7 @@ class Window{
     constructor(dom) {
         this.#dom = dom;
         this.prepareDom();          // Ready to Template
-        this.createWindow();
+        // this.createWindow();
         this.addEvents();
     }
 
@@ -211,10 +211,6 @@ class Window{
         const t = document.querySelector('.template-window');
         const tmpl = document.importNode(t.content, true);
         this.#dom = tmpl.querySelector('.window');
-    }
-
-    createWindow(){
-        console.log("Ready to Windows!!");
         console.log(this.#dom);
     }
 
