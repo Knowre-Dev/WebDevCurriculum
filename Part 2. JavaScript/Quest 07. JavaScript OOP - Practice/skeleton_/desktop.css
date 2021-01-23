@@ -1,68 +1,68 @@
-.desktop{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-image: url("./img/background.jpeg");
-    background-size: contain;
-}
+/*.desktop{*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    background-image: url("./img/background.jpeg");*/
+/*    background-size: contain;*/
+/*}*/
 
-.desktop .icon{
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 30px;
-    left: 50px;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    user-drag: none;
-}
+/*.desktop .icon{*/
+/*    position: absolute;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    top: 30px;*/
+/*    left: 50px;*/
+/*    -webkit-user-drag: none;*/
+/*    -khtml-user-drag: none;*/
+/*    -moz-user-drag: none;*/
+/*    -o-user-drag: none;*/
+/*    user-drag: none;*/
+/*}*/
 
-.desktop .window{
-    visibility: hidden;
-    position: absolute;
-    width: 500px;
-    height: 300px;
-    top: 50px;
-    left: 30px;
-    z-index: 100;
-    border-style: solid;
-    border-color: #d1d1d1;
-    border-radius: 10px;
-    border-width: 1px;
-    background-color: rgba(255,255,255,0.7);
-}
+/*.desktop .window{*/
+/*    visibility: hidden;*/
+/*    position: absolute;*/
+/*    width: 500px;*/
+/*    height: 300px;*/
+/*    top: 50px;*/
+/*    left: 30px;*/
+/*    z-index: 100;*/
+/*    border-style: solid;*/
+/*    border-color: #d1d1d1;*/
+/*    border-radius: 10px;*/
+/*    border-width: 1px;*/
+/*    background-color: rgba(255,255,255,0.7);*/
+/*}*/
 
-.desktop .window .top{
-    display: flex;
-    align-content: center;
-    width: 100%;
-    height: 30px;
-    background-color: #2628d8;
-}
+/*.desktop .window .top{*/
+/*    display: flex;*/
+/*    align-content: center;*/
+/*    width: 100%;*/
+/*    height: 30px;*/
+/*    background-color: #2628d8;*/
+/*}*/
 
-.desktop .window .title {
-    position: relative;
-    font-size: 22px;
-    color: midnightblue;
-    margin-left: 10px;
-}
+/*.desktop .window .title {*/
+/*    position: relative;*/
+/*    font-size: 22px;*/
+/*    color: midnightblue;*/
+/*    margin-left: 10px;*/
+/*}*/
 
-.desktop .window .xbox {
-    position: absolute;
-    width: 25px;
-    height: 28px;
-    right: 0;
-    top: 0;
-    background: red;
-    border-width: 2px;
-    border-color: red;
-    border-radius: 5px;
-}
+/*.desktop .window .xbox {*/
+/*    position: absolute;*/
+/*    width: 25px;*/
+/*    height: 28px;*/
+/*    right: 0;*/
+/*    top: 0;*/
+/*    background: red;*/
+/*    border-width: 2px;*/
+/*    border-color: red;*/
+/*    border-radius: 5px;*/
+/*}*/
 
-.desktop .window .xbox .x {
-    font-size: 25px;
-    margin-left: 5px;
-    color: #edf2f9;
-}
+/*.desktop .window .xbox .x {*/
+/*    font-size: 25px;*/
+/*    margin-left: 5px;*/
+/*    color: #edf2f9;*/
+/*}*/

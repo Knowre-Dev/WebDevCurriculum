@@ -26,8 +26,8 @@ class Desktop {
         const totalIcon = this.#icons.length + this.#folders.length;    // 아이콘 갯수
         return {
             // x, y 축 Return
-            x: 50 * Math.floor(totalIcon / 7),      // floor : 소수점 자르고 정수 반환
-            y: 50 * (totalIcon % 7)
+            x: 50 * Math.floor(totalIcon / 10),      // floor : 소수점 자르고 정수 반환
+            y: 50 * (totalIcon % 10)
         };
     }
 
@@ -67,7 +67,7 @@ class Icon {
     }
 
     // Desktop Class 값 ㅂㅈ
-    setDeskTopId(deskID){
+    setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
     }
 
@@ -104,7 +104,7 @@ class Folder {
         return this.#dom;
     }
 
-    setDeskTopId(deskID){
+    setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
     }
 
@@ -121,7 +121,7 @@ class Folder {
 
     addEvents() {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
-        new DraggableHandler(this.#dom, { dblClick: true });
+        new DraggableHandler(this.#dom, {dblClick: true});
     }
 }
 
@@ -129,14 +129,21 @@ class Folder {
 class DraggableHandler {
     #dom            // Private Field
     #option         // dblClick Option
+    // #xbox
 
-    constructor(dom, option = {}) {
+    constructor(dom, option = {}, xbox) {
         this.#dom = dom;
         this.#option = option;
+        // this.#xbox = xbox;
         this.addDragAndDrop();
+
         if (option.dblClick) {
             this.addDblClick();
         }
+
+        // if (option.xbox) {
+        //     this.addXboxClick();
+        // }
 
     }
 
@@ -147,7 +154,7 @@ class DraggableHandler {
                 x: e.clientX,
                 y: e.clientY
             };
-    
+
             const mouseMoveEvent = document.addEventListener('mousemove', e => {
                 if (pushed) {
                     const currCoord = {
@@ -158,10 +165,10 @@ class DraggableHandler {
                         x: currCoord.x + e.clientX - mouseCoord.x,
                         y: currCoord.y + e.clientY - mouseCoord.y
                     };
-    
+
                     this.#dom.style.left = `${destCoord.x}px`;
                     this.#dom.style.top = `${destCoord.y}px`;
-    
+
                     mouseCoord = {
                         x: e.clientX,
                         y: e.clientY
@@ -171,8 +178,8 @@ class DraggableHandler {
 
             const mouseUpEvent = document.addEventListener('mouseup', () => {
                 pushed = false;
-                // document.removeEventListener('mousemove', mouseMoveEvent);
-                // document.removeEventListener('mouseup', mouseUpEvent);
+                document.removeEventListener('mousemove', mouseMoveEvent);
+                document.removeEventListener('mouseup', mouseUpEvent);
             });
         });
     }
@@ -180,42 +187,54 @@ class DraggableHandler {
     addDblClick() {
         this.#dom.addEventListener('dblclick', e => {
             console.info(e);
-            if(e.target.classList.contains("1")){
+            if (e.target.classList.contains("1")) {
                 firstDesktop.newWindow(new Window(this.#dom));
-            }
-            else{
+            } else {
                 secondDesktop.newWindow(new Window(this.#dom));
             }
         });
     }
+
+    // addXboxClick() {
+    //     this.#xbox.addEventListener('mouseClick', () => {
+    //         console.log("Click");
+    //         this.#dom.remove();
+    //     })
+    // }
 }
 
-class Window{
+class Window {
     #dom
+    #xbox
+
     constructor(dom) {
         this.#dom = dom;
         this.prepareDom();          // Ready to Template
-        // this.createWindow();
         this.addEvents();
     }
 
-    getDom(){
+    getDom() {
         return this.#dom;
     }
 
-    hideWindow(){
-
-    }
-
-    prepareDom(){
+    prepareDom() {
         const t = document.querySelector('.template-window');
         const tmpl = document.importNode(t.content, true);
         this.#dom = tmpl.querySelector('.window');
+        this.#xbox = tmpl.querySelector('.xbox');
         console.log(this.#dom);
     }
 
     addEvents() {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
-        new DraggableHandler(this.#dom);
+        const event = new DraggableHandler(this.#dom, {xbox: true}, this.#xbox);
+        this.#xbox.addEventListener('click', function(e){
+            e.target.parentNode.removeChild(e);
+        })
     }
+
+    closeWindow(dom){
+        dom.parentElement.removeChild(dom);
+    }
+
 }

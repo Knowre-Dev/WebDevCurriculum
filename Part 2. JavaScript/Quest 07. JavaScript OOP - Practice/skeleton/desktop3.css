@@ -20,8 +20,8 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    top: 30px;
-    left: 50px;
+    top: 0;
+    left: 0;
     background-color: #58bfe2;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -37,6 +37,13 @@
     background-color: #d9eaff;
 }
 
+.xbox{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    right: 0;
+}
 /* 
 .desktop .window{
     visibility: hidden;
