@@ -129,9 +129,8 @@ class Folder {
 class DraggableHandler {
     #dom            // Private Field
     #option         // dblClick Option
-    // #xbox
 
-    constructor(dom, option = {}, xbox) {
+    constructor(dom, option = {}) {
         this.#dom = dom;
         this.#option = option;
         // this.#xbox = xbox;
@@ -140,14 +139,10 @@ class DraggableHandler {
         if (option.dblClick) {
             this.addDblClick();
         }
-
-        // if (option.xbox) {
-        //     this.addXboxClick();
-        // }
-
     }
 
     addDragAndDrop() {
+        console.log(this.#dom);
         this.#dom.addEventListener('mousedown', e => {
             let pushed = true;
             let mouseCoord = {
@@ -194,13 +189,6 @@ class DraggableHandler {
             }
         });
     }
-
-    // addXboxClick() {
-    //     this.#xbox.addEventListener('mouseClick', () => {
-    //         console.log("Click");
-    //         this.#dom.remove();
-    //     })
-    // }
 }
 
 class Window {
@@ -227,13 +215,20 @@ class Window {
 
     addEvents() {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
-        const event = new DraggableHandler(this.#dom, {xbox: true}, this.#xbox);
-        const mouseClickEvent = this.#xbox.addEventListener('click', e =>{
-            console.log(e.target);
+        const event = new DraggableHandler(this.#dom, {xbox: true});
+        const mouseClickEvent = this.#xbox.addEventListener('click', () => {
             this.#dom.remove();
         })
+
+    }
+}
+
+class ChangeHandler {
+    #dom
+
+    constructor(dom) {
+        this.#dom = dom;
     }
 
-    
 
 }
