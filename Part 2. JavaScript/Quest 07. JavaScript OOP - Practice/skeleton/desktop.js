@@ -4,6 +4,7 @@ class Desktop {
     #folders
     #desktops
     #button
+    btListener
 
     // 생성자
     constructor(dom, initIcon) {
@@ -14,6 +15,7 @@ class Desktop {
         this.#folders = [];
         this.#desktops = initIcon.desktop;
         this.icon = null;
+        this.btListener = new Button();
 
         for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
             this.icon = new Icon();
@@ -24,6 +26,7 @@ class Desktop {
             this.newFolder(this.icon);
         }
         this.changeIconSize();
+        this.changeIconImg();
 
     }
 
@@ -59,18 +62,22 @@ class Desktop {
     }
 
     changeIconSize() {
-        const bt = new Button();
-        this.#button = bt.getDom();
+        this.#button = this.btListener.getDom();
         this.#dom.appendChild(this.#button);
-        bt.getChangeSize(this.#dom);
+        this.btListener.getChangeSize(this.#dom);
+    }
+
+    changeIconImg(){
+        this.#button = this.btListener.getImgDom();
+        this.#dom.appendChild(this.#button);
     }
 }
 
 // Button Class
 class Button {
     #dom
-
-    constructor() {
+    #subdom
+    constructor(option={}) {
         this.prepareDom();
     }
 
@@ -78,14 +85,20 @@ class Button {
         const t = document.querySelector('.template-ChangeSize');     // template DOM Select
         const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
         this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
-        console.log(this.#dom);
     }
 
     getDom() {
         return this.#dom;
     }
 
-    getChangeSize(desktop) {
+    getImgDom(){
+        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
+        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
+        this.#subdom = tmpl.querySelector('.changeIcon');
+        return this.#subdom;
+    }
+
+    changeIconSize(desktop) {
         const element = desktop.childNodes;
         console.log(element);
         const event = this.#dom.addEventListener('click', () => {
@@ -103,8 +116,13 @@ class Button {
             }
             desktop.appendChild(this.#dom);
         });
-
     }
+
+    changeIconImg(desktop){
+        
+    }
+
+
 }
 
 // 일반 아이콘

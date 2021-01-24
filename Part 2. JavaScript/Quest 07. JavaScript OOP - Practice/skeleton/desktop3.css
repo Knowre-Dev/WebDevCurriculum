@@ -60,6 +60,12 @@
     top: 10px;
 }
 
+.changeIcon{
+    position: absolute;
+    right: 110px;
+    top: 10px;
+}
+
 /* 
 .desktop .window{
     visibility: hidden;
