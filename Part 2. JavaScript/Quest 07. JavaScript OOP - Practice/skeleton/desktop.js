@@ -64,12 +64,13 @@ class Desktop {
     changeIconSize() {
         this.#button = this.btListener.getDom();
         this.#dom.appendChild(this.#button);
-        this.btListener.getChangeSize(this.#dom);
+        this.btListener.changeIconSize(this.#dom);
     }
 
-    changeIconImg(){
+    changeIconImg() {
         this.#button = this.btListener.getImgDom();
         this.#dom.appendChild(this.#button);
+        this.btListener.changeIconImg(this.#dom);
     }
 }
 
@@ -77,7 +78,8 @@ class Desktop {
 class Button {
     #dom
     #subdom
-    constructor(option={}) {
+
+    constructor(option = {}) {
         this.prepareDom();
     }
 
@@ -91,7 +93,7 @@ class Button {
         return this.#dom;
     }
 
-    getImgDom(){
+    getImgDom() {
         const t = document.querySelector('.template-ChangeSize');     // template DOM Select
         const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
         this.#subdom = tmpl.querySelector('.changeIcon');
@@ -106,10 +108,12 @@ class Button {
             let width = prompt('Width', "");
             let height = prompt("Height", "");
             for (let node of element) {
-                if (node.getAttribute('class') === 'icon 1' ||
-                    node.getAttribute('class') === 'icon 2') {
-                    node.style.width = width+"px";
-                    node.style.height = height+"px";
+                // if (node.getAttribute('class') === 'icon 1' ||
+                //     node.getAttribute('class') === 'icon 2')
+                if(node.classList.contains('icon'))
+                {
+                    node.style.width = width + "px";
+                    node.style.height = height + "px";
                 } else {
                     node.remove();
                 }
@@ -118,8 +122,27 @@ class Button {
         });
     }
 
-    changeIconImg(desktop){
-        
+    changeIconImg(desktop) {
+        const event = this.#subdom.addEventListener('click', (e) => {
+            const element = desktop.childNodes;
+            let type = prompt('바꿀 아이콘 타입을 입력하세요. ex) Icon : i Folder : f');
+            let name = prompt('img 폴더에 저장된 아이콘의 이름을 입력하세요 ex)test.png');
+            if (type === 'i') {
+                console.log("Icon!");
+                for (let node of element) {
+                    if (node.classList.contains('i')) {
+                        node.setAttribute('src', "./img/" + name);
+                    }
+                }
+            } else if (type === 'f') {
+                console.log("folder!");
+                for (let node of element) {
+                    if (node.classList.contains('f')) {
+                        node.setAttribute('src', "./img/" + name);
+                    }
+                }
+            }
+        });
     }
 
 
@@ -141,6 +164,8 @@ class Icon {
     // Desktop Class 값
     setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
+        this.#dom.classList.add('i');
+        this.#dom.setAttribute('src', './img/icon.png');
     }
 
     // Icon 이동
@@ -177,6 +202,7 @@ class Folder {
 
     setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
+        this.#dom.classList.add('f');
     }
 
     moveIcon(coord) {

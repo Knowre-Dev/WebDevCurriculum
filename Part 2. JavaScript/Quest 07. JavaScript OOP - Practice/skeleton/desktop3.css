@@ -4,7 +4,7 @@
 }
 
 
-.desktop .icon{
+.icon{
     position: absolute;
     width: 50px;
     height: 50px;
@@ -15,15 +15,16 @@
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
+    background-image: url("img/icon.png");
 }
 
 .window{
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     top: 0;
     left: 0;
-    background-color: #58bfe2;
+    background-color: rgba(0,0,0,0.2);
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
@@ -41,6 +42,7 @@
 
 .name{
     position: absolute;
+    font-size: 25px;
     width: 70px;
     height: 30px;
     left: 5px;
