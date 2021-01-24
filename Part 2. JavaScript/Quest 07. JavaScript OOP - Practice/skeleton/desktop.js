@@ -228,13 +228,12 @@ class Window {
     addEvents() {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         const event = new DraggableHandler(this.#dom, {xbox: true}, this.#xbox);
-        this.#xbox.addEventListener('click', function(e){
-            e.target.parentNode.removeChild(e);
+        const mouseClickEvent = this.#xbox.addEventListener('click', e =>{
+            console.log(e.target);
+            this.#dom.remove();
         })
     }
 
-    closeWindow(dom){
-        dom.parentElement.removeChild(dom);
-    }
+    
 
 }

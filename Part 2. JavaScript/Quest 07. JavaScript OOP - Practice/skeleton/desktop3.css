@@ -37,6 +37,13 @@
     background-color: #d9eaff;
 }
 
+.name{
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    left: 5px;
+}
+
 .xbox{
     position: absolute;
     width: 30px;
