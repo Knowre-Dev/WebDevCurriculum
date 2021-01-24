@@ -129,6 +129,8 @@ class Folder {
 class DraggableHandler {
     #dom            // Private Field
     #option         // dblClick Option
+    #top
+    #select
 
     constructor(dom, option = {}) {
         this.#dom = dom;
@@ -141,21 +143,28 @@ class DraggableHandler {
         }
     }
 
+    choiceElement(){
+
+    }
+
     addDragAndDrop() {
-        this.#dom.addEventListener('mousedown', e => {
-            console.log(this.#dom);
-            if(this.#dom.classList.contains('window')){
-                this.#dom = this.#dom.querySelector(".top");
-                console.log(this.#dom);
-            }
+        if (this.#dom.classList.contains('window')) {
+            this.#select = this.#dom.querySelector('.top');
+            console.log(this.#select);
+        }else{
+            this.#select = this.#dom;
+        }
+
+        this.#select.addEventListener('mousedown', e => {
             let pushed = true;
             let mouseCoord = {
                 x: e.clientX,
                 y: e.clientY
             };
 
-            const mouseMoveEvent = document.addEventListener('mousemove', e => {
+            const mouseMoveEvent = this.#select.addEventListener('mousemove', e => {
                 if (pushed) {
+                    console.log("Move Event");
                     const currCoord = {
                         x: Number(this.#dom.style.left.replace('px', '')),
                         y: Number(this.#dom.style.top.replace('px', ''))
@@ -175,10 +184,10 @@ class DraggableHandler {
                 }
             });
 
-            const mouseUpEvent = document.addEventListener('mouseup', () => {
+            const mouseUpEvent = this.#select.addEventListener('mouseup', () => {
                 pushed = false;
-                document.removeEventListener('mousemove', mouseMoveEvent);
-                document.removeEventListener('mouseup', mouseUpEvent);
+                this.#select.removeEventListener('mousemove', mouseMoveEvent);
+                this.#select.removeEventListener('mouseup', mouseUpEvent);
             });
         });
     }
@@ -229,6 +238,7 @@ class Window {
 
 class ChangeHandler {
     #dom
+    #top
     constructor(dom) {
         this.#dom = dom;
     }
