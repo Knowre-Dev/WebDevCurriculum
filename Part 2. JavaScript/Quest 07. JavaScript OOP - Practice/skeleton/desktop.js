@@ -142,8 +142,12 @@ class DraggableHandler {
     }
 
     addDragAndDrop() {
-        console.log(this.#dom);
         this.#dom.addEventListener('mousedown', e => {
+            console.log(this.#dom);
+            if(this.#dom.classList.contains('window')){
+                this.#dom = this.#dom.querySelector(".top");
+                console.log(this.#dom);
+            }
             let pushed = true;
             let mouseCoord = {
                 x: e.clientX,
@@ -225,7 +229,6 @@ class Window {
 
 class ChangeHandler {
     #dom
-
     constructor(dom) {
         this.#dom = dom;
     }
