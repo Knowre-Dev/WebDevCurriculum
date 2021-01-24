@@ -3,6 +3,7 @@ class Desktop {
     #icons
     #folders
     #initIcon
+    #button
 
     // 생성자
     constructor(dom, initIcon) {
@@ -12,6 +13,7 @@ class Desktop {
         this.#icons = [];                       // Array
         this.#folders = [];
         this.#initIcon = initIcon.desktop;
+        this.changeButtonSize(new Button());
 
         for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
             this.newIcon(new Icon());
@@ -51,6 +53,30 @@ class Desktop {
     newWindow(window) {
         this.#dom.appendChild(window.getDom());
     }
+
+    changeButtonSize(button){
+        this.#button = button.getDom();
+        // this.#button.appendChild(button.getDom());
+        this.#dom.appendChild(this.#button);
+    }
+}
+
+class Button{
+    #dom
+    constructor() {
+       this.prepareDom();
+    }
+
+    prepareDom() {
+        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
+        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
+        this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
+        console.log(this.#dom);
+    }
+
+    getDom(){
+        return this.#dom;
+    }
 }
 
 // 일반 아이콘
@@ -66,7 +92,7 @@ class Icon {
         return this.#dom;
     }
 
-    // Desktop Class 값 ㅂㅈ
+    // Desktop Class 값
     setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
     }
@@ -82,7 +108,6 @@ class Icon {
         const t = document.querySelector('.template-icon');     // template DOM Select
         const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
         this.#dom = tmpl.querySelector('.icon');                // template icon 선택한 뒤 지역 dom 에 포함
-        this.#dom.classList.add()
     }
 
     // 합성 Class Object 생성 Argument : Icon template DOM
@@ -129,7 +154,6 @@ class Folder {
 class DraggableHandler {
     #dom            // Private Field
     #option         // dblClick Option
-    #top
     #select
 
     constructor(dom, option = {}) {
@@ -143,19 +167,15 @@ class DraggableHandler {
         }
     }
 
-    choiceElement(){
-
-    }
-
     addDragAndDrop() {
+        // window Drag || Icon Drag
         if (this.#dom.classList.contains('window')) {
             this.#select = this.#dom.querySelector('.top');
-            console.log(this.#select);
         }else{
             this.#select = this.#dom;
         }
 
-        this.#select.addEventListener('mousedown', e => {
+        const mouseDownEvent = this.#select.addEventListener('mousedown', e => {
             let pushed = true;
             let mouseCoord = {
                 x: e.clientX,
@@ -164,7 +184,6 @@ class DraggableHandler {
 
             const mouseMoveEvent = this.#select.addEventListener('mousemove', e => {
                 if (pushed) {
-                    console.log("Move Event");
                     const currCoord = {
                         x: Number(this.#dom.style.left.replace('px', '')),
                         y: Number(this.#dom.style.top.replace('px', ''))
@@ -187,6 +206,7 @@ class DraggableHandler {
             const mouseUpEvent = this.#select.addEventListener('mouseup', () => {
                 pushed = false;
                 this.#select.removeEventListener('mousemove', mouseMoveEvent);
+                this.#select.removeEventListener('mousedown', mouseDownEvent);
                 this.#select.removeEventListener('mouseup', mouseUpEvent);
             });
         });
@@ -223,7 +243,6 @@ class Window {
         const tmpl = document.importNode(t.content, true);
         this.#dom = tmpl.querySelector('.window');
         this.#xbox = tmpl.querySelector('.xbox');
-        console.log(this.#dom);
     }
 
     addEvents() {
@@ -232,16 +251,6 @@ class Window {
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
             this.#dom.remove();
         })
-
     }
 }
 
-class ChangeHandler {
-    #dom
-    #top
-    constructor(dom) {
-        this.#dom = dom;
-    }
-
-
-}
