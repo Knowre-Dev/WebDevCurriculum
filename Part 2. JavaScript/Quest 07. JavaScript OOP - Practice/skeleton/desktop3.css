@@ -3,6 +3,7 @@
     background-size: contain;
 }
 
+
 .desktop .icon{
     position: absolute;
     width: 50px;
@@ -52,6 +53,13 @@
     background-color: red;
     right: 0;
 }
+
+.changeBT{
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
 /* 
 .desktop .window{
     visibility: hidden;

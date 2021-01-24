@@ -2,7 +2,7 @@ class Desktop {
     #dom            // Private Field
     #icons
     #folders
-    #initIcon
+    #desktops
     #button
 
     // 생성자
@@ -12,15 +12,19 @@ class Desktop {
 
         this.#icons = [];                       // Array
         this.#folders = [];
-        this.#initIcon = initIcon.desktop;
-        this.changeButtonSize(new Button());
+        this.#desktops = initIcon.desktop;
+        this.icon = null;
 
         for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
-            this.newIcon(new Icon());
+            this.icon = new Icon();
+            this.newIcon(this.icon);
         }
         for (let i = 0; i < initIcon.folder; i++) {
-            this.newFolder(new Folder());
+            this.icon = new Folder();
+            this.newFolder(this.icon);
         }
+        this.changeIconSize();
+
     }
 
     //Icon 자리 배치 Return : x, y 값
@@ -35,7 +39,7 @@ class Desktop {
 
     // New Icon
     newIcon(icon) {                     // Parameter : Icon DOM
-        icon.setDeskTopId(this.#initIcon);
+        icon.setDeskTopId(this.#desktops);
         this.#dom.appendChild(icon.getDom());       // icon 의 DOM 을 얻어 Desktop DOM 에 붙임
         icon.moveIcon(this.getAutoNewPosition());   // icon 포지셔닝
         this.#icons.push(icon);                     // icon DOM push
@@ -43,7 +47,7 @@ class Desktop {
 
     // New Folder
     newFolder(icon) {
-        icon.setDeskTopId(this.#initIcon);
+        icon.setDeskTopId(this.#desktops);
         this.#dom.appendChild(icon.getDom());
         icon.moveIcon(this.getAutoNewPosition());
         this.#folders.push(icon);
@@ -54,17 +58,20 @@ class Desktop {
         this.#dom.appendChild(window.getDom());
     }
 
-    changeButtonSize(button){
-        this.#button = button.getDom();
-        // this.#button.appendChild(button.getDom());
+    changeIconSize() {
+        const bt = new Button();
+        this.#button = bt.getDom();
         this.#dom.appendChild(this.#button);
+        bt.getChangeSize(this.#dom);
     }
 }
 
-class Button{
+// Button Class
+class Button {
     #dom
+
     constructor() {
-       this.prepareDom();
+        this.prepareDom();
     }
 
     prepareDom() {
@@ -74,8 +81,29 @@ class Button{
         console.log(this.#dom);
     }
 
-    getDom(){
+    getDom() {
         return this.#dom;
+    }
+
+    getChangeSize(desktop) {
+        const element = desktop.childNodes;
+        console.log(element);
+        const event = this.#dom.addEventListener('click', () => {
+            console.log("정상");
+            let width = prompt('Width', "");
+            let height = prompt("Height", "");
+            for (let node of element) {
+                if (node.getAttribute('class') === 'icon 1' ||
+                    node.getAttribute('class') === 'icon 2') {
+                    node.style.width = width+"px";
+                    node.style.height = height+"px";
+                } else {
+                    node.remove();
+                }
+            }
+            desktop.appendChild(this.#dom);
+        });
+
     }
 }
 
@@ -171,7 +199,7 @@ class DraggableHandler {
         // window Drag || Icon Drag
         if (this.#dom.classList.contains('window')) {
             this.#select = this.#dom.querySelector('.top');
-        }else{
+        } else {
             this.#select = this.#dom;
         }
 
@@ -182,7 +210,7 @@ class DraggableHandler {
                 y: e.clientY
             };
 
-            const mouseMoveEvent = this.#select.addEventListener('mousemove', e => {
+            const mouseMoveEvent = document.addEventListener('mousemove', e => {
                 if (pushed) {
                     const currCoord = {
                         x: Number(this.#dom.style.left.replace('px', '')),
@@ -253,4 +281,3 @@ class Window {
         })
     }
 }
-
