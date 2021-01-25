@@ -1,3 +1,5 @@
+
+// DeskTop Class
 class Desktop {
     #dom            // Private Field
     #icons
@@ -9,25 +11,24 @@ class Desktop {
     // 생성자
     constructor(dom, initIcon) {
         this.#dom = dom;                        // 각 화면의 dom 초기화
-        this.#dom.classList.add('desktop');     // classList에 desktop 추가
+        this.#dom.classList.add('desktop');     // classList <- desktop
 
         this.#icons = [];                       // Array
         this.#folders = [];
         this.#desktops = initIcon.desktop;
         this.icon = null;
-        this.btListener = new Button();
+        this.btListener = new ButtonHandler();
 
-        for (let i = 0; i < initIcon.icon; i++) {       // Icon, Folder 개수 파악
+        for (let i = 0; i < initIcon.icon; i++) {       // Create Icon
             this.icon = new Icon();
             this.newIcon(this.icon);
         }
-        for (let i = 0; i < initIcon.folder; i++) {
+        for (let i = 0; i < initIcon.folder; i++) {     // Create Folder
             this.icon = new Folder();
             this.newFolder(this.icon);
         }
-        this.changeIconSize();
-        this.changeIconImg();
-
+        this.changeIconSize();                          // Create Size Button
+        this.changeIconImg();                           // Create Img Button
     }
 
     //Icon 자리 배치 Return : x, y 값
@@ -61,6 +62,7 @@ class Desktop {
         this.#dom.appendChild(window.getDom());
     }
 
+    // 아이콘 크기 변경 메서드
     changeIconSize() {
         this.#button = this.btListener.getDom();
         this.#dom.appendChild(this.#button);
@@ -74,81 +76,7 @@ class Desktop {
     }
 }
 
-// Button Class
-class Button {
-    #dom
-    #subdom
-
-    constructor(option = {}) {
-        this.prepareDom();
-    }
-
-    prepareDom() {
-        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
-        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
-        this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
-    }
-
-    getDom() {
-        return this.#dom;
-    }
-
-    getImgDom() {
-        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
-        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
-        this.#subdom = tmpl.querySelector('.changeIcon');
-        return this.#subdom;
-    }
-
-    changeIconSize(desktop) {
-        const element = desktop.childNodes;
-        console.log(element);
-        const event = this.#dom.addEventListener('click', () => {
-            console.log("정상");
-            let width = prompt('Width', "");
-            let height = prompt("Height", "");
-            for (let node of element) {
-                // if (node.getAttribute('class') === 'icon 1' ||
-                //     node.getAttribute('class') === 'icon 2')
-                if(node.classList.contains('icon'))
-                {
-                    node.style.width = width + "px";
-                    node.style.height = height + "px";
-                } else {
-                    node.remove();
-                }
-            }
-            desktop.appendChild(this.#dom);
-        });
-    }
-
-    changeIconImg(desktop) {
-        const event = this.#subdom.addEventListener('click', (e) => {
-            const element = desktop.childNodes;
-            let type = prompt('바꿀 아이콘 타입을 입력하세요. ex) Icon : i Folder : f');
-            let name = prompt('img 폴더에 저장된 아이콘의 이름을 입력하세요 ex)test.png');
-            if (type === 'i') {
-                console.log("Icon!");
-                for (let node of element) {
-                    if (node.classList.contains('i')) {
-                        node.setAttribute('src', "./img/" + name);
-                    }
-                }
-            } else if (type === 'f') {
-                console.log("folder!");
-                for (let node of element) {
-                    if (node.classList.contains('f')) {
-                        node.setAttribute('src', "./img/" + name);
-                    }
-                }
-            }
-        });
-    }
-
-
-}
-
-// 일반 아이콘
+// Icon Class
 class Icon {
     #dom                    // Private Field
     constructor() {         // 생성자
@@ -219,6 +147,111 @@ class Folder {
     addEvents() {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         new DraggableHandler(this.#dom, {dblClick: true});
+    }
+}
+
+// Window Class
+class Window {
+    #dom
+    #xbox
+
+    constructor(dom) {
+        this.#dom = dom;
+        this.prepareDom();          // Ready to Template
+        this.addEvents();
+    }
+
+    getDom() {
+        return this.#dom;
+    }
+
+    prepareDom() {
+        const t = document.querySelector('.template-window');
+        const tmpl = document.importNode(t.content, true);
+        this.#dom = tmpl.querySelector('.window');
+        this.#xbox = tmpl.querySelector('.xbox');
+    }
+
+    addEvents() {
+        // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
+        const event = new DraggableHandler(this.#dom, {xbox: true});
+        const mouseClickEvent = this.#xbox.addEventListener('click', () => {
+            this.#dom.remove();
+        })
+    }
+}
+
+// Button Event Class
+class ButtonHandler {
+    #dom
+    #subdom
+
+    constructor(option = {}) {
+        this.prepareDom();
+    }
+
+    prepareDom() {
+        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
+        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
+        this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
+    }
+
+    getDom() {
+        return this.#dom;
+    }
+
+    getImgDom() {
+        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
+        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
+        this.#subdom = tmpl.querySelector('.changeIcon');
+        return this.#subdom;
+    }
+
+    // 아이콘 크기 변경 메서드
+    changeIconSize(desktop) {
+        const element = desktop.childNodes;
+        let width, height;
+        console.log(element);
+        const event = this.#dom.addEventListener('click', () => {
+            console.log("정상");
+            width = prompt('Width', "");
+            height = prompt("Height", "");
+            for (let node of element) {
+                if(node.classList.contains('icon'))
+                {
+                    node.style.width = width + "px";
+                    node.style.height = height + "px";
+                } else {
+                    node.remove();
+                }
+            }
+            desktop.appendChild(this.#dom);
+        });
+        return {w : width, h : height};
+    }
+
+    // 아이콘 이미지 변경 메서드
+    changeIconImg(desktop) {
+        const event = this.#subdom.addEventListener('click', (e) => {
+            const element = desktop.childNodes;
+            let name = prompt('img 폴더에 저장된 아이콘의 이름을 입력하세요 ex)test.png');
+            let type = prompt('바꿀 아이콘 타입을 입력하세요. ex) Icon : i Folder : f');
+            if (type === 'i') {
+                for (let node of element) {
+                    if (node.classList.contains('i')) {
+                        node.setAttribute('src', "./img/" + name);
+                    }
+                }
+            } else if (type === 'f') {
+                for (let node of element) {
+                    if (node.classList.contains('f')) {
+                        node.setAttribute('src', "./img/" + name);
+                    }
+                }
+            } else{
+                alert("잘못 입력하셨습니다. 다시 시도해 주세요.");
+            }
+        });
     }
 }
 
@@ -293,35 +326,5 @@ class DraggableHandler {
                 secondDesktop.newWindow(new Window(this.#dom));
             }
         });
-    }
-}
-
-class Window {
-    #dom
-    #xbox
-
-    constructor(dom) {
-        this.#dom = dom;
-        this.prepareDom();          // Ready to Template
-        this.addEvents();
-    }
-
-    getDom() {
-        return this.#dom;
-    }
-
-    prepareDom() {
-        const t = document.querySelector('.template-window');
-        const tmpl = document.importNode(t.content, true);
-        this.#dom = tmpl.querySelector('.window');
-        this.#xbox = tmpl.querySelector('.xbox');
-    }
-
-    addEvents() {
-        // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
-        const event = new DraggableHandler(this.#dom, {xbox: true});
-        const mouseClickEvent = this.#xbox.addEventListener('click', () => {
-            this.#dom.remove();
-        })
     }
 }
