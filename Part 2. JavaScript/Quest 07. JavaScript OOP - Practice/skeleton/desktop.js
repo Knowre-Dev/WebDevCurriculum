@@ -92,7 +92,7 @@ class Icon {
     // Desktop Class 값
     setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
-        this.#dom.classList.add('i');
+        this.#dom.classList.add('icontype');
         this.#dom.setAttribute('src', './img/icon.png');
     }
 
@@ -130,7 +130,7 @@ class Folder {
 
     setDeskTopId(deskID) {
         this.#dom.classList.add(deskID);
-        this.#dom.classList.add('f');
+        this.#dom.classList.add('foldertype');
     }
 
     moveIcon(coord) {
@@ -241,13 +241,13 @@ class ButtonHandler {
             const element = desktop.childNodes;
             let name = prompt('img 폴더에 저장된 아이콘의 이름을 입력하세요 ex)test.png');
             let type = prompt('바꿀 아이콘 타입을 입력하세요. ex) Icon : i Folder : f');
-            if (type === 'i') {
+            if (type === 'icontype') {
                 for (let node of element) {
                     if (node.classList.contains('i')) {
                         node.setAttribute('src', "./img/" + name);
                     }
                 }
-            } else if (type === 'f') {
+            } else if (type === 'foldertype') {
                 for (let node of element) {
                     if (node.classList.contains('f')) {
                         node.setAttribute('src', "./img/" + name);
