@@ -188,6 +188,7 @@ class ButtonHandler {
 
     constructor(option = {}) {
         this.prepareDom();
+        this.prepareImgDom();
     }
 
     prepareDom() {
@@ -196,14 +197,17 @@ class ButtonHandler {
         this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
     }
 
+    prepareImgDom(){
+        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
+        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
+        this.#subdom = tmpl.querySelector('.changeIcon');
+    }
+
     getDom() {
         return this.#dom;
     }
 
     getImgDom() {
-        const t = document.querySelector('.template-ChangeSize');     // template DOM Select
-        const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
-        this.#subdom = tmpl.querySelector('.changeIcon');
         return this.#subdom;
     }
 
@@ -222,7 +226,8 @@ class ButtonHandler {
                     node.style.width = width + "px";
                     node.style.height = height + "px";
                 } else {
-                    node.remove();
+                    if(!node.classList.contains('changeIcon'))
+                        node.remove();
                 }
             }
             desktop.appendChild(this.#dom);
@@ -251,6 +256,7 @@ class ButtonHandler {
             } else{
                 alert("잘못 입력하셨습니다. 다시 시도해 주세요.");
             }
+            desktop.appendChild(this.#subdom);
         });
     }
 }
