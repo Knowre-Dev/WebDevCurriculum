@@ -60,10 +60,10 @@ class Desktop {
 
     // New Window
     newWindow() {
-        // this.#dom.appendChild(window.getDom());
         this.#dom.addEventListener('new-window', (e) =>{
             console.log(e.detail.dom);
-        })
+            this.#dom.appendChild(new Window().getDom());
+        });
     }
 
     // 아이콘 크기 변경 메서드
