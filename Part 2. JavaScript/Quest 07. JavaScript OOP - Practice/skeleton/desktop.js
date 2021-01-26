@@ -1,10 +1,8 @@
-
 // DeskTop Class
 class Desktop {
     #dom            // Private Field
     #icons
     #folders
-    #desktops
     #button
     btListener
 
@@ -15,7 +13,6 @@ class Desktop {
 
         this.#icons = [];                       // Array
         this.#folders = [];
-        this.#desktops = initIcon.desktop;
         this.icon = null;
         this.btListener = new ButtonHandler();
 
@@ -44,7 +41,7 @@ class Desktop {
 
     // New Icon
     newIcon(icon) {                     // Parameter : Icon DOM
-        icon.setDeskTopId(this.#desktops);
+        icon.setDeskTopId();
         this.#dom.appendChild(icon.getDom());       // icon 의 DOM 을 얻어 Desktop DOM 에 붙임
         icon.moveIcon(this.getAutoNewPosition());   // icon 포지셔닝
         this.#icons.push(icon);                     // icon DOM push
@@ -52,7 +49,7 @@ class Desktop {
 
     // New Folder
     newFolder(icon) {
-        icon.setDeskTopId(this.#desktops);
+        icon.setDeskTopId();
         this.#dom.appendChild(icon.getDom());
         icon.moveIcon(this.getAutoNewPosition());
         this.#folders.push(icon);
@@ -60,9 +57,10 @@ class Desktop {
 
     // New Window
     newWindow() {
-        this.#dom.addEventListener('new-window', (e) =>{
+        this.#dom.addEventListener('new-window', (e) => {
             console.log(e.detail.dom);
-            this.#dom.appendChild(new Window().getDom());
+            let window = new Window();
+            this.#dom.appendChild(window.getDom());
         });
     }
 
@@ -94,8 +92,7 @@ class Icon {
     }
 
     // Desktop Class 값
-    setDeskTopId(deskID) {
-        this.#dom.classList.add(deskID);
+    setDeskTopId() {
         this.#dom.classList.add('icontype');
         this.#dom.setAttribute('src', './img/icon.png');
     }
@@ -132,8 +129,7 @@ class Folder {
         return this.#dom;
     }
 
-    setDeskTopId(deskID) {
-        this.#dom.classList.add(deskID);
+    setDeskTopId() {
         this.#dom.classList.add('foldertype');
     }
 
@@ -180,7 +176,12 @@ class Window {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         const event = new DraggableHandler(this.#dom, {xbox: true});
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
+            console.info(this.#dom);
             this.#dom.remove();
+            console.log("remove() : "+this.#dom);
+
+            this.#dom = null;
+            console.log("null : "+this.#dom);
         })
     }
 }
@@ -201,7 +202,7 @@ class ButtonHandler {
         this.#dom = tmpl.querySelector('.changeBT');                // template icon 선택한 뒤 지역 dom 에 포함
     }
 
-    prepareImgDom(){
+    prepareImgDom() {
         const t = document.querySelector('.template-ChangeSize');     // template DOM Select
         const tmpl = document.importNode(t.content, true);         // template 활성화 및 포함
         this.#subdom = tmpl.querySelector('.changeIcon');
@@ -221,22 +222,21 @@ class ButtonHandler {
         let width, height;
         console.log(element);
         const event = this.#dom.addEventListener('click', () => {
-            console.log("정상");
             width = prompt('Width', "");
             height = prompt("Height", "");
             for (let node of element) {
-                if(node.classList.contains('icon'))
-                {
+                if (node.classList.contains('icon')) {
                     node.style.width = width + "px";
                     node.style.height = height + "px";
-                } else {
+                }
+                else {
                     if(!node.classList.contains('changeIcon'))
                         node.remove();
                 }
             }
             desktop.appendChild(this.#dom);
         });
-        return {w : width, h : height};
+        return {w: width, h: height};
     }
 
     // 아이콘 이미지 변경 메서드
@@ -257,7 +257,7 @@ class ButtonHandler {
                         node.setAttribute('src', "./img/" + name);
                     }
                 }
-            } else{
+            } else {
                 alert("잘못 입력하셨습니다. 다시 시도해 주세요.");
             }
             desktop.appendChild(this.#subdom);
@@ -331,17 +331,11 @@ class DraggableHandler {
         this.#dom.addEventListener('dblclick', e => {
             console.info(e);
             this.#dom.dispatchEvent(new CustomEvent("new-window", {
-                bubbles : true,
-                detail:{
-                    dom : this.#dom
+                bubbles: true,
+                detail: {
+                    dom: this.#dom
                 }
             }));
-            // TODO : 여기서 이벤트를 정의하고 부모에서 Listen 하면 됨
-            // if (e.target.classList.contains("1")) {
-            //     firstDesktop.newWindow(new Window(this.#dom));
-            // } else {
-            //     secondDesktop.newWindow(new Window(this.#dom));
-            // }
         });
     }
 }
