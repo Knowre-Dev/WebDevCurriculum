@@ -29,6 +29,7 @@ class Desktop {
         }
         this.changeIconSize();                          // Create Size Button
         this.changeIconImg();                           // Create Img Button
+        this.newWindow();
     }
 
     //Icon 자리 배치 Return : x, y 값
@@ -58,8 +59,11 @@ class Desktop {
     }
 
     // New Window
-    newWindow(window) {
-        this.#dom.appendChild(window.getDom());
+    newWindow() {
+        // this.#dom.appendChild(window.getDom());
+        this.#dom.addEventListener('new-window', (e) =>{
+            console.log(e.detail.dom);
+        })
     }
 
     // 아이콘 크기 변경 메서드
@@ -326,11 +330,18 @@ class DraggableHandler {
     addDblClick() {
         this.#dom.addEventListener('dblclick', e => {
             console.info(e);
-            if (e.target.classList.contains("1")) {
-                firstDesktop.newWindow(new Window(this.#dom));
-            } else {
-                secondDesktop.newWindow(new Window(this.#dom));
-            }
+            this.#dom.dispatchEvent(new CustomEvent("new-window", {
+                bubbles : true,
+                detail:{
+                    dom : this.#dom
+                }
+            }));
+            // TODO : 여기서 이벤트를 정의하고 부모에서 Listen 하면 됨
+            // if (e.target.classList.contains("1")) {
+            //     firstDesktop.newWindow(new Window(this.#dom));
+            // } else {
+            //     secondDesktop.newWindow(new Window(this.#dom));
+            // }
         });
     }
 }
