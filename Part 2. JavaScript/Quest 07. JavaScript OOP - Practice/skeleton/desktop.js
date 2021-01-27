@@ -177,6 +177,8 @@ class Window {
         const event = new DraggableHandler(this.#dom, {xbox: true});
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
             console.info(this.#dom);
+
+            // TODO : Remove() 방법 말고 다른 방법은?
             this.#dom.remove();
             console.log("remove() : "+this.#dom);
 
@@ -231,6 +233,7 @@ class ButtonHandler {
                 }
                 else {
                     if(!node.classList.contains('changeIcon'))
+                        // TODO : remove() 방법말고 다른 방법은?
                         node.remove();
                 }
             }
