@@ -16,6 +16,8 @@ class Desktop {
         this.icon = null;
         this.btListener = new ButtonHandler();
 
+        console.log("Create Desktop");
+
         for (let i = 0; i < initIcon.icon; i++) {       // Create Icon
             this.icon = new Icon();
             this.newIcon(this.icon);
@@ -57,10 +59,16 @@ class Desktop {
 
     // New Window
     newWindow() {
+        let window;
         this.#dom.addEventListener('new-window', (e) => {
             console.log(e.detail.dom);
-            let window = new Window();
+            window = new Window();
+            console.log("Create window : " + window);
             this.#dom.appendChild(window.getDom());
+        });
+        this.#dom.addEventListener('delete-window', (e)=>{
+            // DOM을 remove하고 객체를 null로 변경
+            window = null;
         });
     }
 
@@ -176,14 +184,8 @@ class Window {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         const event = new DraggableHandler(this.#dom, {xbox: true});
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
-            console.info(this.#dom);
-
-            // TODO : Remove() 방법 말고 다른 방법은?
             this.#dom.remove();
-            console.log("remove() : "+this.#dom);
-
-            this.#dom = null;
-            console.log("null : "+this.#dom);
+            this.#dom.dispatchEvent(new CustomEvent('delete-window', {bubbles:true,}));
         })
     }
 }
@@ -277,9 +279,7 @@ class DraggableHandler {
     constructor(dom, option = {}) {
         this.#dom = dom;
         this.#option = option;
-        // this.#xbox = xbox;
         this.addDragAndDrop();
-
         if (option.dblClick) {
             this.addDblClick();
         }
