@@ -1,0 +1,4 @@
+class MouseHandler{
+    constructor() {
+    }
+}

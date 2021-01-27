@@ -60,16 +60,17 @@ class Desktop {
     // New Window
     newWindow() {
         let window;
+        let test = 1;
         this.#dom.addEventListener('new-window', (e) => {
-            console.log(e.detail.dom);
             window = new Window();
-            console.log("Create window : " + window);
-            this.#dom.appendChild(window.getDom());
+            debugger;
+            // this.#dom.appendChild(window.getDom());
         });
-        this.#dom.addEventListener('delete-window', (e)=>{
-            // DOM을 remove하고 객체를 null로 변경
+        test = 1;
+        this.#dom.addEventListener('delete-window', () => {
+            // e.detail.windowDom.remove();
             window = null;
-        });
+        })
     }
 
     // 아이콘 크기 변경 메서드
@@ -127,7 +128,6 @@ class Icon {
 // Folder Class - Icon과 동작방식 같음
 class Folder {
     #dom                        // Private Field
-
     constructor() {             // 생성자
         this.prepareDom();
         this.addEvents();
@@ -184,8 +184,16 @@ class Window {
         // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         const event = new DraggableHandler(this.#dom, {xbox: true});
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
-            this.#dom.remove();
-            this.#dom.dispatchEvent(new CustomEvent('delete-window', {bubbles:true,}));
+            console.log("delete-window 호출중....");
+            // TODO : delete-window 100만개 호출!
+            // for (let i = 0; i < 500; i++) {
+                this.#dom.dispatchEvent(new CustomEvent('delete-window', {
+                    bubbles: true,
+                    detail: {
+                        windowDom: this.#dom
+                    }
+                }));
+            // }
         })
     }
 }
@@ -232,9 +240,8 @@ class ButtonHandler {
                 if (node.classList.contains('icon')) {
                     node.style.width = width + "px";
                     node.style.height = height + "px";
-                }
-                else {
-                    if(!node.classList.contains('changeIcon'))
+                } else {
+                    if (!node.classList.contains('changeIcon'))
                         // TODO : remove() 방법말고 다른 방법은?
                         node.remove();
                 }
@@ -250,15 +257,15 @@ class ButtonHandler {
             const element = desktop.childNodes;
             let name = prompt('img 폴더에 저장된 아이콘의 이름을 입력하세요 ex)test.png');
             let type = prompt('바꿀 아이콘 타입을 입력하세요. ex) Icon : i Folder : f');
-            if (type === 'icontype') {
+            if (type === 'i') {
                 for (let node of element) {
-                    if (node.classList.contains('i')) {
+                    if (node.classList.contains('icontype')) {
                         node.setAttribute('src', "./img/" + name);
                     }
                 }
-            } else if (type === 'foldertype') {
+            } else if (type === 'f') {
                 for (let node of element) {
-                    if (node.classList.contains('f')) {
+                    if (node.classList.contains('foldertype')) {
                         node.setAttribute('src', "./img/" + name);
                     }
                 }
@@ -332,13 +339,27 @@ class DraggableHandler {
 
     addDblClick() {
         this.#dom.addEventListener('dblclick', e => {
-            console.info(e);
-            this.#dom.dispatchEvent(new CustomEvent("new-window", {
-                bubbles: true,
-                detail: {
-                    dom: this.#dom
-                }
-            }));
+            console.log("new-window 호출중....");
+            // TODO : new-window 100만개 호출
+            for (let i = 0; i < 1000000; i++) {
+                this.#dom.dispatchEvent(new CustomEvent("new-window", {
+                    bubbles: true,
+                    detail: {
+                        dom: this.#dom
+                    }
+                }));
+            }
+            debugger;
+            console.log("delete-window 호출중....");
+            for(let i=0;i<1000000;i++){
+                this.#dom.dispatchEvent(new CustomEvent("delete-window", {
+                    bubbles: true,
+                    detail: {
+                        dom: this.#dom
+                    }
+                }));
+            }
+            console.log("호출 완료");
         });
     }
 }
