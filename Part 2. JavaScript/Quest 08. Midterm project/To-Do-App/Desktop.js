@@ -4,13 +4,11 @@ class Desktop {
     #clock
     constructor(dom) {
         this.#dom = dom;
-
         this.#clock = new Clock();
-        this.showImage(this.#clock);
+        this.showClock(this.#clock);
     }
 
-    showImage(dom){
-
+    showClock(clock){
+        this.#dom.appendChild(clock.getDom());
     }
-
 }

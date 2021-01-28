@@ -181,12 +181,9 @@ class Window {
     }
 
     addEvents() {
-        // Folder Icon 더블클릭 이벤트가 존재하므로 Option 값 포함
         const event = new DraggableHandler(this.#dom, {xbox: true});
         const mouseClickEvent = this.#xbox.addEventListener('click', () => {
             console.log("delete-window 호출중....");
-            // TODO : delete-window 100만개 호출!
-            // for (let i = 0; i < 500; i++) {
                 this.#dom.dispatchEvent(new CustomEvent('delete-window', {
                     bubbles: true,
                     detail: {
