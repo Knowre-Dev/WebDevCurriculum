@@ -13,6 +13,7 @@ class Clock{
 
     getDom(){
         return this.#dom;
+        
     }
 
     createClock(){
