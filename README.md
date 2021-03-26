@@ -1,5 +1,6 @@
 # Knowre web development curriculum 2018
 
+* Disclaimer: 현재 2021년 버전의 Knowre Web Development Curriculum을 준비중이며, 상반기 내로 만나실 수 있습니다!
 
 ## 소개
 * Knowre의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2018년 버전입니다.
