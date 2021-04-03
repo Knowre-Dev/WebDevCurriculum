@@ -89,4 +89,4 @@
 
 ### 라이센스
 
-* 이 커리큘럼은 [MIT 라이센스](./LICENSE)를 따릅니다. 원하시는대로 쓰시고 개작하실 수 있습니다. 다만 이 커리큘럼의 내용이 마음에 드셨고 원하신다면 `[Knowre WebDev Curriculum](https://github.com/Knowre-Dev/WebDevCurriculum)에서 영감을 받았다` 라는 언급을 해 주시면 감사하겠습니다.
+* 이 커리큘럼은 [MIT 라이센스](./LICENSE)를 따릅니다. 원하시는대로 쓰시고 개작하실 수 있습니다. 다만 이 커리큘럼의 내용이 마음에 드셨을 경우, 만약 원하신다면 `[Knowre Web Development Curriculum](https://github.com/Knowre-Dev/WebDevCurriculum)에서 영감을 받았다` 라는 언급을 해 주시면 감사하겠습니다.
