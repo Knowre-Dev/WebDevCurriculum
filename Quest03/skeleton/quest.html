@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.square {
+				width: 100px;
+				height: 100px;
+				border: 1px dashed black;
+				display: inline-block;
+				margin: 20px;
+			}
+
+			.enabled {
+				background-color: limegreen;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="row1">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</section>
+
+		<section class="row2">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</section>
+
+		<script>
+			let row1Squares = document.querySelectorAll('.row1 .square');
+			for(let node of row1Squares) {
+				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+			}
+
+			let row2Squares = document.querySelectorAll('.row2 .square');
+			for(let node of row2Squares) {
+				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+			}
+		</script>
+	</body>
+</html>
