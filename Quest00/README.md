@@ -10,9 +10,9 @@
 * GitHub
 
 ## Resources
-* https://try.github.io
-* https://learngitbranching.js.org/?locale=ko
-* https://githowto.com/git_internals_git_directory
+* [Resources to learn Git](https://try.github.io)
+* [Learn Git Branching](https://learngitbranching.js.org/?locale=ko)
+* [Inside Git: .Git directory](https://githowto.com/git_internals_git_directory)
 
 ## Checklist
 * 형상관리 시스템은 왜 나오게 되었을까요?
