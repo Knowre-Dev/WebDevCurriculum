@@ -16,6 +16,7 @@
 ## Resources
 * [자바스크립트 첫걸음](https://developer.mozilla.org/ko/docs/Learn/JavaScript/First_steps)
 * [자바스크립트 구성요소](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Building_blocks)
+* [Just JavaScript](https://justjavascript.com/)
 
 ## Checklist
 * 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?
