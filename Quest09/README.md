@@ -4,13 +4,14 @@
 * 이번 퀘스트에서는 서버와 클라이언트의 연동, 그리고 웹 API의 설계 방법론 중 하나인 REST에 대해 알아보겠습니다.
 
 ## Topics
-* expressJS
+* expressJS, fastify
 * AJAX, `XMLHttpRequest`, `fetch()`
 * REST, CRUD
 * CORS
 
 ## Resources
 * [Express Framework](http://expressjs.com/)
+* [Fastify Framework](https://www.fastify.io/)
 * [MDN - Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 * [MDN - XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 * [REST API Tutorial](https://restfulapi.net/)
@@ -32,12 +33,14 @@
 
 ## Quest
 * 이번 퀘스트는 Midterm에 해당하는 과제입니다. 분량이 제법 많으니 한 번 기능별로 세부 일정을 정해 보고, 과제 완수 후에 그 일정이 얼마나 지켜졌는지 스스로 한 번 돌아보세요.
+  * 이번 퀘스트부터는 skeleton을 제공하지 않습니다!
 * Quest 05에서 만든 메모장 시스템을 서버와 연동하는 어플리케이션으로 만들어 보겠습니다.
   * 클라이언트는 `fetch` API를 통해 서버와 통신합니다.
   * 서버는 8000번 포트에 REST API를 엔드포인트로 제공하여, 클라이언트의 요청에 응답합니다.
   * 클라이언트로부터 온 새 파일 저장, 삭제, 다른 이름으로 저장 등의 요청을 받아 서버의 로컬 파일시스템을 통해 저장되어야 합니다.
     * 서버에 어떤 식으로 저장하는 것이 좋을까요?
   * API 서버 외에, 클라이언트를 띄우기 위한 서버가 3000번 포트로 따로 떠서 API 서버와 서로 통신할 수 있어야 합니다.
+  * Express나 Fastify 등의 프레임워크를 사용해도 무방합니다.
 * 클라이언트 프로젝트와 서버 프로젝트 모두 `npm i`만으로 디펜던시를 설치하고 바로 실행될 수 있게 제출되어야 합니다.
 * 이번 퀘스트부터는 앞의 퀘스트의 결과물에 의존적인 경우가 많습니다. 제출 폴더를 직접 만들어 제출해 보세요!
 
