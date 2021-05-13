@@ -19,7 +19,7 @@
   * [Quest 06. 인터넷의 이해](./Quest06)
   * [Quest 07. node.js의 기초](./Quest07)
   * [Quest 08. 웹 API의 기초: REST와 CRUD](./Quest08)
-  * [Quest 09. 서버와 클라이언트의 대화](./Quest09) (AJAX/fetch()/async-await)
+  * [Quest 09. 서버와 클라이언트의 대화](./Quest09)
   * [Quest 10. 인증의 이해](./Quest10) (쿠키, 세션, 토큰)
   * [Quest 11. RDB의 기초와 ORM](./Quest11)
   * [Quest 12. 보안의 기초](./Quest12)
