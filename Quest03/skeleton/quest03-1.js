@@ -1,13 +1,9 @@
-const getBlanks = (n) => {
-  return [...Array(n)].reduce((acc) => acc + ' ', '');
-}
-
-const getStars = (n) => {
-  return [...Array(n)].reduce((acc) => acc + '*', '');
+const repeatString = (str, n) => {
+  return [...Array(n)].reduce((acc) => acc + str, '');
 }
 
 const getLine = (n, i) => {
-  return getBlanks(n - i - 1) + getStars((i * 2) + 1);
+  return repeatString(' ', n - i - 1) + repeatString('*', (i * 2) + 1);
 }
 const execute = (n) => {
   return  [...Array(n).keys()]
