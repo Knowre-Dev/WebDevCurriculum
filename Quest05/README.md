@@ -5,7 +5,7 @@
 
 ## Topics
 * Separation of Concerns
-* 객체지향의 설계 원칙
+* 객체지향의 설계 원칙n
   * SOLID 원칙
 * Local Storage
 
