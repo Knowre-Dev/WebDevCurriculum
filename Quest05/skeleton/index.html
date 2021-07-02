@@ -4,25 +4,9 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="./styles/normalize.css">
 		<link rel="stylesheet" href="styles/style.css">
-		<script src="./js/utils.js"></script>
-		<script src="./js/loader.js"></script>
-		<script src="./js/doc.js"></script>
-		<script src="./js/event.js"></script>
-		<script src="./js/controller.js"></script>
-		<script src="./js/manager.js"></script>
-		<script src="./js/renderer.js"></script>
-		<script src="./js/notepad.js"></script>
+		<script src="./main.js" type="module"></script>
 	</head>
 	<body>
-		<section class="app">
-			<section class="actions"></section>
-			<section class="tabs"></section>
-			<section class="editor"></section>
-		</section>
-		<script>
-			const notepad = new Notepad();
-			notepad.setLoader(new LocalStorageLoader());
-			notepad.load();
-		</script>
+		<section class="app"></section>
 	</body>
 </html>

@@ -1,12 +1,16 @@
-class DocData {
+export class Doc {
+  #origin;
   #name = "";
-  #originText = "";
   #text = "";
+  #isNew = false;
 
-  constructor({ name, text = "" }) {
+  constructor(name, text) {
+    if(text === undefined) {
+      this.#isNew = true;
+    }
+    this.#origin = { name, text: text ?? '' };
     this.#name = name;
-    this.#originText = text;
-    this.#text = text;
+    this.#text = text ?? '';
   }
 
   save() {
@@ -14,7 +18,7 @@ class DocData {
   }
 
   get isModified() {
-    return this.#text !== this.#originText;
+    return this.#isNew || this.#text !== this.#origin.text || this.#name !== this.#origin.name;
   }
 
   get name() {
@@ -34,7 +38,7 @@ class DocData {
   }
 
   set originText(text) {
-    this.#originText = text;
+    this.#origin.text = text;
   }
 
   getParsed() {

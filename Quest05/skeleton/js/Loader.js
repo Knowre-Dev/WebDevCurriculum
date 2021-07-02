@@ -1,4 +1,6 @@
-class Loader {
+import { type } from "./utils.js";
+
+export class Loader {
   load() {
     return this._load();
   }
@@ -13,11 +15,17 @@ class Loader {
   }
 }
 
-/****************************************************************************************/
 
-class LocalStorageLoader extends Loader {
+export class LocalStorageLoader extends Loader {
   _load() {
-    return this.has("docs") ? this.get("docs") : [];
+    return this.has("docs")
+      ? this.get("docs")
+      : [
+          {
+            name: "Untitled",
+            text: "탭을 더블클릭하면 파일 명을 바꿀 수 있습니다.",
+          },
+        ];
   }
   _save(data) {
     this.set("docs", data);
@@ -39,6 +47,3 @@ class LocalStorageLoader extends Loader {
     localStorage.setItem(key, JSON.stringify(value));
   }
 }
-
-/****************************************************************************************/
-

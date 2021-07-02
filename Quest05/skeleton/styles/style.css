@@ -46,11 +46,15 @@
     height: 2rem;
     box-sizing: border-box;
     align-items: center;
-
 }
+
 .tab--selected {
     background: #1E1E1E;
     color: #cccccc;
+}
+
+.tab-name {
+    white-space: pre;
 }
 
 .tab-status {
