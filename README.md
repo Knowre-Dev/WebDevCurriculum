@@ -27,9 +27,9 @@
   * [Quest 14. 정적 분석: 타입스크립트와 린트 시스템](./Quest14)
   * [Quest 15. 자동화된 테스트](./Quest15)
   * 프론트엔드 루트
-    * [Quest 16-F. 컴포넌트 기반 개발](./Quest16-F) (Vue와 vuex)
+    * [Quest 16-F. 컴포넌트 기반 개발](./Quest16-F)
     * [Quest 17-F. 번들링과 빌드 시스템](./Quest17-F)
-    * [Quest 18-F. 웹 프론트엔드 2021](./Quest18-F) (Modern CSS? PWA? SSR? SEO?)
+    * [Quest 18-F. 프로그레시브 웹앱](./Quest18-F)
     * [Quest 19-F. 웹 어셈블리의 기초](./Quest19-F)
   * 백엔드 루트
     * [Quest 16-B. 도커와 컨테이너](./Quest16-B)
