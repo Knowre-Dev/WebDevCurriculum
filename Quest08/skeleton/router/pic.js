@@ -29,7 +29,8 @@ router.get("/download", async (req, res) => {
   try {
     const img = await readFile(imageName);
     res.writeHead(200, {
-      "Content-Disposition": `attachment; filename=${imageName}`,
+      "Content-Type": "application/octet-stream",
+      "Content-Disposition": `attachment; filename=${imageName}`
     });
     res.write(img);
   } catch (e) {
