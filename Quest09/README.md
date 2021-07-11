@@ -168,6 +168,11 @@ REST API(REpresentational State Transfer)는 웹상에서 사용되는 여러 �
 * 클라이언트 프로젝트와 서버 프로젝트 모두 `npm i`만으로 디펜던시를 설치하고 바로 실행될 수 있게 제출되어야 합니다.
 * 이번 퀘스트부터는 앞의 퀘스트의 결과물에 의존적인 경우가 많습니다. 제출 폴더를 직접 만들어 제출해 보세요!
 
+## 일정
+- 마일스톤: https://github.com/juicyjusung/WebDevCurriculum/milestones
+- 칸반: https://github.com/juicyjusung/WebDevCurriculum/projects/3
+
+
 ## Advanced
 - `fetch` API는 구현할 수 없지만 `XMLHttpRequest`로는 구현할 수 있는 기능이 있을까요?
   - Progress events
