@@ -1,7 +1,7 @@
 import { DocApi } from '../api.js';
 import { Actions } from './Actions.js';
 import Component from './Component.js';
-import { Doc } from '../nDoc.js';
+import { Doc } from '../doc.js';
 import { Editor } from './Editor.js';
 import { TabList } from './TabList.js';
 
@@ -45,13 +45,8 @@ export default class Notepad extends Component {
         close: this.close.bind(this),
       }
     );
-    new Editor(
-      $editor,
-      { curr },
-      {
-        setText: this.setText.bind(this),
-      }
-    );
+
+    new Editor($editor, { curr }, undefined);
   }
 
   async add() {
@@ -89,12 +84,15 @@ export default class Notepad extends Component {
     }
   }
 
+  setEvent() {
+    this.$target.addEventListener('input', e => {
+      this.curr.text = e.target.value;
+      this.tabs.render();
+    });
+  }
+
   open(doc) {
     this.setState({ curr: doc });
-  }
-  setText(text) {
-    this.curr.text = text;
-    this.tabs.render();
   }
 
   changeFileName(doc, newName) {

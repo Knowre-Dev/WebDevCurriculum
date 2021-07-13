@@ -13,7 +13,7 @@ export class TabList extends Component {
     docs.forEach(doc => {
       const tab = document.createElement('div');
       $tabList.appendChild(tab);
-      new Tab(tab, { doc, curr }, this.events);
+      new Tab(tab, { doc, curr }, { ...this.events, list: this });
     });
   }
 }

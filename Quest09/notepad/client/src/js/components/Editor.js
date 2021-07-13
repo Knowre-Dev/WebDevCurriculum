@@ -15,7 +15,7 @@ export class Editor extends Component {
 
   setEvent() {
     this.$target.querySelector('.editor-input').addEventListener('input', e => {
-      this.events.setText(e.target.value);
+      // this.events.setText(e.target.value);
     });
   }
 }

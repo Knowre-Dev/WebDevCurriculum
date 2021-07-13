@@ -3,10 +3,10 @@ import Component from './Component.js';
 export class Tab extends Component {
   template() {
     const { doc, curr } = this.props;
-    const { isModified } = doc;
+    const { isModified, name } = doc;
     return `
       <div class="tab ${doc === curr ? 'tab--selected' : ''}">
-        <span class="tab-name">${doc.name}</span>
+        <span class="tab-name">${name}</span>
         <span class="tab-status ${isModified ? '' : 'tab-status-saved'}">●</span>
         <span class="close-btn">×</span>
       </div>
