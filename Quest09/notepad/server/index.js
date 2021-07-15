@@ -9,15 +9,12 @@ import { errorHandler, notFound } from './src/middleware/errorHandler.js';
 import docsRouter from './src/routes/docs.js';
 
 const index = express();
-const __dirname = path.resolve();
 index.use(cors());
 
 index.use(logger('dev'));
 index.use(express.json());
-index.use(express.urlencoded({ extended: false }));
 
 index.use(cookieParser());
-index.use(express.static(path.join(__dirname, 'public')));
 
 index.use('/v1/docs', docsRouter);
 
