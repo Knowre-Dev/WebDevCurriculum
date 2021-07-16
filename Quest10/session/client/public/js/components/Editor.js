@@ -14,8 +14,10 @@ export class Editor extends Component {
   }
 
   setEvent() {
+    const { notepad } = this.props;
     this.$target.querySelector('.editor-input').addEventListener('input', e => {
-      // this.events.setText(e.target.value);
+      notepad.curr.text = e.target.value;
+      notepad.tabs.render();
     });
   }
 }

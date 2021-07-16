@@ -10,6 +10,11 @@ export default class {
     return docs;
   }
 
+  static async getDocsByUserId(id) {
+    const docs = await readJson(filePath);
+    return docs.filter(doc => doc.user === id);
+  }
+
   static async hasDoc(name) {
     const docs = await this.getDocs();
     const doc = docs.find(doc => doc.name === name);
@@ -17,8 +22,10 @@ export default class {
   }
 
   static async addDoc(doc) {
+    console.log('%c [JL] addDoc - doc', 'font-size: 16px; color:  red;', doc);
     const docs = await this.getDocs();
-    await this.setDocs([...docs, doc]);
+    const docss = await this.setDocs([...docs, doc]);
+    console.log('%c [JL] addDoc - docss', 'font-size: 16px; color:  red;', docss);
     return doc;
   }
 

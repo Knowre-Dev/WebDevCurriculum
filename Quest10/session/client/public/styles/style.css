@@ -15,7 +15,17 @@
     background: #888B94;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.login-input {
+    width: 100px;
+}
+
+.login-container {
+    display: flex;
+}
+
 .btn {
     margin: 0 0.5rem;
     text-align: center;
@@ -59,6 +69,10 @@
 
 .tab-status {
     margin: 1rem;
+}
+
+.hidden {
+    display: none;
 }
 
 .tab-status-saved {

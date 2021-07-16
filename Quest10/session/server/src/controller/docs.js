@@ -5,7 +5,7 @@ import { validateDoc } from '../utils/validator.js';
 export class DocsController {
   static async getAllDocs(req, res, next) {
     try {
-      const docs = await DocService.getDocs();
+      const docs = await DocService.getDocsByUserId(req.user);
       res.status(200).json(docs);
     } catch (e) {
       next(e);
@@ -19,8 +19,12 @@ export class DocsController {
         res.status(409);
         return next(Error('existed'));
       }
-
-      const newDoc = await DocService.addDoc({ name: doc.name, text: '', id: uuidv4() });
+      const newDoc = await DocService.addDoc({
+        name: doc.name,
+        text: '',
+        id: uuidv4(),
+        user: req.user,
+      });
       res.status(200).json(newDoc);
     } catch (e) {
       console.error(e);
@@ -64,10 +68,14 @@ export class DocsController {
         res.status(400);
         return next(Error('Doc does not exist'));
       }
-      const editedDocs = [...docs.slice(0, index), doc, ...docs.slice(index + 1, docs.length)];
+      const newDoc = {
+        ...docs[index],
+        ...doc,
+      };
+      const editedDocs = [...docs.slice(0, index), newDoc, ...docs.slice(index + 1, docs.length)];
       await DocService.setDocs(editedDocs);
 
-      res.status(200).json(doc);
+      res.status(200).json(newDoc);
     } catch (e) {
       next(e);
     }
