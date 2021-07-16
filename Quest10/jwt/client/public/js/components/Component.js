@@ -4,10 +4,9 @@ export default class Component {
   state;
   events;
 
-  constructor($target, props, events) {
+  constructor($target, props) {
     this.$target = $target;
     this.props = props;
-    this.events = events;
     this.init();
     this.render();
     this.setEvent();

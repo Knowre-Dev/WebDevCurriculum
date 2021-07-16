@@ -1,4 +1,5 @@
-import { DocApi } from '../api.js';
+import { AuthApi } from '../api/auth.js';
+import { DocApi } from '../api/doc.js';
 import { Actions } from './Actions.js';
 import Component from './Component.js';
 import { Doc } from '../doc.js';
@@ -7,12 +8,19 @@ import { TabList } from './TabList.js';
 
 export default class Notepad extends Component {
   async init() {
-    const resDocs = await DocApi.getDocs();
-    const docs = resDocs.map(doc => new Doc(doc));
-    this.setState({
-      docs: docs,
-      curr: docs[0],
-    });
+    const user = await AuthApi.whoami();
+    console.log('%c [JL] init - user', 'font-size: 16px; color:  red;', user);
+    if (user) {
+      this.setState({
+        user,
+      });
+      const resDocs = await DocApi.getDocs();
+      const docs = resDocs.map(doc => new Doc(doc));
+      this.setState({
+        docs: docs,
+        curr: docs[0] || null,
+      });
+    }
   }
 
   template() {
@@ -26,27 +34,14 @@ export default class Notepad extends Component {
   mounted() {
     const docs = this.state?.docs ?? [];
     const curr = this.state?.curr ?? null;
-
+    const notepad = this;
     const $actions = this.$target.querySelector('[data-component="actions"]');
     const $tabs = this.$target.querySelector('[data-component="tabs"]');
     const $editor = this.$target.querySelector('[data-component="editor"]');
 
-    new Actions($actions, undefined, {
-      add: this.add.bind(this),
-      save: this.save.bind(this),
-    });
-
-    this.tabs = new TabList(
-      $tabs,
-      { docs, curr },
-      {
-        open: this.open.bind(this),
-        changeName: this.changeFileName.bind(this),
-        close: this.close.bind(this),
-      }
-    );
-
-    new Editor($editor, { curr }, undefined);
+    new Actions($actions, { notepad });
+    this.tabs = new TabList($tabs, { docs, curr, notepad });
+    new Editor($editor, { curr, notepad });
   }
 
   async add() {
@@ -84,29 +79,6 @@ export default class Notepad extends Component {
     }
   }
 
-  setEvent() {
-    this.$target.addEventListener('input', e => {
-      this.curr.text = e.target.value;
-      this.tabs.render();
-    });
-  }
-
-  open(doc) {
-    this.setState({ curr: doc });
-  }
-
-  changeFileName(doc, newName) {
-    if (!newName) {
-      return;
-    }
-    if (!this.validateName(newName)) {
-      return alert('이미 존재하는 파일명 입니다.');
-    }
-
-    this.curr.name = newName;
-    this.render();
-  }
-
   async close(doc) {
     const removedDocs = await DocApi.delete(doc.id);
     if (removedDocs) {
@@ -122,6 +94,10 @@ export default class Notepad extends Component {
         this.render();
       }
     }
+  }
+
+  open(doc) {
+    this.setState({ curr: doc });
   }
 
   validateName(name) {

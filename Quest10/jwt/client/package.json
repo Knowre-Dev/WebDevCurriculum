@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "install": "npm run start",
-    "start": "npx http-server src -p 3000"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,11 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "fastify": "^3.19.1",
+    "fastify-static": "^4.2.2"
   }
 }
