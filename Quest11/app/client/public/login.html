@@ -10,7 +10,7 @@
 	<div class="login-page">
 		<div class="form">
 			<form class="login-form" onsubmit="return false">
-				<input type="text" placeholder="id" id="id"/>
+				<input type="text" placeholder="userName" id="userName"/>
 				<input type="password" placeholder="password" id="password"/>
 				<button>login</button>
 				<p>guest1~3/guest1~3</p>
@@ -20,13 +20,13 @@
 	<script>
 		const form = document.querySelector('.login-form');
 		form.addEventListener('submit', async (e) => {
-			const [id, password] = [...e.target.querySelectorAll('input')].map(el => el.value);
-			if(!id || !password) {
+			const [userName, password] = [...e.target.querySelectorAll('input')].map(el => el.value);
+			if(!userName || !password) {
 				return alert('id/pw 입력해');
 			}
-			const data = await login({id, password})
+			const data = await login({userName, password})
 			if('accessToken' in data) {
-				window.localStorage.setItem('accessToken', data['accessToken']);
+				window.localStorage.setItem('accessToken', `Bearer ${data['accessToken']}`);
 			}
 			window.location.href = '/'
 		})

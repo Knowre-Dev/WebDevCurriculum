@@ -10,13 +10,12 @@ export class Actions extends Component {
   template() {
     const notepad = this.props.notepad;
     const user = notepad.state?.user || null;
-    console.log('%c [JL] template - user', 'font-size: 16px; color:  red;', user);
     return `
     <div class="btn-group">
         <button class="btn" id="new-file">ADD NEW</button>
         <button class="btn" id="save">SAVE</button>
     </div>
-    <p>${user?.id || ''}</p>
+    <p>${user?.userName || ''}</p>
     <button class="btn" id="logout">LOGOUT</button>
     `;
   }

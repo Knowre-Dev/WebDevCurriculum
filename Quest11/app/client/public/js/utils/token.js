@@ -2,7 +2,7 @@ export class TokenManager {
   static tokenKey = 'accessToken';
 
   static setToken(token) {
-    window.localStorage.setItem('accessToken', token);
+    window.localStorage.setItem('accessToken', `Bearer ${token}`);
   }
   static getToken() {
     return window.localStorage.getItem(this.tokenKey);

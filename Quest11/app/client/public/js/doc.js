@@ -3,6 +3,9 @@ export class Doc {
   id;
   name;
   text;
+  createdAt;
+  updatedAt;
+  user;
   constructor(doc) {
     Object.assign(this, doc);
     this.origin = doc;

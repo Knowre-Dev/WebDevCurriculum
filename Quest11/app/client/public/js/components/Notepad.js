@@ -80,8 +80,8 @@ export default class Notepad extends Component {
   }
 
   async close(doc) {
-    const removedDocs = await DocApi.delete(doc.id);
-    if (removedDocs) {
+    const docs = await DocApi.delete(doc.id);
+    if (docs) {
       this.setState({
         docs: this.docs.filter(d => d !== doc),
       });
