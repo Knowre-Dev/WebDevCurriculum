@@ -22,10 +22,8 @@ export default class {
   }
 
   static async addDoc(doc) {
-    console.log('%c [JL] addDoc - doc', 'font-size: 16px; color:  red;', doc);
     const docs = await this.getDocs();
     const docss = await this.setDocs([...docs, doc]);
-    console.log('%c [JL] addDoc - docss', 'font-size: 16px; color:  red;', docss);
     return doc;
   }
 
