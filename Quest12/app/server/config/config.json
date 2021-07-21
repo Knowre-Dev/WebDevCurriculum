@@ -1,0 +1,11 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "uULF14XdmW6PJOyd22qE",
+    "database": "Notepad",
+    "host": "juicy-rds.cdpxb84esno1.ap-northeast-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {},
+  "production": {}
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles/normalize.css">
+		<link rel="stylesheet" href="styles/login.css">
+		<script src="js/api/auth.js" type="module"></script>
+	</head>
+	<body>
+	<div class="login-page">
+		<div class="form">
+			<form class="login-form" onsubmit="return false">
+				<input type="text" placeholder="userName" id="userName"/>
+				<input type="password" placeholder="password" id="password"/>
+				<button>login</button>
+				<p>guest1~3/guest1~3</p>
+			</form>
+		</div>
+	</div>
+	<script>
+		const form = document.querySelector('.login-form');
+		form.addEventListener('submit', async (e) => {
+			const [userName, password] = [...e.target.querySelectorAll('input')].map(el => el.value);
+			if(!userName || !password) {
+				return alert('id/pw 입력해');
+			}
+			const data = await login({userName, password})
+			if('accessToken' in data) {
+				window.localStorage.setItem('accessToken', `Bearer ${data['accessToken']}`);
+			}
+			window.location.href = '/'
+		})
+		async function login(payload){
+			try{
+				const res = await fetch('https://localhost:8000/v1/auth/login', {
+					body: JSON.stringify(payload),
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					credentials: 'include'
+				})
+				if(res.ok) {
+					return await res.json();
+				}
+			} catch (e) {
+				console.error(e)
+			}
+		}
+
+	</script>
+	</body>
+</html>
