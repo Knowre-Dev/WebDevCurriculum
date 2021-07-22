@@ -11,7 +11,7 @@
 * [MDN - 웹어셈블리의 컨셉](https://developer.mozilla.org/ko/docs/WebAssembly/Concepts)
 * [MDN - Rust to wasm](https://developer.mozilla.org/ko/docs/WebAssembly/Rust_to_wasm)
 * [Learn Rust](https://www.rust-lang.org/learn)
-* [Rust - crypto::sha2](https://docs.rs/rust-crypto/0.2.36/crypto/sha2/index.html)
+* [Rust - sha2](https://docs.rs/sha2/0.9.5/sha2/)
 
 ## Checklist
 * 웹 어셈블리란 어떤 기술인가요?
@@ -23,7 +23,7 @@
 ## Quest
 * 텍스트 에디터 프로그램에서 각 탭의 내용의 SHA-256 해시를 실시간으로 계산하여 화면 아래에 표시해 보세요.
   * 해당 해시는 Rust로 작성된 웹 어셈블리 함수를 통해 계산되어야 합니다.
-  * 순수 자바스크립트로 계산할 때와의 퍼포먼스 차이를 체크해 보세요.
+  * 순수 자바스크립트로 계산할 때와의 퍼포먼스 차이를 체크해 보세요. (퍼포먼스 차이를 알아보는 데에 어떤 전략들이 있을까요?)
 
 ## Advanced
 * 웹 어셈블리 바이너리는 어떻게 구성되어 있을까요?
