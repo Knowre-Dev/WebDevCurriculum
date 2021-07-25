@@ -30,12 +30,13 @@ export default class User extends Model {
   }
 
   static async findByUserName(userName) {
-    return this.findOne({ where: { userName: userName } });
+    return this.findOne({ where: { userName: userName }, raw: true });
   }
 
   static async findByUserNameExcludePassword(userName) {
     return this.findOne({
       where: { userName: userName },
+      raw: true,
       attributes: {
         exclude: ['password'],
       },

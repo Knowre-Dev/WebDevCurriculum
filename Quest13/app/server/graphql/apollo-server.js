@@ -39,8 +39,8 @@ export async function startApolloServer() {
 
   const server = https.createServer({ key, cert }, app);
 
-  server.listen(8000);
+  server.listen(CONFIG.port);
 
-  console.log(`🚀 Server ready at http://localhost:${CONFIG.port}${apolloServer.graphqlPath}`);
+  console.log(`🚀 Server ready at https://localhost:${CONFIG.port}${apolloServer.graphqlPath}`);
   return { server, app };
 }

@@ -30,6 +30,7 @@ export default class Doc extends Model {
   }
   static findAllByUser(userId) {
     return this.findAll({
+      raw: true,
       where: { userId: userId },
       attributes: {
         exclude: ['userId'],
