@@ -28,6 +28,7 @@
 
 ## Quest
 * 메모장의 서버와 클라이언트 부분을 GraphQL API로 수정해 보세요.
+  https://documenter.getpostman.com/view/10639106/TzsZrTwm
 
 ## Advanced
 * GraphQL이 아직 제대로 수행하지 못하거나 불가능한 요구사항에는 어떤 것이 있을까요?
