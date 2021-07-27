@@ -6,8 +6,8 @@ import { Ctx } from '../index';
 type RouterCtx = Omit<Ctx, 'router'>;
 
 export type RoutePaths = '/' | '/login';
-// eslint-disable-next-line @typescript-eslint/ban-types
-type GConstructor<T = {}> = new (...args: any[]) => T;
+
+type GConstructor<T> = new (...args: any) => T;
 export type Routes = Record<RoutePaths, GConstructor<Component>>;
 
 export const routes: Routes = {
