@@ -1,0 +1,32 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development --port 3000 --https --cert ../keys/localhost.crt --key ../keys/localhost.key --history-api-fallback",
+    "lint": "eslint --ext .js,.ts --ignore-path ../../../.gitignore ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "prettier": "^2.3.2",
+    "style-loader": "^3.2.1",
+    "ts-loader": "^9.2.4",
+    "ts-node": "^10.1.0",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.21"
+  }
+}
