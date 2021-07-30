@@ -1,4 +1,4 @@
-import { Doc } from './doc';
+import { Doc } from './doc.model';
 
 export type PickedDoc = Pick<Doc, 'id' | 'name' | 'text'>;
 
