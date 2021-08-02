@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./public/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es6",
+    "allowJs": true,
+    "importHelpers": true
+  },
+  "include": [
+    "**/*.ts",
+    "./__tests__/jest-setup.ts"
+  ],
+  "exclude": ["cypress/*"]
+}
