@@ -1,0 +1,41 @@
+import { Meta, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import Actions from "../components/Actions.vue";
+
+<Meta title="Actions" component={Actions} />
+
+# Actions
+
+<ArgsTable of={Actions} />
+
+<h3>상단 메뉴</h3>
+
+<Canvas>
+  <Story name="상단메뉴">
+    {{
+      components: { Actions },
+      template: '<Actions :menus="menus"></Actions>',
+      methods: { action: action("clicked") },
+      props: {
+        menus: [
+          {
+            id: 'create',
+            label: '새파일',
+            action: () => {},
+          },
+          {
+            id: 'save',
+            label: '저장',
+            action: () => {},
+          },
+          {
+            id: 'logout',
+            label: '로그아웃',
+            action: () => {},
+          },
+        ]
+      }
+    }}
+  </Story>
+</Canvas>
+

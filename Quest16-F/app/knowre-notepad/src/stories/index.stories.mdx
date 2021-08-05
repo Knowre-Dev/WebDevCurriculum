@@ -1,0 +1,33 @@
+import { Meta, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
+import Button from '../components/Button.vue';
+
+<Meta title="Button" component={Button} />
+
+# Button
+
+<ArgsTable of={Button} />
+
+This is a simple button with some text in it.
+
+<Canvas>
+  <Story name="With Text">
+    {{
+      components: { Button },
+      template: '<Button @click="action">Hello Button</Button>',
+      methods: { action: action("clicked") }
+    }}
+  </Story>
+</Canvas>
+
+You can even have Emoji in the button.
+
+<Canvas>
+  <Story name="With Some Emoji">
+    {{
+        components: { Button },
+        template: '<Button>😀 😎 👍 💯</Button>'
+    }}
+  </Story>
+</Canvas>
