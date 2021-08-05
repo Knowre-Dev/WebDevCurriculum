@@ -18,6 +18,7 @@ export const CORS_OPTIONS = {
     'https://127.0.0.1:3000',
     'https://studio.apollographql.com',
     'https://localhost:3000',
+    'http://localhost:3000',
     'http://localhost:58376',
   ],
   credentials: true,
