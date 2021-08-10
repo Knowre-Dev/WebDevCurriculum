@@ -16,7 +16,6 @@ export const SEQUELIZE_CONFIG: SequelizeOptions = {
 export const CORS_OPTIONS = {
   origin: [
     'https://127.0.0.1:3000',
-    'http://127.0.0.1:3000',
     'https://studio.apollographql.com',
     'https://localhost:3000',
     'http://localhost:3000',
