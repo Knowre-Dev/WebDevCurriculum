@@ -1,0 +1,33 @@
+import { Meta, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import Input from "../components/Input.vue";
+
+<Meta title="Input" component={Input} />
+
+# Input
+
+<ArgsTable of={Input} />
+
+<h3>빈 인풋박스</h3>
+
+<Canvas>
+  <Story name="empty">
+    {{
+      components: { Input },
+      template: '<Input></Input>',
+      methods: { action: action("clicked") }
+    }}
+  </Story>
+</Canvas>
+
+<h3>인풋박스 with placeholder</h3>
+
+<Canvas>
+  <Story name="빈 인풋">
+    {{
+      components: { Input },
+      template: '<Input placeholder="placeholder"></Input>',
+      methods: { action: action("clicked") }
+    }}
+  </Story>
+</Canvas>

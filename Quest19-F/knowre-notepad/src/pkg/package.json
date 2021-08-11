@@ -1,0 +1,13 @@
+{
+  "name": "notepad-wasm",
+  "version": "0.1.0",
+  "files": [
+    "notepad_wasm_bg.wasm",
+    "notepad_wasm.js",
+    "notepad_wasm_bg.js",
+    "notepad_wasm.d.ts"
+  ],
+  "module": "notepad_wasm.js",
+  "types": "notepad_wasm.d.ts",
+  "sideEffects": false
+}

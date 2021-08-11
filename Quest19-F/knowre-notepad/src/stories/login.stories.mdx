@@ -1,0 +1,22 @@
+import { Meta, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import Login from "../components/Login.vue";
+
+<Meta title="Login" component={Login} />
+
+# Input
+
+<ArgsTable of={Login} />
+
+<h3>로그인</h3>
+
+<Canvas>
+  <Story name="hello">
+    {{
+      components: { Login },
+      template: '<Login @click="action"></Login>',
+      methods: { action: action("clicked") }
+    }}
+  </Story>
+</Canvas>
+
