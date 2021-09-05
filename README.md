@@ -5,6 +5,11 @@
 * 이 커리큘럼을 통해 신입 개발자들은 git, HTML, CSS, front-end JavaScript, node.js, MySQL, 그리고 더 나아가 선택된 몇 가지의 최신 웹 기술과 그 작동 원리에 대해 익히게 됩니다.
 
 
+## 머리말
+
+* [머리말](./PREFACE.md)
+
+
 ## 목차
 
 <details><summary>펼치기</summary>
