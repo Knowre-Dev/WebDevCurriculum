@@ -1,4 +1,4 @@
-# Knowre Web Development Curriculum 2021
+# Knowre 웹개발 커리큘럼 - 4th Edition, 2021
 
 ## 소개
 * Knowre의 신입 웹 개발자 교육을 위한 웹 개발 교육 커리큘럼의 2021년 버전입니다.
