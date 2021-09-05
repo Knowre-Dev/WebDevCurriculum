@@ -96,6 +96,11 @@
 * 만일 만 하루 이상의 시행착오로 인해 진행이 멈췄을 경우, 제 자리로 찾아 오시면 해결을 보장해 드립니다.
 
 
+### 광고
+
+* Knowre에서 수시로 신입/경력 엔지니어를 모시고 있습니다. [이 링크](https://www.wanted.co.kr/company/96) 를 참고해 주십시오!
+
+
 ### 라이센스
 
 * 이 커리큘럼은 [MIT 라이센스](./LICENSE)를 따릅니다. 원하시는대로 쓰시고 개작하실 수 있습니다. 다만 이 커리큘럼의 내용이 마음에 드셨을 경우, 만약 원하신다면 `[Knowre Web Development Curriculum](https://github.com/Knowre-Dev/WebDevCurriculum)에서 영감을 받았다` 라는 언급을 해 주시면 감사하겠습니다.
