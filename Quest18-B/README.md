@@ -9,9 +9,9 @@
 * Grafana
 
 ## Resources
-* https://www.elastic.co/kr/what-is/elasticsearch
-* https://www.elastic.co/kr/webinars/getting-started-elasticsearch
-* https://grafana.com/docs/grafana/latest/panels/
+* [ElasticSearch](https://www.elastic.co/kr/what-is/elasticsearch)
+* [ElasticSearch 101](https://www.elastic.co/kr/webinars/getting-started-elasticsearch)
+* [Grafana Panels](https://grafana.com/docs/grafana/latest/panels/)
 
 ## Checklist
 * ElasticSearch는 어떤 DB인가요? 기존의 RDB와 어떻게 다르고 어떤 장단점을 가지고 있나요?
