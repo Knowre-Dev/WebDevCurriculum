@@ -19,8 +19,8 @@
 * Grafana의 Panel 형식에는 어떤 것이 있을까요? 로그를 보기에 적합한 판넬은 어떤 형태일까요?
 
 ## Quest
-* 우리의 웹 서버가 로그를 남기도록 해 보세요.
-* ElasticSearch Service 클러스터를 작은 사양으로 하나 만들고, 이 로그가 ElasticSearch로 들어가도록 해 보세요.
+* 우리의 웹 서버가 stdout으로 적절한 로그를 남기도록 해 보세요.
+* ElasticSearch Service 클러스터를 작은 사양으로 하나 만들고, 도커 컨테이너의 stdout으로 출력된 로그가 ElasticSearch로 스트리밍 되도록 해 보세요.
 * Grafana를 이용해 ElasticSearch의 로그를 실시간으로 볼 수 있는 페이지를 만들어 보세요.
 
 ## Advanced
