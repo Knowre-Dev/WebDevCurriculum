@@ -33,9 +33,67 @@
     [GitHub Docs](https://docs.github.com/en/get-started/using-git/about-git)
 
 * git과 GitHub은 어떻게 다를까요?
+ - 
+
 * git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?
+   
+ - commit
+  - **프로젝트의 스냅샷**의 기록
+  - 가능한 커밋을 가볍게 유지하기 위해 커밋할 때마다 디렉토리 전체를 복사하진 않음, 매우 가볍고 커밋 사이 전환도 매우 빠름
+  - 각 커밋은 이전 버전과 다음 버전의 변경내역("delta")을 저장한다.
+  - 그래서 대부분의 커밋이 그 커밋 위의 부모 커밋을 가리킨다.
+
+
+ - clone
+  - 저장소를 복제
+  - 저장소를 clone 하려면 모든 변경분(delta)을 풀어야 하는데, 이 때문에 명령행 결과로 resoloving deltas 라는 문구를 볼 수 있다
+
+  
+ - branch
+  - 특정 커밋에 대한 참조(reference)
+  - 많이 만들어도 메모리나 디스크에 부담이 없다.
+  - 하나의 커밋과 그 부모 커밋들을 포함하는 작업 내역
+
+
+ - merge
+  - 두개의 별도의 브랜치를 합치는 방법 중 하나
+  - 한 부모의 모든 작업내역과 나머지 부모의 모든 작업, 그리고 그 두 부모의 모든 부모들의 작업내역을 포함함
+
+
+ - rebase
+  - 두개의 별도의 브랜치를 합치는 방법 중 하나
+  - 커밋들을 모아서 복사한 뒤 다른 곳에 떨어뜨림
+  - rebase를 하면 커밋 흐름을 한 줄로 만들어 보기 좋게 만들 수 있다.
+
+
+ - HEAD
+  - 현재 체크아웃된 커밋을 가리킴(현재 작업중인 커밋)
+  - 항상 working tree의 가장 최근 커밋을 가리킴
+  - 일반적으로 HEAD는 브랜치의 이름을 가리킨다. 커밋을 하면 브랜치의 상태가 바뀌고 이 변경은 HEAD를 통해 확인할 수 있다
+  - HEAD 분리 : git chekcout C1
+
+ - Git에서 작업 되돌리기
+  - git reset : 예전 커밋을 가리키도록 이동(히스토리를 고쳐씀, 마치 애초에 커밋하지 않은 것처럼)
+  - ex) git reset HEAD~1
+  - git revert : 변경분을 되돌리고, 이 되돌린 내용을 다른 사람들과 공유하기 위해서 사용
+  - 사실상 새로운 커밋이 생기고 변경내용이 커밋에 기록된다.(기존 커밋과 반대되는 내용)
+  - revert를 하면 다른 사람들에게도 변경 내역을 push 할 수 있음
+  - ex) git revert HEAD
+
+
 * git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?
 * 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?
+
+
+++ 추가)
+git의 상대 참조(Relative Ref)
+- ^ : 한 번에 한 커밋 위로 움직임
+- ~<num> : 한 번에 여러 커밋 위로 올라감
+ ex) 강제로 main 브랜치를 HEAD에서 3번 뒤로 옮기기 : git branch -f main HEAD~3
+   main 위에 있는 부모를 체크아웃 : git checkout main^
+ 
+ 절대 경로 ex) git branch -f main (경로)
+
 
 ## Quest
 * **[O]** GitHub에 가입한 뒤, [이 커리큘럼의 GitHub 저장소](https://github.com/KnowRe-Dev/WebDevCurriculum)의 우상단의 Fork 버튼을 눌러 자신의 저장소에 복사해 둡니다.
