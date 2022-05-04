@@ -15,7 +15,7 @@
 * [Inside Git: .Git directory](https://githowto.com/git_internals_git_directory)
 
 ## Checklist
-* 형상관리 시스템은 왜 나오게 되었을까요?
+### * 형상관리 시스템은 왜 나오게 되었을까요?
   - 형상 관리 = 구성 관리 (Configuration Management)
   - 정의? <br/>
   원하는 상태로 일관되게 유지하는 프로세스. 다양한 변경 사항이 적용되더라도 시스템이 정상 작동할 수 있도록 함.
@@ -24,12 +24,39 @@
 
   | Configutaion Management | Version Contol System |
   |  :--:  |  :--:  |
-  | 상품/제품(software)의 consistency를 유지하기 위한 것에 초점 | 말 그대로 상품/제품(software)의 버전을 관리하는 시스템 |
+  | 상품/제품(software)의 consistency를<br/>유지하기 위한 것에 초점 | 말 그대로 상품/제품(software)의 버전을 관리하는 시스템 |
+  |  |  |
 
 <br/><br/>
 
-* git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요? 분산형 형상관리 시스템이란 무엇일까요?
-  * git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?
+### * git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요? 분산형 형상관리 시스템이란 무엇일까요?
+  #### * git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?
+  - git은 어떤 형상 관리 시스템?
+    - 분산형 형상 관리 시스템 (Distributed VCS)
+  - 분산형 형상 관리 시스템이 뭐냐면..
+    - 중앙 집중식 형상 관리 시스템(Centralized VCS, Client-server VCS)과 비교해서 보면 이해하기 쉬움 <br/>
+
+  | Centralized VCS | Distributed VCS |
+  |  :--:  |  :--:  |
+  | 중앙 서버가 존재 | 중앙 서버가 존재 |
+  | 로컬 저장소 없음<br/> (중앙 서버만 모든 변경 사항들을 가지고 있음) | 로컬 저장소 있음<br/> (중앙 서버 외에 각각의 로컬 컴퓨터에서도<br/>모든 변경 사항을 가지고 있을 수 있음) |
+  | 항상 중앙 서버와 연결되어 있어야 하기 때문에<br/>인터넷 연결이 필수 | 로컬 저장소가 있기 때문에<br/>인터넷 연결 없이도 개발 가능 |
+  | synchronizing, tracking, backing up files에 초점 | 변경 사항들을 공유하는 것에 초점 |
+  | *중앙 서버의 파일을 날리면 모든 버전이 날아감 | 중앙 서버가 날아가도<br/>로컬 저장소의 기록을 이용해 복구 가능 |
+  | <img src="https://t1.daumcdn.net/cfile/tistory/184C803F514047D41D" width="300"/> | <img src="https://t1.daumcdn.net/cfile/tistory/2511743F514047D442" width="300"/> |
+  |  |  |
+
+
+  - git이 어떻게 개발 되었냐면..
+    - [History of Git](https://www.welcometothejungle.com/en/articles/btc-history-git)
+    - A client-server VCS works fine in a corporate environment, where development is tightly controlled and is undertaken by an in-house development team with good network connections. It doesn’t work so well if you have a collaboration involving hundreds or thousands of developers, working voluntarily, independently, and remotely, all eager to try out new things with the code, which is all typical with open source software (OSS) projects such as Linux.
+    - Distributed VCS, pioneered by BK, broke that mould. Git, Mercurial, and Monotone all followed this example. With distributed VCS, a copy of the most current version of the code resides on each developer’s device, making it easier for developers to work independently on changes to the code. “BK was the big conceptual influence for the usage model, and really should get all the credit. For various reasons, I wanted to make the Git implementation and logic completely different from BK, but the conceptual notion of ‘distributed VCS’ really was the number one goal, and BK taught me the importance of that,” says Torvalds. “Being truly distributed means forks are non-issues, and anybody can fork a project and do their own development, and then come back a month or a year later and say, ‘Look at this great thing I’ve done.’”
+
+  - git이 분산형 시스템을 채택한 이유는 뭐냐면..
+
+
+
+  
   <br/><br/>
 
 * git과 GitHub은 어떻게 다를까요?
