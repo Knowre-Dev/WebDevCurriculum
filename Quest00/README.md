@@ -25,7 +25,6 @@
   | Configutaion Management | Version Contol System |
   |  :--:  |  :--:  |
   | 상품/제품(software)의 consistency를<br/>유지하기 위한 것에 초점 | 말 그대로 상품/제품(software)의 버전을 관리하는 시스템 |
-  |  |  |
 
 <br/><br/>
 
@@ -44,7 +43,6 @@
   | synchronizing, tracking, backing up files에 초점 | 변경 사항들을 공유하는 것에 초점 |
   | *중앙 서버의 파일을 날리면 모든 버전이 날아감 | 중앙 서버가 날아가도<br/>로컬 저장소의 기록을 이용해 복구 가능 |
   | <img src="https://t1.daumcdn.net/cfile/tistory/184C803F514047D41D" width="300"/> | <img src="https://t1.daumcdn.net/cfile/tistory/2511743F514047D442" width="300"/> |
-  |  |  |
 
 
   - git이 어떻게 개발 되었냐면..
