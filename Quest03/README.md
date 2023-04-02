@@ -20,7 +20,17 @@
 
 ## Checklist
 * 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?
+
+자바스크립트(JavaScript)는 초기에는 웹 페이지의 동적인 기능을 구현하는 데 주로 사용되었습니다. 하지만 시간이 지남에 따라 자바스크립트는 웹 개발 분야에서 매우 중요한 언어로 자리 잡았습니다.
+
   * 자바스크립트의 버전들을 가리키는 ES5, ES6, ES2016, ES2017 등은 무엇을 이야기할까요?
+  ES란 Ecma Script의 준말로 JavaScript명세서(표준,규격)를 의미함
+  ES5는 "use strict"선언을 추가하여 코드 실행을 엄격하게함
+  ES6는 클래스,모듈,템플릿 리터럴 등의 새로운 기능 추가.
+  ES2016은 includes(배열 내장 함수 EX.['a','b','c'].indexOf('a') > -1가 ['a', 'b', 'c'].includes('a') 처럼 간결해짐),Exponentiation operator추가(제곱 연산자 EX.Math와 pow함수 대신 ** 연산자로 가능)
+  ES2017은 문자 여백 기능,Object.values(),Object.entries(),Object.getOwnPropertyDescriptors(),Trailing commas,async/await(기존의 Promise보다 가독성이 좋은 코드 작성 가능) 추가
+  https://junhobaik.github.io/es2016-es2020/#objectgetownpropertydescriptors 자료 참조
+  
   * 자바스크립트의 표준은 어떻게 제정될까요?
 * 자바스크립트의 문법은 다른 언어들과 비교해 어떤 특징이 있을까요?
   * 자바스크립트에서 반복문을 돌리는 방법은 어떤 것들이 있을까요?
