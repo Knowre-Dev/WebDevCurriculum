@@ -9,12 +9,15 @@
 				border: 1px dashed black;
 				display: inline-block;
 				margin: 20px;
+				
 			}
 
 			.enabled {
 				background-color: limegreen;
 				border: 1px solid black;
 			}
+			
+			
 		</style>
 	</head>
 	<body>
@@ -34,14 +37,48 @@
 
 		<script>
 			let row1Squares = document.querySelectorAll('.row1 .square');
+			var LineInput = prompt("줄 수를입력하시오.");
 			for(let node of row1Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+
+				
+				var result = "";
+
+				for (var i = 1; i < LineInput*2; i+=2) {
+					for (var j = 1; j < ((LineInput * 2) - i) / 2 ; j++) {
+						result += " ";
+					}
+					for( var l=1; l<=i;l++){
+						result += "*";
+					}
+					for (var k = 1; k < ((LineInput * 2) - i) / 2; k++) {
+						result += " ";
+					}
+					result += "\n";
+				}
+				console.log(result);
+
+
+				function backColor(){
+					if(node.style.backgroundColor == "white") {
+						node.style.backgroundColor = "yellow";
+					} else {
+						node.style.backgroundColor = "white";
+					}
+				}
+				
+				node.addEventListener("click", backColor);
 			}
 
 			let row2Squares = document.querySelectorAll('.row2 .square');
+
 			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+				const CLICK_CLASS = "enabled";
+				function OnClick (){
+					node.classList.toggle(CLICK_CLASS);
+				}
+				node.addEventListener("click", OnClick);
 			}
+			
 		</script>
 	</body>
 </html>
