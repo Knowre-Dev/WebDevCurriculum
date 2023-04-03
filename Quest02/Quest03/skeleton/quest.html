@@ -42,7 +42,24 @@
 			for(let node of row2Squares) {
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
 			}
-			
+			function drawTriangle() {
+  const num = prompt("숫자를 입력하세요:");
+
+  if (num < 1) {
+    console.log("1 이상의 숫자를 입력해주세요.");
+    return;
+  }
+
+  for (let i = 1; i <= num; i++) {
+    let stars = "";
+    for (let j = 1; j <= i; j++) {
+      stars += "*";
+    }
+    console.log(stars);
+  }
+}
+
+drawTriangle();
 		</script>
 	</body>
 </html>
