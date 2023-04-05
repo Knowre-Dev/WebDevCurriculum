@@ -20,18 +20,20 @@
 
 ## Checklist
 * 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?
-
+```
 자바스크립트(JavaScript)는 초기에는 웹 페이지의 동적인 기능을 구현하는 데 주로 사용되었습니다. 하지만 시간이 지남에 따라 자바스크립트는 웹 개발 분야에서 매우 중요한 언어로 자리 잡았습니다.
-
+```
   * 자바스크립트의 버전들을 가리키는 ES5, ES6, ES2016, ES2017 등은 무엇을 이야기할까요?
+  ```
   ES란 Ecma Script의 준말로 JavaScript명세서(표준,규격)를 의미함
   ES5는 "use strict"선언을 추가하여 코드 실행을 엄격하게함
   ES6는 클래스,모듈,템플릿 리터럴 등의 새로운 기능 추가.
   ES2016은 includes(배열 내장 함수 EX.['a','b','c'].indexOf('a') > -1가 ['a', 'b', 'c'].includes('a') 처럼 간결해짐),Exponentiation operator추가(제곱 연산자 EX.Math와 pow함수 대신 ** 연산자로 가능)
   ES2017은 문자 여백 기능,Object.values(),Object.entries(),Object.getOwnPropertyDescriptors(),Trailing commas,async/await(기존의 Promise보다 가독성이 좋은 코드 작성 가능) 추가
   https://junhobaik.github.io/es2016-es2020/#objectgetownpropertydescriptors 자료 참조
-
+  ```
   * 자바스크립트의 표준은 어떻게 제정될까요?
+  ```
   ECMA International에서는 ECMAScript라는 이름으로 자바스크립트의 표준을 제정합니다. 
   ECMAScript는 자바스크립트를 포함하는 스크립트 언어의 표준 규격을 의미하며, 현재까지 ECMAScript 2022(ES12)까지 발표되었습니다.
   ECMAScript 표준은 TC39(Technical Committee 39)이라는 위원회에서 제정됩니다. 
@@ -39,15 +41,16 @@
   이 위원회는 모집적인 방식으로 구성되어 있으며, 인터넷 엔진 개발자, 브라우저 개발자, 프로그래밍 언어 전문가 등이 참여합니다.
   ECMAScript 표준은 모든 브라우저에서 일관성 있게 자바스크립트를 구현할 수 있도록 합니다. 
   따라서 개발자들은 ECMAScript 표준에 맞게 자바스크립트 코드를 작성하여, 모든 브라우저에서 동일한 결과를 얻을 수 있습니다.
-
+  ```
 * 자바스크립트의 문법은 다른 언어들과 비교해 어떤 특징이 있을까요?
+```
 1.객체 기반 언어
 2.함수형 언어
 3.동적 타입 언어
 4.프로토타입 기반 언어
 5.세미콜론 생략 가능
 6.Hoisting
-
+```
   * 자바스크립트에서 반복문을 돌리는 방법은 어떤 것들이 있을까요?
 * 자바스크립트를 통해 DOM 객체에 CSS Class를 주거나 없애려면 어떻게 해야 하나요?
   * IE9나 그 이전의 옛날 브라우저들에서는 어떻게 해야 하나요?
