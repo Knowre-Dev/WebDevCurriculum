@@ -10,11 +10,14 @@
 				display: inline-block;
 				margin: 20px;
 			}
+			.yellow {
+			background-color: yellow;
+		    }
 
 			.enabled {
-				background-color: limegreen;
-				border: 1px solid black;
-			}
+			background-color: lightblue;
+			color: white;
+		    }
 		</style>
 	</head>
 	<body>
@@ -34,14 +37,48 @@
 
 		<script>
 			let row1Squares = document.querySelectorAll('.row1 .square');
-			for(let node of row1Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-			}
+		for (let node of row1Squares) {
+			node.addEventListener('click', function() {
+				/* 배경색 토글 */
+				if (this.style.backgroundColor === 'yellow') {
+					this.style.backgroundColor = 'white';
+				} else {
+					this.style.backgroundColor = 'yellow';
+				}
+			});
+		}
 
-			let row2Squares = document.querySelectorAll('.row2 .square');
-			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+		let row2Squares = document.querySelectorAll('.row2 .square');
+		for (let node of row2Squares) {
+			node.addEventListener('click', function() {
+				/* CSS 클래스 토글 */
+				if (this.classList.contains('enabled')) {
+					this.classList.remove('enabled');
+				} else {
+					this.classList.add('enabled');
+				}
+			});
+		}
+			function drawStars(num) {
+			var star = '';
+			for (var i = 1; i <= num; i++) {
+				star += ' '.repeat(num - i); // 각 줄의 시작부분에 공백 추가
+				star += '* '.repeat(i); // 별과 공백 번갈아가며 추가
+				star += '\n'; // 다음 줄로 넘어감
 			}
+			console.log(star);
+		}
+
+		// 사용자로부터 입력받은 숫자로 정삼각형 별 그리기 실행
+		var num = prompt('몇 줄의 정삼각형 별을 그리시겠습니까?');
+		if (num > 0 && Number.isInteger(+num)) {
+			drawStars(+num);
+		} else {
+			console.log('양의 정수를 입력해주세요.');
+		}
+
+
+      
 		</script>
 	</body>
 </html>

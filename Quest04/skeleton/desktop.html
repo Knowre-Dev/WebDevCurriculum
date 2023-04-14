@@ -4,15 +4,25 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="./desktop.css">
 		<script src="./desktop.js"></script>
+		<div id="desktop1"></div>
+<div id="desktop2"></div>
 	</head>
 	<body>
 		<section class="desktop">
 		</section>
-
+		
+        <script src="desktop.js"></script>
+		
 		<script>
+			
 			let myDesktop = new Desktop(
 				/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
 			);
+			const desktop1 = document.getElementById('desktop1');
+  const desktop2 = document.getElementById('desktop2');
+
+  initializeDesktop(desktop1, 3, 2);
+  initializeDesktop(desktop2, 2, 1);
 		</script>
 	</body>
 </html>

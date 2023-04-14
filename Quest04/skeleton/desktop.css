@@ -1,1 +1,30 @@
 /* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
+#desktop {
+    width: 800px;
+    height: 600px;
+    background-color: #d9d9d9;
+    border: 1px solid #999;
+    position: relative;
+    margin: 50px auto;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #000;
+    position: absolute;
+    cursor: move;
+    z-index: 1;
+  }
+  
+  .folder {
+    background-color: #ffa500;
+    cursor: move;
+  }
+  
+  .folder-window .content {
+    width: 100%;
+    height: 130px;
+    padding: 10px;
+  }
