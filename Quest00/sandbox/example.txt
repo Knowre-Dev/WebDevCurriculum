@@ -1,1 +1,57 @@
-Hello World!
+1. git add <파일명 or 경로> 사용
+현재 파일경로 => (git add Quest00/sandbox/example.txt)
+Hello World! => 처음부터 있던 거 커밋해보기 (수정?)
+
+2. git reset <파일명 or 경로> 사용 
+git add 된 특정 파일 취소하기 (stage에서 내리기?)
+
+3. git pull
+원격저장소에 있는 프로젝트의 변경사항을 그대로 로컬저장소에 옮겨와 자동으로 병합
+=> 단, 변경사항을 가져옴과 동시에 자동병합이 되기 때문에 추가 및 변경사항을 알 수 없음
+
+4. git commit -m "메시지"
+add 된 파일을 깃허브에 커밋 메시지와 함께 커밋하는 명령어.
+(알맞은 메시지나 변경사항 등 설명을 추가)
+
+5. git push <원격저장소 이름> <컴퓨터의 브랜치 이름> (걍 git push해도 됨)
+=> 현재 내 로컬 브랜치 (origin/master)
+stage에 대기중인 커밋 파일을 깃허브에 최종으로 올림.
+
+6. git pull 
+다른 사람이 코드를 업데이트 했거나 깃허브를 통해 commit했을 때
+그 내용을 클라이언트로 내려받는 명령어. 
+ex) git pull origin master 하면 origin의 내용이 master로 복사됨.
+=> 단, git pull을 할 경우에는 깃허브의 유저이름과 비밀번호를 쳐야하는 경우가 있는데
+... 이건 보안상 안말할랭 
+
+7. git branch 
+자신의 branch에 각각 맡은 부분의 개발을 진행할 수 있음.
+나중에 branch끼리 merge를 통해 코드를 합칠 수 있음.
+=> 대부분 프로젝트나 팀플에서 사용?
+
+branch는 본래 하나의 이슈당 하나의 branch에서 해결?하고 
+나중에 main branch에 merge하는 것. 이후 기능을 다하면 삭제하는 방식으로 관리함.
+신기하당 어케쓰는지 모르겠지만 좋은듯 bb 
+
+8. git stash
+위의 branch 설명처럼, 하나의 이슈에 대한 branch를 만들게 되었다고 가정하자.
+이슈에 대한 branch를 진행하는 중 다른 branch로 이동해야 할 때가 있는데,
+다른 branch로 변경하기 위해서는 꼭 commit을 해야한다.
+마무리되지 않은 작업을 commit할 수는 없으니까
+'임시저장' 용도로 git stash가 필요하다.
+
+# git stash 명령어 정리
+
+[
+    git stash : git stash 변경 내용 임시저장하기
+
+    git stash apply : 가장 최근 stash 가지고 오기
+
+    git stash apply stash@{1} : 특정 stash 가지고 오기 (stash 명은 stash list 참고) 
+
+    git stash drop : 가장 최근 stash 지우기
+
+    git stash drop stash@{1} : 특정 stash 지우기
+    
+    git stash clear : 한번에 stash 모두 지우기
+]
